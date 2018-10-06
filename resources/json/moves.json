@@ -1,0 +1,1126 @@
+{
+    "1" : {
+        "Name" : "Pound",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Normal"
+    },
+    "2" : {
+        "Name" : "Karate Chop",
+        "Category" : "Physical",
+        "Power" : 50,
+        "Type" : "Fighting"
+    },
+    "3" : {
+        "Name" : "Double Slap",
+        "Category" : "Physical",
+        "Power" : 15,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "4" : {
+        "Name" : "Comet Punch",
+        "Category" : "Physical",
+        "Power" : 15,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "5" : {
+        "Name" : "Mega Punch",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Normal"
+    },
+    "6" : {
+        "Name" : "Pay Day",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Normal"
+    },
+    "7" : {
+        "Name" : "Fire Punch",
+        "Category" : "Physical",
+        "Power" : 75,
+        "Type" : "Fire"
+    },
+    "8" : {
+        "Name" : "Ice Punch",
+        "Category" : "Physical",
+        "Power" : 75,
+        "Type" : "Ice"
+    },
+    "9" : {
+        "Name" : "Thunder Punch",
+        "Category" : "Physical",
+        "Power" : 75,
+        "Type" : "Electric"
+    },
+    "10" : {
+        "Name" : "Scratch",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Normal"
+    },
+    "11" : {
+        "Name" : "Vice Grip",
+        "Category" : "Physical",
+        "Power" : 55,
+        "Type" : "Normal"
+    },
+    "12" : {
+        "Name" : "Guilotine",
+        "Category" : "Physical",
+        "Power" : 0,
+        "Type" : "Normal"
+    },
+    "13" : {
+        "Name" : "Razor Wind",
+        "Category" : "Special",
+        "Power" : 80,
+        "Type" : "Normal"
+    },
+    "15" : {
+        "Name" : "Cut",
+        "Category" : "Physical",
+        "Power" : 50,
+        "Type" : "Normal"
+    },
+    "16" : {
+        "Name" : "Gust",
+        "Category" : "Special",
+        "Power" : 40,
+        "Type" : "Flying"
+    },
+    "17" : {
+        "Name" : "Wing Attack",
+        "Category" : "Physical",
+        "Power" : 60,
+        "Type" : "Flying"
+    },
+    "19" : {
+        "Name" : "Fly",
+        "Category" : "Physical",
+        "Power" : 90,
+        "Type" : "Flying"
+    },
+    "20" : {
+        "Name" : "Bind",
+        "Category" : "Physical",
+        "Power" : 15,
+        "Type" : "Normal"
+    },
+    "21" : {
+        "Name" : "Slam",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Normal"
+    },
+    "22" : {
+        "Name" : "Vine Whip",
+        "Category" : "Physical",
+        "Power" : 45,
+        "Type" : "Grass"
+    },
+    "23" : {
+        "Name" : "Stomp",
+        "Category" : "Physical",
+        "Power" : 65,
+        "Type" : "Normal"
+    },
+    "24" : {
+        "Name" : "Double Kick",
+        "Category" : "Physical",
+        "Power" : 30,
+        "Type" : "Fighting"
+    },
+    "25" : {
+        "Name" : "Mega Kick",
+        "Category" : "Physical",
+        "Power" : 120,
+        "Type" : "Normal"
+    },
+    "26" : {
+        "Name" : "Jump Kick",
+        "Category" : "Physical",
+        "Power" : 100,
+        "Type" : "Fighting"
+    },
+    "27" : {
+        "Name" : "Rolling Kick",
+        "Category" : "Physical",
+        "Power" : 60,
+        "Type" : "Fighting"
+    },
+    "29" : {
+        "Name" : "Headbutt",
+        "Category" : "Physical",
+        "Power" : 70,
+        "Type" : "Normal"
+    },
+    "30" : {
+        "Name" : "Horn Attack",
+        "Category" : "Physical",
+        "Power" : 65,
+        "Type" : "Normal"
+    },
+    "31" : {
+        "Name" : "Fury Attack",
+        "Category" : "Physical",
+        "Power" : 15,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "33" : {
+        "Name" : "Tackle",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Normal"
+    },
+    "34" : {
+        "Name" : "Boy Slam",
+        "Category" : "Physical",
+        "Power" : 85,
+        "Type" : "Normal"
+    },
+    "35" : {
+        "Name" : "Wrap",
+        "Category" : "Physical",
+        "Power" : 15,
+        "Type" : "Normal"
+    },
+    "36" : {
+        "Name" : "Take Down",
+        "Category" : "Physical",
+        "Power" : 90,
+        "Type" : "Normal"
+    },
+    "37" : {
+        "Name" : "Thrash",
+        "Category" : "Physical",
+        "Power" : 120,
+        "Type" : "Normal"
+    },
+    "38" : {
+        "Name" : "Double-Edge",
+        "Category" : "Physical",
+        "Power" : 120,
+        "Type" : "Normal"
+    },
+    "40" : {
+        "Name" : "Poison Sting",
+        "Category" : "Physical",
+        "Power" : 15,
+        "Type" : "Poison"
+    },
+    "41" : {
+        "Name" : "Twineedle",
+        "Category" : "Physical",
+        "Power" : 25,
+        "Type" : "Bug"
+    },
+    "42" : {
+        "Name" : "Pin Missile",
+        "Category" : "Physical",
+        "Power" : 25,
+        "Type" : "Bug"
+    },
+    "44" : {
+        "Name" : "Bite",
+        "Category" : "Physical",
+        "Power" : 60,
+        "Type" : "Dark"
+    },
+    "49" : {
+        "Name" : "Sonic Boom",
+        "Category" : "Special",
+        "Power" : 0,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "51" : {
+        "Name" : "Acid",
+        "Category" : "Special",
+        "Power" : 40,
+        "Type" : "Poison"
+    },
+    "52" : {
+        "Name" : "Ember",
+        "Category" : "Special",
+        "Power" : 40,
+        "Type" : "Fire"
+    },
+    "53" : {
+        "Name" : "Flamethrower",
+        "Category" : "Special",
+        "Power" : 90,
+        "Type" : "Fire"
+    },
+    "54" : {
+        "Name" : "Water Gun",
+        "Category" : "Special",
+        "Power" : 40,
+        "Type" : "Water"
+    },
+    "56" : {
+        "Name" : "Hydro Pump",
+        "Category" : "Special",
+        "Power" : 110,
+        "Type" : "Water"
+    },
+    "57" : {
+        "Name" : "Surf",
+        "Category" : "Special",
+        "Power" : 90,
+        "Type" : "Water"
+    },
+    "58" : {
+        "Name" : "Ice Beam",
+        "Category" : "Special",
+        "Power" : 90,
+        "Type" : "Ice"
+    },
+    "59" : {
+        "Name" : "Blizzard",
+        "Category" : "Special",
+        "Power" : 110,
+        "Type" : "Ice"
+    },
+    "60" : {
+        "Name" : "Psybeam",
+        "Category" : "Special",
+        "Power" : 65,
+        "Type" : "Psychic"
+    },
+    "61" : {
+        "Name" : "Bubble Beam",
+        "Category" : "Special",
+        "Power" : 65,
+        "Type" : "Water"
+    },
+    "62" : {
+        "Name" : "Aurora Beam",
+        "Category" : "Special",
+        "Power" : 65,
+        "Type" : "Ice"
+    },
+    "63" : {
+        "Name" : "Hyper Beam",
+        "Category" : "Special",
+        "Power" : 150,
+        "Type" : "Normal"
+    },
+    "64" : {
+        "Name" : "Peck",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Flying"
+    },
+    "65" : {
+        "Name" : "Drill Peck",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Flying"
+    },
+    "66" : {
+        "Name" : "Submission",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Fighting"
+    },
+    "67" : {
+        "Name" : "Low Kick",
+        "Category" : "Physical",
+        "Power" : 0,
+        "Type" : "Fighting",
+        "SpecialCase" : "1"
+    },
+    "69" : {
+        "Name" : "Seismic Toss",
+        "Category" : "Physical",
+        "Power" : 0,
+        "Type" : "Fighting",
+        "SpecialCase" : "1"
+    },
+    "70" : {
+        "Name" : "Strength",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Normal"
+    },
+    "71" : {
+        "Name" : "Absorb",
+        "Category" : "Special",
+        "Power" : 20,
+        "Type" : "Grass"
+    },
+    "72" : {
+        "Name" : "Mega Drain",
+        "Category" : "Special",
+        "Power" : 40,
+        "Type" : "Grass"
+    },
+    "75" : {
+        "Name" : "Razor Leaf",
+        "Category" : "Physical",
+        "Power" : 55,
+        "Type" : "Grass"
+    },
+    "76" : {
+        "Name" : "Solar Beam",
+        "Category" : "Special",
+        "Power" : 120,
+        "Type" : "Grass"
+    },
+    "80" : {
+        "Name" : "Petal Dance",
+        "Category" : "Special",
+        "Power" : 120,
+        "Type" : "Grass"
+    },
+    "82" : {
+        "Name" : "Dragon Rage",
+        "Category" : "Special",
+        "Power" : 0,
+        "Type" : "Dragon",
+        "SpecialCase" : "1"
+    },
+    "83" : {
+        "Name" : "Fire Spin",
+        "Category" : "Special",
+        "Power" : 35,
+        "Type" : "Fire"
+    },
+    "84" : {
+        "Name" : "Thunder Shock",
+        "Category" : "Special",
+        "Power" : 40,
+        "Type" : "Electric"
+    },
+    "85" : {
+        "Name" : "Thunderbolt",
+        "Category" : "Special",
+        "Power" : 90,
+        "Type" : "Electric"
+    },
+    "87" : {
+        "Name" : "Thunder",
+        "Category" : "Special",
+        "Power" : 110,
+        "Type" : "Electric"
+    },
+    "88" : {
+        "Name" : "Rock Throw",
+        "Category" : "Physical",
+        "Power" : 50,
+        "Type" : "Rock"
+    },
+    "89" : {
+        "Name" : "Earthquake",
+        "Category" : "Physical",
+        "Power" : 100,
+        "Type" : "Ground"
+    },
+    "90" : {
+        "Name" : "Dig",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Ground"
+    },
+    "93" : {
+        "Name" : "Confusion",
+        "Category" : "Special",
+        "Power" : 50,
+        "Type" : "Psychic"
+    },
+    "94" : {
+        "Name" : "Psychic",
+        "Category" : "Special",
+        "Power" : 90,
+        "Type" : "Psychic"
+    },
+    "98" : {
+        "Name" : "Quick Attack",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Normal"
+    },
+    "99" : {
+        "Name" : "Rage",
+        "Category" : "Physical",
+        "Power" : 20,
+        "Type" : "Normal"
+    },
+    "101" : {
+        "Name" : "Night Shade",
+        "Category" : "Special",
+        "Power" : 0,
+        "Type" : "Ghost",
+        "SpecialCase" : "1"
+    },
+    "120" : {
+        "Name" : "Self-Destruct",
+        "Category" : "Physical",
+        "Power" : 200,
+        "Type" : "Normal"
+    },
+    "121" : {
+        "Name" : "Egg Bomb",
+        "Category" : "Physical",
+        "Power" : 100,
+        "Type" : "Normal"
+    },
+    "122" : {
+        "Name" : "Lick",
+        "Category" : "Physical",
+        "Power" : 30,
+        "Type" : "Ghost"
+    },
+    "123" : {
+        "Name" : "Smog",
+        "Category" : "Special",
+        "Power" : 30,
+        "Type" : "Poison"
+    },
+    "124" : {
+        "Name" : "Sludge",
+        "Category" : "Special",
+        "Power" : 65,
+        "Type" : "Poison"
+    },
+    "125" : {
+        "Name" : "Bone Club",
+        "Category" : "Physical",
+        "Power" : 65,
+        "Type" : "Ground"
+    },
+    "126" : {
+        "Name" : "Fire Blast",
+        "Category" : "Special",
+        "Power" : 110,
+        "Type" : "Fire"
+    },
+    "127" : {
+        "Name" : "Waterfall",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Water"
+    },
+    "128" : {
+        "Name" : "Clamp",
+        "Category" : "Physical",
+        "Power" : 35,
+        "Type" : "Water"
+    },
+    "129" : {
+        "Name" : "Swift",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Normal"
+    },
+    "130" : {
+        "Name" : "Skull Bash",
+        "Category" : "Physical",
+        "Power" : 130,
+        "Type" : "Normal"
+    },
+    "131" : {
+        "Name" : "Spike Cannon",
+        "Category" : "Physical",
+        "Power" : 20,
+        "Type" : "Normal"
+    },
+    "132" : {
+        "Name" : "Constrict",
+        "Category" : "Physical",
+        "Power" : 10,
+        "Type" : "Normal"
+    },
+    "136" : {
+        "Name" : "High Jump Kick",
+        "Category" : "Physical",
+        "Power" : 130,
+        "Type" : "Fighting"
+    },
+    "138" : {
+        "Name" : "Dream Eater",
+        "Category" : "Special",
+        "Power" : 100,
+        "Type" : "Psychic"
+    },
+    "140" : {
+        "Name" : "Barrage",
+        "Category" : "Physical",
+        "Power" : 15,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "141" : {
+        "Name" : "Leech Life",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Bug"
+    },
+    "143" : {
+        "Name" : "Sky Attack",
+        "Category" : "Physical",
+        "Power" : 140,
+        "Type" : "Flying"
+    },
+    "145" : {
+        "Name" : "Bubble",
+        "Category" : "Special",
+        "Power" : 40,
+        "Type" : "Water"
+    },
+    "146" : {
+        "Name" : "Dizzy Punch",
+        "Category" : "Physical",
+        "Power" : 70,
+        "Type" : "Normal"
+    },
+    "149" : {
+        "Name" : "Psywave",
+        "Category" : "Special",
+        "Power" : 0,
+        "Type" : "Psychic",
+        "SpecialCase" : "1"
+    },
+    "152" : {
+        "Name" : "Crabhammer",
+        "Category" : "Physical",
+        "Power" : 100,
+        "Type" : "Water"
+    },
+    "153" : {
+        "Name" : "Explosion",
+        "Category" : "Physical",
+        "Power" : 250,
+        "Type" : "Normal"
+    },
+    "154" : {
+        "Name" : "Fury Swipes",
+        "Category" : "Physical",
+        "Power" : 18,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "155" : {
+        "Name" : "Bonemerang",
+        "Category" : "Physical",
+        "Power" : 50,
+        "Type" : "Ground",
+        "SpecialCase" : "1"
+    },
+    "157" : {
+        "Name" : "Rock Slide",
+        "Category" : "Physical",
+        "Power" : 75,
+        "Type" : "Rock"
+    },
+    "158" : {
+        "Name" : "Hyper Fang",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Rock"
+    },
+    "161" : {
+        "Name" : "Tri Attack",
+        "Category" : "Special",
+        "Power" : 80,
+        "Type" : "Normal"
+    },
+    "163" : {
+        "Name" : "Slash",
+        "Category" : "Physical",
+        "Power" : 70,
+        "Type" : "Normal"
+    },
+    "165" : {
+        "Name" : "Struggle",
+        "Category" : "Physical",
+        "Power" : 50,
+        "Type" : "Normal"
+    },
+    "167" : {
+        "Name" : "Triple Kick",
+        "Category" : "Physical",
+        "Power" : 10,
+        "Type" : "Fighting",
+        "SpecialCase" : "1"
+    },
+    "168" : {
+        "Name" : "Thief",
+        "Category" : "Physical",
+        "Power" : 60,
+        "Type" : "Dark"
+    },
+    "172" : {
+        "Name" : "Flame Wheel",
+        "Category" : "Physical",
+        "Power" : 60,
+        "Type" : "Fire"
+    },
+    "173" : {
+        "Name" : "Snore",
+        "Category" : "Special",
+        "Power" : 50,
+        "Type" : "Normal"
+    },
+    "175" : {
+        "Name" : "Flail",
+        "Category" : "Physical",
+        "Power" : 0,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "177" : {
+        "Name" : "Aeroblast",
+        "Category" : "Special",
+        "Power" : 100,
+        "Type" : "Flying"
+    },
+    "181" : {
+        "Name" : "Powder Snow",
+        "Category" : "Special",
+        "Power" : 40,
+        "Type" : "Ice"
+    },
+    "183" : {
+        "Name" : "Mach Punch",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Fighting"
+    },
+    "185" : {
+        "Name" : "Feint Attack",
+        "Category" : "Physical",
+        "Power" : 60,
+        "Type" : "Dark"
+    },
+    "188" : {
+        "Name" : "Sludge Bomb",
+        "Category" : "Special",
+        "Power" : 90,
+        "Type" : "Poison"
+    },
+    "189" : {
+        "Name" : "Mud-Slap",
+        "Category" : "Special",
+        "Power" : 20,
+        "Type" : "Ground"
+    },
+    "190" : {
+        "Name" : "Octazooka",
+        "Category" : "Special",
+        "Power" : 65,
+        "Type" : "Water"
+    },
+    "192" : {
+        "Name" : "Zap Cannon",
+        "Category" : "Special",
+        "Power" : 120,
+        "Type" : "Electric"
+    },
+    "196" : {
+        "Name" : "Icy Wind",
+        "Category" : "Special",
+        "Power" : 55,
+        "Type" : "Icy Wind"
+    },
+    "198" : {
+        "Name" : "Bone Rush",
+        "Category" : "Physical",
+        "Power" : 120,
+        "Type" : "Ground"
+    },
+    "200" : {
+        "Name" : "Outrage",
+        "Category" : "Physical",
+        "Power" : 120,
+        "Type" : "Dragon"
+    },
+    "202" : {
+        "Name" : "Giga Drain",
+        "Category" : "Special",
+        "Power" : 75,
+        "Type" : "Grass"
+    },
+    "205" : {
+        "Name" : "Rollout",
+        "Category" : "Physical",
+        "Power" : 30,
+        "Type" : "Rock"
+    },
+    "206" : {
+        "Name" : "False Swipe",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Normal"
+    },
+    "209" : {
+        "Name" : "Spark",
+        "Category" : "Physical",
+        "Power" : 65,
+        "Type" : "Electric"
+    },
+    "210" : {
+        "Name" : "Fury Cutter",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Bug",
+        "SpecialCase" : "1"
+    },
+    "211" : {
+        "Name" : "Steel Wing",
+        "Category" : "Physical",
+        "Power" : 70,
+        "Type" : "Steel"
+    },
+    "216" : {
+        "Name" : "Return",
+        "Category" : "Physical",
+        "Power" : 102,
+        "Type" : "Normal"
+    },
+    "217" : {
+        "Name" : "Present",
+        "Category" : "Physical",
+        "Power" : 120,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "218" : {
+        "Name" : "Frustration",
+        "Category" : "Physical",
+        "Power" : 102,
+        "Type" : "Normal"
+    },
+    "221" : {
+        "Name" : "Sacred Fire",
+        "Category" : "Physical",
+        "Power" : 100,
+        "Type" : "Fire"
+    },
+    "222" : {
+        "Name" : "Magnitude",
+        "Category" : "Physical",
+        "Power" : 150,
+        "Type" : "Ground",
+        "SpecialCase" : "1"
+    },
+    "223" : {
+        "Name" : "Dynamic Punch",
+        "Category" : "Physical",
+        "Power" : 100,
+        "Type" : "Fighting"
+    },
+    "224" : {
+        "Name" : "Megahorn",
+        "Category" : "Physical",
+        "Power" : 120,
+        "Type" : "Bug"
+    },
+    "225" : {
+        "Name" : "Dragon Breath",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Dragon"
+    },
+    "228" : {
+        "Name" : "Pursuit",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Dark"
+    },
+    "229" : {
+        "Name" : "Rapid Spin",
+        "Category" : "Physical",
+        "Power" : 20,
+        "Type" : "Normal"
+    },
+    "231" : {
+        "Name" : "Iron Tail",
+        "Category" : "Physical",
+        "Power" : 100,
+        "Type" : "Steel"
+    },
+    "232" : {
+        "Name" : "Metal Claw",
+        "Category" : "Physical",
+        "Power" : 50,
+        "Type" : "Steel"
+    },
+    "233" : {
+        "Name" : "Vital Throw",
+        "Category" : "Physical",
+        "Power" : 70,
+        "Type" : "Fighting"
+    },
+    "-1" : {
+        "Name" : "Hidden Power",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Normal"
+    },
+    "-2" : {
+        "Name" : "Hidden Power (Fighting)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Fighting"
+    },
+    "-3" : {
+        "Name" : "Hidden Power (Flying)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Flying"
+    },
+    "-4" : {
+        "Name" : "Hidden Power (Poison)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Poison"
+    },
+    "-5" : {
+        "Name" : "Hidden Power (Ground)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Ground"
+    },
+    "-6" : {
+        "Name" : "Hidden Power (Rock)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Rock"
+    },
+    "-7" : {
+        "Name" : "Hidden Power (Bug)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Bug"
+    },
+    "-8" : {
+        "Name" : "Hidden Power (Ghost)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Ghost"
+    },
+    "-9" : {
+        "Name" : "Hidden Power (Steel)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Steel"
+    },
+    "-10" : {
+        "Name" : "Hidden Power (Fire)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Fire"
+    },
+    "-11" : {
+        "Name" : "Hidden Power (Water)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Water"
+    },
+    "-12" : {
+        "Name" : "Hidden Power (Grass)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Grass"
+    },
+    "-13" : {
+        "Name" : "Hidden Power (Electric)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Electric"
+    },
+    "-14" : {
+        "Name" : "Hidden Power (Psychic)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Psychic"
+    },
+    "-15" : {
+        "Name" : "Hidden Power (Ice)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Ice"
+    },
+    "-16" : {
+        "Name" : "Hidden Power (Dragon)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Dragon"
+    },
+    "-17" : {
+        "Name" : "Hidden Power (Dark)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Dark"
+    },
+    "-18" : {
+        "Name" : "Hidden Power (Fairy)",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Fairy"
+    },
+    "238" : {
+        "Name" : "Cross Chop",
+        "Category" : "Physical",
+        "Power" : 100,
+        "Type" : "Fighting"
+    },
+    "239" : {
+        "Name" : "Twister",
+        "Category" : "Special",
+        "Power" : 40,
+        "Type" : "Dragon"
+    },
+    "242" : {
+        "Name" : "Crunch",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Dark"
+    },
+    "245" : {
+        "Name" : "Extreme Speed",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Normal"
+    },
+    "246" : {
+        "Name" : "Ancient Power",
+        "Category" : "Special",
+        "Power" : 60,
+        "Type" : "Rock"
+    },
+    "247" : {
+        "Name" : "Shadow Ball",
+        "Category" : "Special",
+        "Power" : 80,
+        "Type" : "Ghost"
+    },
+    "248" : {
+        "Name" : "Future Sign",
+        "Category" : "Special",
+        "Power" : 120,
+        "Type" : "Psychic"
+    },
+    "249" : {
+        "Name" : "Rock Smash",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Fighting"
+    },
+    "250" : {
+        "Name" : "Whirlpool",
+        "Category" : "Special",
+        "Power" : 35,
+        "Type" : "Water"
+    },
+    "252" : {
+        "Name" : "Fake Out",
+        "Category" : "Physical",
+        "Power" : 40,
+        "Type" : "Normal"
+    },
+    "253" : {
+        "Name" : "Uproar",
+        "Category" : "Special",
+        "Power" : 90,
+        "Type" : "Normal"
+    },
+    "257" : {
+        "Name" : "Heat Wave",
+        "Category" : "Special",
+        "Power" : 95,
+        "Type" : "Fire"
+    },
+    "263" : {
+        "Name" : "Facade",
+        "Category" : "Physical",
+        "Power" : 70,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "264" : {
+        "Name" : "Focus Punch",
+        "Category" : "Physical",
+        "Power" : 150,
+        "Type" : "Fighting"
+    },
+    "265" : {
+        "Name" : "Smelling Salts",
+        "Category" : "Physical",
+        "Power" : 70,
+        "Type" : "Normal",
+        "SpecialCase" : "1"
+    },
+    "276" : {
+        "Name" : "Superpower",
+        "Category" : "Physical",
+        "Power" : 120,
+        "Type" : "Fighting"
+    },
+    "279" : {
+        "Name" : "Revenge",
+        "Category" : "Physical",
+        "Power" : 60,
+        "Type" : "Fighting"
+    },
+    "280" : {
+        "Name" : "Brick Break",
+        "Category" : "Physical",
+        "Power" : 75,
+        "Type" : "Fighting"
+    },
+    "282" : {
+        "Name" : "Knock Off",
+        "Category" : "Physical",
+        "Power" : 65,
+        "Type" : "Dark",
+        "SpecialCase" : "1"
+    },
+    "284" : {
+        "Name" : "Eruption",
+        "Category" : "Special",
+        "Power" : 120,
+        "Type" : "Fire"
+    },
+    "290" : {
+        "Name" : "Secret Power",
+        "Category" : "Physical",
+        "Power" : 70,
+        "Type" : "Normal"
+    },
+    "291" : {
+        "Name" : "Dive",
+        "Category" : "Physical",
+        "Power" : 80,
+        "Type" : "Water"
+    },
+    "292" : {
+        "Name" : "Arm Thrust",
+        "Category" : "Physical",
+        "Power" : 15,
+        "Type" : "Fighting"
+    },
+    "295" : {
+        "Name" : "Lustr Purge",
+        "Category" : "Special",
+        "Power" : 70,
+        "Type" : "Psychic"
+    },
+    "296" : {
+        "Name" : "Mist Ball",
+        "Category" : "Special",
+        "Power" : 70,
+        "Type" : "Psychic"
+    },
+    "299" : {
+        "Name" : "Blaze Kick",
+        "Category" : "Physical",
+        "Power" : 85,
+        "Type" : "Fire"
+    }
+}

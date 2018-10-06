@@ -1,0 +1,11 @@
+{
+    "Bulbasaur" : {
+        "Ability" : ["hey", "hey2"],
+        "Moves" : [""],
+        "BaseStats" : [45,49,49,65,65,45],
+        "Type" : ["Grass"]
+    },
+    "pokemon2" : {
+
+    }
+}
