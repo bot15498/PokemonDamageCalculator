@@ -7,5 +7,9 @@
     "devtools_page" : "devtools.html",
     "icons": {
         "128": "icon.png"
-      }
+      },
+    "browser_action": {
+      "default_title": "Damage Calculator for Pokemon Showdown!",
+      "default_popup": "popup.html"
+    }
   }
