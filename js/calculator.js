@@ -84,7 +84,11 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
         }
         modifier = modifier * weatherModifier;
     }
-    if() // STAB
+    for(typeID in attkPokemonInfo["Type"]) {
+        if(typeDict[typeID] == attackInfo["Type"]) {
+            modifier = modifier * 1.5;
+        }
+    }
 
     //get damage before randomness
     damageNoRandom = baseDamage * modifier
