@@ -1,6 +1,6 @@
 chrome.devtools.panels.create("Pokemon",
     "icon.png",
-    "html/test.html",
+    "pokemon.html",
     function(panel) {
       // code invoked on panel creation
     }
