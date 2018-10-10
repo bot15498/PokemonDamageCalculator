@@ -24,10 +24,20 @@ h3 {
     background-color: lightgrey;
 }
 
-.displayFourMoves {
+.displayFourCalcs, .displayFourMoves {
     text-align: center;
+    min-width: 700px;
 }
 
+.displayFourCalcs div {
+    text-align: center;
+    font: bold 12pt Arial;
+    display: inline-block;
+    padding: 5px;
+    margin: 10px;
+    width: 150px;
+    height: 20px;
+}
 .displayFourMoves div {
     background-color: whitesmoke;
     text-align: center;
