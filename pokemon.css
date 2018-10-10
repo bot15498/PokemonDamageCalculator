@@ -13,7 +13,7 @@ input {
 }
 
 html, body {
-    font-family: sans-serif;
+    margin: 5px;
     font-size: 12pt;
     font-family: myFirstFont;
 }
@@ -22,51 +22,186 @@ body {
     background-color: #b3e6ff;
 }
 
+fieldset {
+    width: 100%;
+}
+
+#field {
+    text-align: center;
+}
+
+#defensivepokemon {
+    float: right;
+}
+#offesivepokemon {
+    float: left;
+}
+
+/************************ AUTO COMPLETE *************************/
+
 .autocomplete-container {
     position: absolute;
     border: 1px solid #d4d4d4;
     border-bottom: none;
     border-top: none;
     z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
     top: 100%;
     left: 0;
     right: 0;
     overflow-y: scroll;
     max-height: 300px;
-  }
-  
-  .autocomplete {
-      text-align: center;
-      display: inline-block;
-      max-height: 100px;
-  }
-  
-  .autocomplete-field {
-      max-width: 200px;
-      width: 150px !important;
-  }
-  
-  .autocomplete-item {
-      text-align: left;
-      font-size: 10pt;
-      background-color: whitesmoke;
-      user-select: none;
-      -moz-user-select: none;
-      -khtml-user-select: none;
-      -webkit-user-select: none;
-      -o-user-select: none;
-  }
-  .autocomplete-item:hover {
-      background-color: rgb(192, 192, 192);
-  }
-  
-  .autocomplete-item-hover {
-      background-color: rgb(192, 192, 192);
-  }
-  
-  .autocomplete-item:active {
-      text-align: left;
-      font-size: 10pt;
-      background-color: rgb(54, 233, 78);
-  }
+}
+
+.autocomplete {
+    text-align: center;
+    display: inline-block;
+    max-height: 100px;
+}
+
+.autocomplete-field {
+    max-width: 200px;
+    width: 150px !important;
+}
+
+.autocomplete-item {
+    text-align: left;
+    font-size: 10pt;
+    background-color: whitesmoke;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+.autocomplete-item:hover {
+    background-color: rgb(192, 192, 192);
+}
+
+.autocomplete-item-hover {
+    background-color: rgb(192, 192, 192);
+}
+
+.autocomplete-item:active {
+    text-align: left;
+    font-size: 10pt;
+    background-color: rgb(54, 233, 78);
+}
+
+/************************ CALC AND MOVES DISPLAY CSS *************************/
+
+.displayFourCalcs, .displayFourMoves {
+    text-align: center;
+    min-width: 700px;
+}
+
+.displayFourCalcs div {
+    text-align: center;
+    font: bold 12pt Arial;
+    display: inline-block;
+    padding: 5px;
+    margin: 10px;
+    width: 150px;
+    height: 20px;
+}
+.displayFourMoves div {
+    background-color: whitesmoke;
+    text-align: center;
+    font-family: Arial;
+    font-size: 12pt;
+    display: inline-block;
+    padding: 5px;
+    margin: 10px;
+    width: 150px;
+    height: 60px;
+    border: 1px solid grey;
+}
+
+.typeNormal {
+    background: linear-gradient(to bottom,  hsl(60,14%,97%),  hsl(60,14%,84%));
+    border-color: hsl(60,14%,70%);
+}
+
+.typeFighting {
+    background: linear-gradient(to bottom,  hsl(3,40%,97%),  hsl(3,40%,84%));
+    border-color: hsl(3,40%,70%);
+}
+
+.typeFlying {
+    background: linear-gradient(to bottom,  hsl(255,20%,97%),  hsl(255,20%,84%));
+    border-color: hsl(255,20%,70%);
+}
+
+.typePoison {
+    background: linear-gradient(to bottom,  hsl(300,30%,97%),  hsl(300,30%,84%));
+    border-color: hsl(300,30%,70%);
+}
+
+.typeGround {
+    background: linear-gradient(to bottom,  hsl(44,27%,97%),  hsl(44,27%,84%));
+    border-color: hsl(44,27%,70%);
+}
+
+.typeRock {
+    background: linear-gradient(to bottom,  hsl(49,35%,97%),  hsl(49,35%,84%));
+    border-color: hsl(49,35%,70%);
+}
+
+.typeBug {
+    background: linear-gradient(to bottom,  hsl(66,42%,97%),  hsl(66,42%,84%));
+    border-color: hsl(66,42%,70%);
+}
+
+.typeGhost {
+    background: linear-gradient(to bottom,  hsl(262,21%,97%),  hsl(262,21%,84%));
+    border-color: hsl(262,21%,70%);
+}
+
+.typeSteel {
+    background: linear-gradient(to bottom,  hsl(240,6%,97%),  hsl(240,6%,84%));
+    border-color: hsl(240,6%,70%);
+}
+
+.typeFire {
+    background: linear-gradient(to bottom,  hsl(25,40%,97%),  hsl(25,40%,84%));
+    border-color: hsl(25,40%,70%);
+}
+
+.typeWater {
+    background: linear-gradient(to bottom,  hsl(222,29%,97%),  hsl(222,29%,84%));
+    border-color: hsl(222,29%,70%);
+}
+
+.typeGrass {
+    background: linear-gradient(to bottom,  hsl(100,30%,97%),  hsl(100,30%,84%));
+    border-color: hsl(100,30%,70%);
+}
+
+.typeElectric {
+    background: linear-gradient(to bottom,  hsl(48,41%,97%),  hsl(48,41%,84%));
+    border-color: hsl(48,41%,70%);
+}
+
+.typePsychic {
+    background: linear-gradient(to bottom,  hsl(342,33%,97%),  hsl(342,33%,84%));
+    border-color: hsl(342,33%,70%);
+}
+
+.typeIce {
+    background: linear-gradient(to bottom,  hsl(180,15%,97%),  hsl(180,15%,84%));
+    border-color: hsl(180,15%,70%);
+}
+
+.typeDragon {
+    background: linear-gradient(to bottom,  hsl(257,39%,97%),  hsl(257,39%,84%));
+    border-color: hsl(257,39%,70%);
+}
+
+.typeDark {
+    background: linear-gradient(to bottom,  hsl(24,18%,97%),  hsl(24,18%,84%));
+    border-color: hsl(24,18%,70%);
+}
+
+.typeFairy {
+    background: linear-gradient(to bottom,  hsl(310,41%,97%),  hsl(310,41%,84%));
+    border-color: hsl(310,41%,70%);
+}
