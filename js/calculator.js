@@ -303,7 +303,7 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     }
     for(var typeID in atkPokemonRawInfo["Type"]) { //STAB
         actualTypeID = atkPokemonRawInfo["Type"][typeID];
-        if(typeDict[actualTypeID] == attackInfo["Type"] && atkPokemonRawInfo["Ability"] == "Adaptability") {
+        if(typeDict[actualTypeID] == attackInfo["Type"] && atkPokemonInfo["Ability"] == "Adaptability") {
             modifier = modifier * 2;
         } else if(typeDict[actualTypeID] == attackInfo["Type"]) {
             modifier = modifier * 1.5;
