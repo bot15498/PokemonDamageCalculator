@@ -26,6 +26,15 @@ fieldset {
     width: 100%;
 }
 
+div {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    font-size: 16pt;
+}
+
 #field {
     text-align: center;
 }
@@ -89,28 +98,20 @@ fieldset {
 
 /************************ CALC AND MOVES DISPLAY CSS *************************/
 
-.displayFourCalcs, .displayFourMoves {
-    text-align: center;
-    min-width: 700px;
+h2 {
+    font-size: 14pt;
+}
+#moves {
+    margin: 0px;
+    padding: 0px;
 }
 
-.displayFourCalcs div {
+.move-set div {
     text-align: center;
-    font: bold 12pt Arial;
-    display: inline-block;
-    padding: 5px;
-    margin: 10px;
-    width: 150px;
-    height: 20px;
-}
-.displayFourMoves div {
     background-color: whitesmoke;
     text-align: center;
-    font-family: Arial;
     font-size: 12pt;
     display: inline-block;
-    padding: 5px;
-    margin: 10px;
     width: 150px;
     height: 60px;
     border: 1px solid grey;
