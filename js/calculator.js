@@ -1,6 +1,7 @@
 //Check pokemon.js for pokemon json
 //Check moves.js for moves json
-typeDict = {
+//Check typechart.js for type chart json
+var typeDict = {
     "1" : "Normal",
     "2" : "Fighting",
     "3" : "Flying",
@@ -21,10 +22,6 @@ typeDict = {
     "18" : "Fairy"
 }
 
-function calculateTypeEffect(atkType,defType1,defType2) {
-
-}
-
 /**
  * Calculates the A/D ratio of a damage calculation
  * @param {*} attackInfo The JSON object of an attack
@@ -33,7 +30,7 @@ function calculateTypeEffect(atkType,defType1,defType2) {
  * @returns {*} The ratio of A/D
  */
 function calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo) {
-    ratio = 0;
+    var ratio = 0;
     if(attackInfo["Name"] == "Secret Sword" || attackInfo["Name"] == "Psyshock" || attackInfo["Name"] == "Psystrike") {
         ratio = atkPokemonRawInfo["BaseStats"][4] / defPokemonRawInfo["BaseStats"][2];
     } else if(attackInfo["Category"] == "Physical") {
@@ -45,6 +42,191 @@ function calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo) {
 }
 
 /**
+ * Calculates super-effectiveness of an attack on a pokemon
+ * @param {*} attackInfo 
+ * @param {*} defPokemonRawInfo 
+ * @returns {*} the modifier due to type of attack and type of pokemon
+ */
+function typeCheck(attackInfo,defPokemonRawInfo) {
+    var modifier = 1;
+    for(typeID in defPokemonRawInfo["Type"]) {
+        var attackType = attackInfo["Type"];
+        var defendType = typeDict[typeID];
+        modifier = modifer * typechart[attackType][defendType];
+    }
+    return modifier;
+}
+
+/**
+ * Calculates the HP stat based on the pokemon's base stats
+ * @param {JSON} pokemonRawInfo the information that applies to all pokemon of that species
+ * @param {JSON} pokemonInfo the IV/EV/Nature information
+ * @returns {Int32Array} the integer value for HP
+ */
+function calculateHPStat(pokemonRawInfo,pokemonInfo) {
+    if(pokemonRawInfo["Name"] == "Shedinja") { //the shedinja case
+        return 1;
+    }
+    var hpBase = pokemonRawInfo["BaseStats"][0];
+    var ivBase = pokemonInfo["ev"]["hp"];
+    var evBase = pokemonInfo["ev"]["hp"];
+    var level = pokemonInfo["Level"];
+    return (2 * hpBase + ivBase + Math.floor(evBase / 4)) * (level / 100) + level + 10;
+}
+
+/**
+ * Calculates the HP stat based on the pokemon's base stats
+ * @param {JSON} pokemonRawInfo the information that applies to all pokemon of that species
+ * @param {JSON} pokemonInfo the IV/EV/Nature information
+ * @returns {Int32Array} the integer value for Attack
+ */
+function calculateAttackStat(pokemonRawInfo,pokemonInfo) {
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,1);
+}
+
+/**
+ * Calculates the HP stat based on the pokemon's base stats
+ * @param {JSON} pokemonRawInfo the information that applies to all pokemon of that species
+ * @param {JSON} pokemonInfo the IV/EV/Nature information
+ * @returns {Int32Array} the integer value for Defense
+ */
+function calculateDefenseStat(pokemonRawInfo,pokemonInfo) {
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,2);
+}
+
+/**
+ * Calculates the HP stat based on the pokemon's base stats
+ * @param {JSON} pokemonRawInfo the information that applies to all pokemon of that species
+ * @param {JSON} pokemonInfo the IV/EV/Nature information
+ * @returns {Int32Array} the integer value for Special Attack
+ */
+function calculateSpecialAttackStat(pokemonRawInfo,pokemonInfo) {
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,3);
+}
+
+/**
+ * Calculates the HP stat based on the pokemon's base stats
+ * @param {JSON} pokemonRawInfo the information that applies to all pokemon of that species
+ * @param {JSON} pokemonInfo the IV/EV/Nature information
+ * @returns {Int32Array} the integer value for SpecialDefense
+ */
+function calculateSpecialDefenseStat(pokemonRawInfo,pokemonInfo) {
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,4);
+}
+
+/**
+ * Calculates the HP stat based on the pokemon's base stats
+ * @param {JSON} pokemonRawInfo the information that applies to all pokemon of that species
+ * @param {JSON} pokemonInfo the IV/EV/Nature information
+ * @returns {Int32Array} the integer value for Speed
+ */
+function calculateSpeedStat(pokemonRawInfo,pokemonInfo) {
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,5);
+}
+
+/**
+ * Calculates a stat based on the pokemon's base stats
+ * https://bulbapedia.bulbagarden.net/wiki/Statistic#Base_stat_values
+ * @param {JSON} pokemonRawInfo the information that applies to all pokemon of that species
+ * @param {JSON} pokemonInfo the IV/EV/Nature information
+ * @returns {Int32Array} the integer value for the stat
+ */
+function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
+    //figure out nature
+    natureModifier = 1;
+    switch(pokemonInfo["Nature"]) {
+        case "Lonely":
+            if(statType == 1) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; }
+            break; 
+        case "Brave":
+            if(statType == 1) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
+            break; 
+        case "Adamant":
+            if(statType == 1) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
+            break; 
+        case "Naughty":
+            if(statType == 1) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
+            break; 
+        case "Bold":
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 1) { natureModifier = 0.9; } 
+            break; 
+        case "Relaxed":
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
+            break; 
+        case "Impish":
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
+            break; 
+        case "Lax":
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
+            break; 
+        case "Timid":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 1) { natureModifier = 0.9; } 
+            break; 
+        case "Hasty":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
+            break; 
+        case "Jolly":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
+            break; 
+        case "Naive":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
+            break; 
+        case "Modest":
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 1) { natureModifier = 0.9; } 
+            break; 
+        case "Mild":
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
+            break; 
+        case "Quiet":
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
+            break; 
+        case "Rash":
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
+            break; 
+        case "Calm":
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 1) { natureModifier = 0.9; } 
+            break; 
+        case "Gentle":
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
+            break; 
+        case "Sassy":
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
+            break; 
+        case "Careful":
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
+            break; 
+        default:
+            natureModifier = 1;
+            break;
+    }
+    var statBase = pokemonInfo["BaseStats"][statType]
+    var ivBase = pokemonInfo["iv"]["hp"];
+    var evBase = pokemonInfo["ev"]["hp"];
+    var level = pokemonInfo["Level"];
+    return Math.floor((Math.floor((2 * statBase + ivBase + Math.floor(evBase)) * level / 100) + 5) * natureModifier)
+}
+
+/**
  * Does a damage calculation 
  * @param {*} attackMove the ID of the attack
  * @param {*} atkPokemonInfo a JSON object of the attacking pokemon's EV/IV/Nature data
@@ -53,22 +235,22 @@ function calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo) {
  * @returns {string} The percent damage a move is predicted to do.
  */
 function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
-    attackInfo = moves[attackMove];
-    atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
-    defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
+    var attackInfo = moves[attackMove];
+    var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
+    var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
     //calculate base damage
-    power = attackInfo["Power"]
-    levelCalc = 2 * attkPokemonInfo["Level"] / 5 + 2
-    defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo);
-    baseDamage = levelCalc * power * defenseRatio / 50 + 2
+    var power = attackInfo["Power"]
+    var levelCalc = 2 * attkPokemonInfo["Level"] / 5 + 2
+    var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo);
+    var baseDamage = levelCalc * power * defenseRatio / 50 + 2
     //calculate modifier
-    modifier = 1;
+    var modifier = 1;
     if(fieldInfo.hasOwnProperty("isSingles")) { //target
-        targetModifier = fieldInfo["isSingles"] ? 1 : 0.75
+        var targetModifier = fieldInfo["isSingles"] ? 1 : 0.75
         modifier = modifier * targetModifier;
     }
     if(fieldInfo.hasOwnProperty("Weather")) { //weather
-        weatherModifier = 1;
+        var weatherModifier = 1;
         if(fieldInfo["Weather"] == "Rain") {
             if(attackInfo["Type"] == "Water") {
                 weatherModifier = 1.5;
@@ -84,12 +266,27 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
         }
         modifier = modifier * weatherModifier;
     }
-    for(typeID in attkPokemonInfo["Type"]) {
-        if(typeDict[typeID] == attackInfo["Type"]) {
+    if(fieldInfo.hasOwnProperty("isCritical")) { //crit
+        var critModifier = fieldInfo["isCritical"] ? 1.5 : 1;
+        modifier = modifier * critModifier;
+    }
+    for(typeID in atkPokemonRawInfo["Type"]) { //STAB
+        if(typeDict[typeID] == attackInfo["Type"] && atkPokemonRawInfo["Ability"] == "Adaptability") {
+            modifier = modifier * 2;
+        } else if(typeDict[typeID] == attackInfo["Type"]) {
             modifier = modifier * 1.5;
         }
     }
+    modifer = modifer * typeCheck(attackInfo,defPokemonRawInfo); //type checking
+    if(atkPokemonInfo.hasOwnProperty("isBurned")) { //burn
+        var burnModifier = 1;
+        if(atkPokemonInfo["isBurned"] && atkPokemonRawInfo["Ability"] != "Guts" && attackInfo["Type"] == "Physical") {
+            burnModifier = 0.5;
+        }
+        modifier = modifier * burnModifier;
+    }
+    //TODO: other factors.
 
     //get damage before randomness
-    damageNoRandom = baseDamage * modifier
+    var damageNoRandom = baseDamage * modifier
 }

@@ -1,4 +1,4 @@
-typechart = { //typechart[attack type][defend type]
+var typechart = { //typechart[attack type][defend type]
     "Normal" : {
         "Normal" : 1,
         "Fighting" : 1,

@@ -1,4 +1,4 @@
-moves = {
+var moves = {
     "1" : {
         "Name" : "Pound",
         "Category" : "Physical",
