@@ -76,6 +76,29 @@ function moveAutocomplete(pokemonNum,moveNum) {
             }
         }
     });
+    document.getElementById("pokemon" + pokemonNum + "-move" + moveNum + "-input").addEventListener("keydown",function(e) {
+        var container = this.parentElement.lastElementChild;
+        if(e.keyCode == 38) { //up arrow
+            if(container.getAttribute("currSelected") > 0) {
+                var currSelected = container.getAttribute("currSelected");
+                container.children[currSelected].classList.remove("autocomplete-item-hover");
+                currSelected--;
+                container.children[currSelected].classList.add("autocomplete-item-hover");
+                container.setAttribute("currSelected",currSelected);
+            } 
+        } else if(e.keyCode == 40) { //down arrow
+            if(container.getAttribute("currSelected") < container.children.length) {
+                var currSelected = container.getAttribute("currSelected");
+                container.children[currSelected].classList.remove("autocomplete-item-hover");
+                currSelected++;
+                container.children[currSelected].classList.add("autocomplete-item-hover");
+                container.setAttribute("currSelected",currSelected);
+            }
+        } else if(e.keyCode == 13) { //enter
+            container.children[container.getAttribute("currSelected")].click();
+            clearItems(this);
+        }
+    });
 }
 
 var pokemonAutocompleteFields = document.getElementsByClassName("autocomplete-pokemon-field");
