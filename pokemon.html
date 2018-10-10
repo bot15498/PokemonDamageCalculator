@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="sharedcontrols.css">
     <link rel="stylesheet" type="text/css" href="pokemon.css">
     <script src="./js/pokemonlist.js"></script>
+    <script src="./js/moves.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                 <label for="pokemon0-selector">Pokemon</label>
                 <div id="pokemon0-selector" class="autocomplete">
                     <div style="position: relative">
-                        <input type="text" class="autocomplete-field"/>
+                        <input type="text" class="autocomplete-field autocomplete-pokemon-field"/>
                     </div>
                 </div>
                 <label for="levelL0">Level</label>
@@ -333,7 +334,7 @@
                 <label for="pokemon1-selector">Pokemon</label>
                 <div id="pokemon1-selector" class="autocomplete">
                     <div style="position: relative">
-                        <input type="text" class="autocomplete-field"/>
+                        <input type="text" class="autocomplete-field autocomplete-pokemon-field"/>
                     </div>
                 </div>
                 <label for="levelL1">Level</label>
@@ -597,13 +598,18 @@
             </div>
         </div>
     </div>
-    <div id="moves" class="container">
+    <div id="pokemonMoves" class="container">
         <div hidden id="criticalHitInstruction">Force this attack to be a critical hit?</div>
         <div hidden id="zMoveInstruction">Make this attack a Z-move?</div>
         <div class="row">
             <div class="col">
                 <div class="move-set">
                     <select class="calc-trigger small-select"></select>
+                    <div id="pokemon1-move1-selector" class="autocomplete">
+                        <div id="pokemon1-move1" style="position: relative">
+                            <input id="pokemon1-move1-input" type="text" class="autocomplete-field"/>
+                        </div>
+                    </div>
                     <input class="move-crit calc-trigger visually-hidden" type="checkbox" id="critL1" />
                     <label class="btn crit-btn" for="critL1" title="Force this attack to be a critical hit?">Crit</label>
                     <input class="move-z calc-trigger visually-hidden" type="checkbox" id="zL1"/>
@@ -619,7 +625,7 @@
                     <label class="btn crit-btn" for="critL2" title="Force this attack to be a critical hit?">Crit</label>
                     <input class="move-z calc-trigger visually-hidden" type="checkbox" id="zL2"/>
                     <label class="btn z-btn" for="zL2" title="Make this attack a Z-move?">Z</label>
-                    <div id="move2" class="typeFire"> Move 1 </div>
+                    <div id="move2" class="typeFire"> Move 2 </div>
                     <h2 id="calc2"> Calc 2 </h2>
                 </div>
             </div>

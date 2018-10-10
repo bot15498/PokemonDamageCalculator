@@ -37,7 +37,48 @@ function doCalculation() {
     }
 }
 
-var pokemonAutocompleteFields = document.getElementsByClassName("autocomplete-field");
+function moveAutocomplete(pokemonNum,moveNum) {
+    var inputField = document.getElementById("pokemon" + pokemonNum + "-move" + moveNum + "-input");
+    var listContainer = document.createElement("div");
+    listContainer.setAttribute("currSelected",0);
+    listContainer.setAttribute("pokemonNum",pokemonNum);
+    listContainer.setAttribute("moveNum",moveNum);
+    listContainer.className = "autocomplete-container";
+    listContainer.id = inputField.parentNode.id + "-autocomplete-container";
+    inputField.parentNode.appendChild(listContainer);
+    document.getElementById("pokemon" + pokemonNum + "-move" + moveNum + "-input").addEventListener("input",function() {
+        clearItems(this);
+        var currPokemonNum = listContainer.getAttribute("pokemonNum");
+        var currMoveNum = listContainer.getAttribute("moveNum");
+        var currPokemonID = document.getElementById("pokemon" + currPokemonNum + "-selector").getAttribute("value");
+        var currPokemon = pokemon[currPokemonID];
+        var container = this.parentElement.lastElementChild;
+        container.setAttribute("currSelected",0);
+        if(this.value != "") {
+            for(move in currPokemon["Moves"]) {
+                var currMove = currPokemon["Moves"][move];
+                if(moves[currMove.toString()]["Name"].toLowerCase().indexOf(this.value.toLowerCase()) != -1) {
+                    var toAdd = document.createElement("div");
+                    toAdd.setAttribute("move-id",move);
+                    toAdd.innerText = moves[currMove.toString()]["Name"];
+                    toAdd.className = "autocomplete-item";
+                    container.appendChild(toAdd);
+                    toAdd.addEventListener("click",function() {
+                        //just add it to text box and clear the list
+                        var inputField = this.parentElement.parentElement.firstElementChild;
+                        inputField.value = this.innerText;
+                        clearItems(this.parentElement.parentElement.firstElementChild);
+                    })
+                }
+            }
+            if(container.children.length > 0) {
+                container.children[container.getAttribute("currSelected")].classList.add("autocomplete-item-hover"); 
+            }
+        }
+    });
+}
+
+var pokemonAutocompleteFields = document.getElementsByClassName("autocomplete-pokemon-field");
 for(var i=0;i<pokemonAutocompleteFields.length;i++) {
     //make text field and child div to store buttons
     var inputField = pokemonAutocompleteFields[i];
@@ -47,7 +88,8 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
     var listContainer = document.createElement("div");
     listContainer.setAttribute("currSelected",0);
     listContainer.className = "autocomplete-container";
-    listContainer.id = inputField.parentNode.id + "-autocomplete-container";
+    //listContainer.id = inputField.parentNode.id + "-autocomplete-container";
+    listContainer.id = inputField.parentNode.id + "-autocomplete-container"
     inputField.parentNode.appendChild(listContainer);
     document.getElementById(pokemonAutocompleteFields[i].id).addEventListener("input",function() {
         clearItems(this);
@@ -65,6 +107,7 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                     container.appendChild(toAdd);
                     toAdd.addEventListener("click",function() {
                         console.log(this.getAttribute("value") + " in " + currInputField);
+                        this.parentElement.parentElement.parentElement.setAttribute("value",this.getAttribute("value"));
                         this.parentElement.parentElement.firstElementChild.value = this.innerText;
                         var currSelectedPokemon = pokemon[this.getAttribute("value")];
                         //update base info
@@ -82,6 +125,9 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                             pokemonAbility.innerHTML += "<option value=" + abilityName + ">" + abilityName + "</option>";
                         }
                         //update moves
+                        for(var i=1;i<=1;i++) {
+                            moveAutocomplete(currInputField,i);
+                        }
                         //clear autocomplete
                         clearItems(this.parentElement.parentElement.firstElementChild);
                     })
