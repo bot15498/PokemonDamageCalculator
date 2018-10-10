@@ -12,7 +12,7 @@ input {
     width: 40px;
 }
 
-input, label, div, p, th, tr, table, option, legend, button, label, select {
+html, body {
     font-family: sans-serif;
     font-size: 12pt;
     font-family: myFirstFont;
