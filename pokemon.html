@@ -8,20 +8,10 @@
     <link type="text/css" rel="stylesheet" href="./bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="sharedcontrols.css">
     <link rel="stylesheet" type="text/css" href="pokemon.css">
-    <script src="pokemon.js"></script>
     <script src="./js/pokemonlist.js"></script>
 </head>
 
 <body>
-hey
-<div id="test" class="autocomplete">    
-    <div id="testAutoComplete" style="position: relative">
-        <input type="text" id="pokemonField" class="autocomplete-field"/>
-    </div>
-</div>
-<script src="./js/pokemon.js"></script>
-
-
 
 <div class="wrapper">
 
@@ -29,7 +19,11 @@ hey
         <fieldset class="poke-info" id="p2">
             <legend align="center">Defensive Pokemon</legend>
             <label for="pokemonL1">Pokemon</label>
-            <input type="text" class="set-selector calc-trigger" />
+            <div id="pokemon2-selector" class="autocomplete">    
+                <div style="position: relative">
+                    <input type="text" class="autocomplete-field"/>
+                </div>
+            </div>
             <label for="levelR1">Level</label>
             <input class="level calc-trigger" id="levelR1" value="100" />
 
@@ -72,7 +66,6 @@ hey
                             <th scope="col">Base</th>
                             <th scope="col">IVs</th>
                             <th scope="col">EVs</th>
-                            <th class="hide" scope="col">DVs</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -384,7 +377,11 @@ hey
                 <div class="row">
                     <div class="col">
                         <label for="pokemonL1">Pokemon</label>
-                        <input type="text" class="set-selector calc-trigger" />
+                        <div id="pokemon1-selector" class="autocomplete">    
+                            <div style="position: relative">
+                                <input type="text" class="autocomplete-field"/>
+                            </div>
+                        </div>
                         <label for="levelL1">Level</label>
                         <input class="level calc-trigger" id="levelL1" value="100" />
 
@@ -396,7 +393,6 @@ hey
                                         <th scope="col">Base</th>
                                         <th scope="col">IVs</th>
                                         <th scope="col">EVs</th>
-                                        <th class="hide" scope="col">DVs</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -760,7 +756,7 @@ hey
 
 </div>
 
-
+<script src="./js/pokemon.js"></script>
 </body>
 
 </html>
