@@ -6,22 +6,14 @@
     <meta charset="UTF-8" />
     <title>A Pokemon Calculator</title>
     <link type="text/css" rel="stylesheet" href="./bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="sharedcontrols.css">
+    <link rel="stylesheet" type="text/css" href="pokemon.css">
+    <script src="pokemon.js"></script>
     <script src="./js/pokemonlist.js"></script>
 </head>
 
 <body>
     <style>
-[class*="hide"] {
-    display: none;
-}
-input {
-    width: 40px;
-}
-input, label, div, p, th, tr, table, option, legend, button, label, select {
-    font-family: sans-serif;
-    font-size: 8pt;
-}
-
 .autocomplete-container {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -98,13 +90,44 @@ hey
             <label for="levelR1">Level</label>
             <input class="level calc-trigger" id="levelR1" value="100" />
 
+            <!--<div class="container">
+                <div class="row">
+                    <div class="col-sm">Base</div>
+                    <div class="col-sm">IVs</div>
+                    <div class="col-sm">EVs</div>
+                    <div class="col-sm"></div>
+                    <div class="col-sm"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">HP</div>
+                    <div class="col-">
+                        <input class="base calc-trigger" value="100" />
+                    </div>
+                    <div class="col-">
+                        <input class="base calc-trigger" value="100" />
+                    </div>
+                    <div class="col-">
+                        <input class="base calc-trigger" value="100" />
+                    </div>
+                    <div class="col-">
+                        <input class="base calc-trigger" value="100" />
+                    </div>
+                    <div class="col-">
+                        <input class="base calc-trigger" value="100" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Defense</div>
+                </div>
+            </div>-->
+
             <div class="info-group">
                 <table>
                     <thead>
                         <tr>
                             <th></th>
                             <th scope="col">Base</th>
-                            <th  scope="col">IVs</th>
+                            <th scope="col">IVs</th>
                             <th scope="col">EVs</th>
                             <th class="hide" scope="col">DVs</th>
                             <th></th>
@@ -347,23 +370,6 @@ hey
                         <option value="Asleep">Asleep</option>
                         <option value="Frozen">Frozen</option>
                     </select>
-                    <select aria-label="Toxic counter" class="toxic-counter calc-trigger hide">
-                        <option value="1">1/16</option>
-                        <option value="2">2/16</option>
-                        <option value="3">3/16</option>
-                        <option value="4">4/16</option>
-                        <option value="5">5/16</option>
-                        <option value="6">6/16</option>
-                        <option value="7">7/16</option>
-                        <option value="8">8/16</option>
-                        <option value="9">9/16</option>
-                        <option value="10">10/16</option>
-                        <option value="11">11/16</option>
-                        <option value="12">12/16</option>
-                        <option value="13">13/16</option>
-                        <option value="14">14/16</option>
-                        <option value="15">15/16</option>
-                    </select>
                 </div>
             </div>
             <div class="info-group">
@@ -386,26 +392,6 @@ hey
                 <label class="btn crit-btn" for="critR1" title="Force this attack to be a critical hit?">Crit</label>
                 <input aria-describedby="zMoveInstruction" class="move-z calc-trigger visually-hidden" type="checkbox" id="zR1"/>
                 <label class="btn z-btn" for="zR1" title="Make this attack a Z-move?">Z</label>
-                <select class="move-hits calc-trigger hide">
-                    <option value="2">2 hits</option>
-                    <option value="3">3 hits</option>
-                    <option value="4">4 hits</option>
-                    <option value="5">5 hits</option>
-                </select>
-                <select class="stat-drops calc-trigger hide" title="How many times was this move used in a row?">>
-                    <option value="1">Once</option>
-                    <option value="2">Twice</option>
-                    <option value="3">3 times</option>
-                    <option value="4">4 times</option>
-                    <option value="5">5 times</option>
-                </select>
-                <select class="metronome calc-trigger hide" title="How many times was this move used while holding Metronome?">
-                    <option value="1">Once</option>
-                    <option value="2">Twice</option>
-                    <option value="3">3 times</option>
-                    <option value="4">4 times</option>
-                    <option value="5">5 times</option>
-                </select>
             </div>
             <div class="move2 hide">
                 <select class="move-selector calc-trigger small-select"></select>
@@ -419,26 +405,6 @@ hey
                 <label class="btn crit-btn" for="critR2" title="Force this attack to be a critical hit?">Crit</label>
                 <input aria-describedby="zMoveInstruction" class="move-z calc-trigger visually-hidden" type="checkbox" id="zR2"/>
                 <label class="btn z-btn" for="zR2" title="Make this attack a Z-move?">Z</label>
-                <select class="move-hits calc-trigger hide">
-                    <option value="2">2 hits</option>
-                    <option value="3">3 hits</option>
-                    <option value="4">4 hits</option>
-                    <option value="5">5 hits</option>
-                </select>
-                <select class="stat-drops calc-trigger hide" title="How many times was this move used in a row?">>
-                    <option value="1">Once</option>
-                    <option value="2">Twice</option>
-                    <option value="3">3 times</option>
-                    <option value="4">4 times</option>
-                    <option value="5">5 times</option>
-                </select>
-                <select class="metronome calc-trigger hide" title="How many times was this move used while holding Metronome?">
-                    <option value="1">Once</option>
-                    <option value="2">Twice</option>
-                    <option value="3">3 times</option>
-                    <option value="4">4 times</option>
-                    <option value="5">5 times</option>
-                </select>
             </div>
             <div class="move3 hide">
                 <select class="move-selector calc-trigger small-select"></select>
@@ -452,26 +418,6 @@ hey
                 <label class="btn crit-btn" for="critR3" title="Force this attack to be a critical hit?">Crit</label>
                 <input aria-describedby="zMoveInstruction" class="move-z calc-trigger visually-hidden" type="checkbox" id="zR3"/>
                 <label class="btn z-btn" for="zR3" title="Make this attack a Z-move?">Z</label>
-                <select class="move-hits calc-trigger hide">
-                    <option value="2">2 hits</option>
-                    <option value="3">3 hits</option>
-                    <option value="4">4 hits</option>
-                    <option value="5">5 hits</option>
-                </select>
-                <select class="stat-drops calc-trigger hide" title="How many times was this move used in a row?">>
-                    <option value="1">Once</option>
-                    <option value="2">Twice</option>
-                    <option value="3">3 times</option>
-                    <option value="4">4 times</option>
-                    <option value="5">5 times</option>
-                </select>
-                <select class="metronome calc-trigger hide" title="How many times was this move used while holding Metronome?">
-                    <option value="1">Once</option>
-                    <option value="2">Twice</option>
-                    <option value="3">3 times</option>
-                    <option value="4">4 times</option>
-                    <option value="5">5 times</option>
-                </select>
             </div>
             <div class="move4 hide">
                 <select class="move-selector calc-trigger small-select"></select>
@@ -485,26 +431,6 @@ hey
                 <label class="btn crit-btn" for="critR4" title="Force this attack to be a critical hit?">Crit</label>
                 <input aria-describedby="zMoveInstruction" class="move-z calc-trigger visually-hidden" type="checkbox" id="zR4"/>
                 <label class="btn z-btn" for="zR4" title="Make this attack a Z-move?">Z</label>
-                <select class="move-hits calc-trigger hide">
-                    <option value="2">2 hits</option>
-                    <option value="3">3 hits</option>
-                    <option value="4">4 hits</option>
-                    <option value="5">5 hits</option>
-                </select>
-                <select class="stat-drops calc-trigger hide" title="How many times was this move used in a row?">>
-                    <option value="1">Once</option>
-                    <option value="2">Twice</option>
-                    <option value="3">3 times</option>
-                    <option value="4">4 times</option>
-                    <option value="5">5 times</option>
-                </select>
-                <select class="metronome calc-trigger hide" title="How many times was this move used while holding Metronome?">
-                    <option value="1">Once</option>
-                    <option value="2">Twice</option>
-                    <option value="3">3 times</option>
-                    <option value="4">4 times</option>
-                    <option value="5">5 times</option>
-                </select>
             </div>
         </fieldset>
     </div>
@@ -768,23 +694,6 @@ hey
                                     <option value="Asleep">Asleep</option>
                                     <option value="Frozen">Frozen</option>
                                 </select>
-                                <select aria-label="Toxic counter" class="toxic-counter calc-trigger hide">
-                                    <option value="1">1/16</option>
-                                    <option value="2">2/16</option>
-                                    <option value="3">3/16</option>
-                                    <option value="4">4/16</option>
-                                    <option value="5">5/16</option>
-                                    <option value="6">6/16</option>
-                                    <option value="7">7/16</option>
-                                    <option value="8">8/16</option>
-                                    <option value="9">9/16</option>
-                                    <option value="10">10/16</option>
-                                    <option value="11">11/16</option>
-                                    <option value="12">12/16</option>
-                                    <option value="13">13/16</option>
-                                    <option value="14">14/16</option>
-                                    <option value="15">15/16</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -803,26 +712,6 @@ hey
                             <label class="btn crit-btn" for="critL1" title="Force this attack to be a critical hit?">Crit</label>
                             <input aria-describedby="zMoveInstruction" class="move-z calc-trigger visually-hidden" type="checkbox" id="zL1"/>
                             <label class="btn z-btn" for="zL1" title="Make this attack a Z-move?">Z</label>
-                            <select class="move-hits calc-trigger hide">
-                                <option value="2">2 hits</option>
-                                <option value="3">3 hits</option>
-                                <option value="4">4 hits</option>
-                                <option value="5">5 hits</option>
-                            </select>
-                            <select class="stat-drops calc-trigger hide" title="How many times was this move used in a row?">>
-                                <option value="1">Once</option>
-                                <option value="2">Twice</option>
-                                <option value="3">3 times</option>
-                                <option value="4">4 times</option>
-                                <option value="5">5 times</option>
-                            </select>
-                            <select class="metronome calc-trigger hide" title="How many times was this move used while holding Metronome?">
-                                <option value="1">Once</option>
-                                <option value="2">Twice</option>
-                                <option value="3">3 times</option>
-                                <option value="4">4 times</option>
-                                <option value="5">5 times</option>
-                            </select>
                         </div>
                         <div class="move2">
                             <select class="move-selector calc-trigger small-select"></select>
@@ -836,26 +725,6 @@ hey
                             <label class="btn crit-btn" for="critL2" title="Force this attack to be a critical hit?">Crit</label>
                             <input aria-describedby="zMoveInstruction" class="move-z calc-trigger visually-hidden" type="checkbox" id="zL2"/>
                             <label class="btn z-btn" for="zL2" title="Make this attack a Z-move?">Z</label>
-                            <select class="move-hits calc-trigger hide">
-                                <option value="2">2 hits</option>
-                                <option value="3">3 hits</option>
-                                <option value="4">4 hits</option>
-                                <option value="5">5 hits</option>
-                            </select>
-                            <select class="stat-drops calc-trigger hide" title="How many times was this move used in a row?">>
-                                <option value="1">Once</option>
-                                <option value="2">Twice</option>
-                                <option value="3">3 times</option>
-                                <option value="4">4 times</option>
-                                <option value="5">5 times</option>
-                            </select>
-                            <select class="metronome calc-trigger hide" title="How many times was this move used while holding Metronome?">
-                                <option value="1">Once</option>
-                                <option value="2">Twice</option>
-                                <option value="3">3 times</option>
-                                <option value="4">4 times</option>
-                                <option value="5">5 times</option>
-                            </select>
                         </div>
                         <div class="move3">
                             <select class="move-selector calc-trigger small-select"></select>
@@ -869,26 +738,6 @@ hey
                             <label class="btn crit-btn" for="critL3" title="Force this attack to be a critical hit?">Crit</label>
                             <input aria-describedby="zMoveInstruction" class="move-z calc-trigger visually-hidden" type="checkbox" id="zL3"/>
                             <label class="btn z-btn" for="zL3" title="Make this attack a Z-move?">Z</label>
-                            <select class="move-hits calc-trigger hide">
-                                <option value="2">2 hits</option>
-                                <option value="3">3 hits</option>
-                                <option value="4">4 hits</option>
-                                <option value="5">5 hits</option>
-                            </select>
-                            <select class="stat-drops calc-trigger hide" title="How many times was this move used in a row?">>
-                                <option value="1">Once</option>
-                                <option value="2">Twice</option>
-                                <option value="3">3 times</option>
-                                <option value="4">4 times</option>
-                                <option value="5">5 times</option>
-                            </select>
-                            <select class="metronome calc-trigger hide" title="How many times was this move used while holding Metronome?">
-                                <option value="1">Once</option>
-                                <option value="2">Twice</option>
-                                <option value="3">3 times</option>
-                                <option value="4">4 times</option>
-                                <option value="5">5 times</option>
-                            </select>
                         </div>
                         <div class="move4">
                             <select class="move-selector calc-trigger small-select"></select>
@@ -902,26 +751,6 @@ hey
                             <label class="btn crit-btn" for="critL4" title="Force this attack to be a critical hit?">Crit</label>
                             <input aria-describedby="zMoveInstruction" class="move-z calc-trigger visually-hidden" type="checkbox" id="zL4"/>
                             <label class="btn z-btn" for="zL4" title="Make this attack a Z-move?">Z</label>
-                            <select class="move-hits calc-trigger hide">
-                                <option value="2">2 hits</option>
-                                <option value="3">3 hits</option>
-                                <option value="4">4 hits</option>
-                                <option value="5">5 hits</option>
-                            </select>
-                            <select class="stat-drops calc-trigger hide" title="How many times was this move used in a row?">>
-                                <option value="1">Once</option>
-                                <option value="2">Twice</option>
-                                <option value="3">3 times</option>
-                                <option value="4">4 times</option>
-                                <option value="5">5 times</option>
-                            </select>
-                            <select class="metronome calc-trigger hide" title="How many times was this move used while holding Metronome?">
-                                <option value="1">Once</option>
-                                <option value="2">Twice</option>
-                                <option value="3">3 times</option>
-                                <option value="4">4 times</option>
-                                <option value="5">5 times</option>
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -935,23 +764,30 @@ hey
             <fieldset class="field-info">
                 <legend align="center">Field</legend>
                 <div aria-labelledby="selectBattleFormatInstruction" role="radiogroup" style="width: 10.6em; margin: 0 auto 5px;" title="Select the battle format.">
-                    <span class="visually-hidden" id="selectBattleFormatInstruction">Select the battle format.</span>
-                    <input class="visually-hidden calc-trigger" type="radio" name="format" value="Singles" id="singles-format" checked="checked" />
-                    <label class="btn btn-left" for="singles-format">Singles</label>
-                    <input class="visually-hidden calc-trigger" type="radio" name="format" value="Doubles" id="doubles-format" />
-                    <label class="btn btn-right" for="doubles-format">Doubles</label>
+                    Battle format:
+                    <div title="Select the battle format.">
+                        <input class="visually-hidden calc-trigger" type="radio" name="format" value="Singles" id="singles-format" checked="checked" />
+                        <label class="btn btn-left" for="singles-format">Singles</label>
+                        <input class="visually-hidden calc-trigger" type="radio" name="format" value="Doubles" id="doubles-format" />
+                        <label class="btn btn-right" for="doubles-format">Doubles</label>
+                    </div>
                 </div>
                 <div aria-labelledby="selectTerrainInstruction" role="radiogroup" title="Select the current terrain.">
-                    <span class="visually-hidden" id="selectTerrainInstruction">Select the current terrain.</span>
-                    <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Electric" id="electric" /><label class="btn btn-xxxwide btn-left" for="electric">Electric Terrain</label>
-                    <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Grassy" id="grassy" /><label class="btn btn-xxxwide btn-mid" for="grassy">Grassy Terrain</label>
-                    <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Misty" id="misty" /><label class="btn btn-xxxwide btn-mid" for="misty">Misty Terrain</label>
-                    <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Psychic" id="psychic" /><label class="btn btn-xxxwide btn-right" for="psychic">Psychic Terrain</label>
+                    Terrain:
+                    <div title="Select the terrain.">
+                        <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Electric" id="electric" />
+                        <label class="btn btn-xxxwide btn-left" for="electric">Electric Terrain</label>
+                        <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Grassy" id="grassy" />
+                        <label class="btn btn-xxxwide btn-mid" for="grassy">Grassy Terrain</label>
+                        <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Misty" id="misty" />
+                        <label class="btn btn-xxxwide btn-mid" for="misty">Misty Terrain</label>
+                        <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Psychic" id="psychic" />
+                        <label class="btn btn-xxxwide btn-right" for="psychic">Psychic Terrain</label>
+                    </div>
                 </div>
-                <hr />
                 <div aria-labelledby="selectWeatherInstruction" role="radiogroup">
-                    <span class="visually-hidden" id="selectWeatherInstruction">Select the current weather condition.</span>
-                    <div style="width: 22.2em; margin: 5px auto;" title="Select the current weather condition.">
+                    Weather:
+                    <div title="Select the current weather condition.">
                         <input class="visually-hidden calc-trigger" type="radio" name="weather" value="" id="clear" checked="checked" />
                         <label class="btn btn-small btn-left" for="clear">None</label>
                         <input class="visually-hidden calc-trigger" type="radio" name="weather" value="Sun" id="sun" />
@@ -970,158 +806,11 @@ hey
                         <label class="btn btn-xxxwide btn-right" for="strong-winds">Strong Winds</label>
                     </div>
                   </div>
-                <div style="width: 5.3em; margin: 5px auto;" title="Is gravity in effect?">
+                <div title="Is gravity in effect?">
                     <span hidden id="gravityInstruction">Is gravity in effect?</span>
                     <input aria-describedby="gravityInstruction" class="visually-hidden calc-trigger" type="checkbox" id="gravity" />
                     <label class="btn" for="gravity">Gravity</label>
                 </div>
-                <hr />
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col"><div class="visually-hidden">Pokemon 1's side</div></th>
-                            <th scope="col"><div class="visually-hidden">Pokemon 2's side</div></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <div hidden id="selectStealthRockInstruction">Is Stealth Rock affecting this side of the field?</div>
-                            <td><div class="left" title="Is Stealth Rock affecting this side of the field?">
-                                <input aria-describedby="selectStealthRockInstruction" class="visually-hidden calc-trigger" type="checkbox" id="srL" />
-                                <label class="btn btn-xwide" for="srL">Stealth Rock</label>
-                            </div></td>
-                            <td><div class="right" title="Is Stealth Rock affecting this side of the field?">
-                                <input aria-describedby="selectStealthRockInstruction" class="visually-hidden calc-trigger" type="checkbox" id="srR" />
-                                <label class="btn btn-xwide" for="srR">Stealth Rock</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <div hidden id="selectSpikeInstruction">Are there Spikes on this side of the field?</div>
-                            <td><div aria-labelledby="selectSpikeInstruction" class="left" role="radiogroup" title="Are there Spikes on this side of the field?">
-                                <input class="visually-hidden calc-trigger" type="radio" name="spikesL" value="0" id="spikesL0" checked="checked" />
-                                <label class="btn btn-xsmall btn-left" for="spikesL0">0</label>
-                                <input class="visually-hidden calc-trigger" type="radio" name="spikesL" value="1" id="spikesL1" />
-                                <label class="btn btn-xsmall btn-mid" for="spikesL1">1</label>
-                                <input class="visually-hidden calc-trigger" type="radio" name="spikesL" value="2" id="spikesL2" />
-                                <label class="btn btn-xsmall btn-mid" for="spikesL2">2</label>
-                                <input class="visually-hidden calc-trigger" type="radio" name="spikesL" value="3" id="spikesL3" />
-                                <label class="btn btn-wide btn-right" for="spikesL3">3 Spikes</label>
-                            </div></td>
-                            <td><div aria-labelledby="selectSpikeInstruction" class="right" role="radiogroup" title="Are there Spikes on this side of the field?">
-                                <input class="visually-hidden calc-trigger" type="radio" name="spikesR" value="0" id="spikesR0" checked="checked" />
-                                <label class="btn btn-xsmall btn-left" for="spikesR0">0</label>
-                                <input class="visually-hidden calc-trigger" type="radio" name="spikesR" value="1" id="spikesR1" />
-                                <label class="btn btn-xsmall btn-mid" for="spikesR1">1</label>
-                                <input class="visually-hidden calc-trigger" type="radio" name="spikesR" value="2" id="spikesR2" />
-                                <label class="btn btn-xsmall btn-mid" for="spikesR2">2</label>
-                                <input class="visually-hidden calc-trigger" type="radio" name="spikesR" value="3" id="spikesR3" />
-                                <label class="btn btn-wide btn-right" for="spikesR3">3 Spikes</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Are there Spikes on this side of the field?">
-                                <input aria-describedby="selectSpikeInstruction" class="visually-hidden calc-trigger" type="checkbox" id="gscSpikesL" />
-                                <label class="btn" for="gscSpikesL">Spikes</label>
-                            </div></td>
-                            <td><div class="right" title="Are there Spikes on this side of the field?">
-                                <input aria-describedby="selectSpikeInstruction" class="visually-hidden calc-trigger" type="checkbox" id="gscSpikesR" />
-                                <label class="btn" for="gscSpikesR">Spikes</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Is this Pokemon protected by Reflect and/or Light Screen?">
-                                <div hidden id="selectScreenInstruction">Is this Pokemon protected by Reflect and/or Light Screen?</div>
-                                <input aria-describedby="selectScreenInstruction" class="visually-hidden calc-trigger" type="checkbox" id="reflectL" />
-                                <label class="btn btn-left" for="reflectL">Reflect</label>
-                                <input aria-describedby="selectScreenInstruction" class="visually-hidden calc-trigger" type="checkbox" id="lightScreenL" />
-                                <label class="btn btn-xwide btn-right" for="lightScreenL">Light Screen</label>
-                            </div></td>
-                            <td><div class="right" title="Is this Pokemon protected by Reflect and/or Light Screen?">
-                                <input aria-describedby="selectScreenInstruction" class="visually-hidden calc-trigger" type="checkbox" id="reflectR" />
-                                <label class="btn btn-left" for="reflectR">Reflect</label>
-                                <input aria-describedby="selectScreenInstruction" class="visually-hidden calc-trigger" type="checkbox" id="lightScreenR" />
-                                <label class="btn btn-xwide btn-right" for="lightScreenR">Light Screen</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Is this Pokemon protected?">
-                                <div hidden id="selectProtectInstruction">Is this Pokemon protected?</div>
-                                <input aria-describedby="selectProtectInstruction" class="visually-hidden calc-trigger" type="checkbox" id="protectL" />
-                                <label class="btn btn-wide" for="protectL">Protect</label>
-                            </div></td>
-                            <td><div class="right" title="Is this Pokemon protected?">
-                                <input aria-describedby="selectProtectInstruction" class="visually-hidden calc-trigger" type="checkbox" id="protectR" />
-                                <label class="btn btn-wide" for="protectR">Protect</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Has this Pokemon been affected by Leech Seed?">
-                                <div hidden id="selectLeechSeedInstruction">Has this Pokemon been affected by Leech Seed?</div>
-                                <input aria-describedby="selectLeechSeedInstruction" class="visually-hidden calc-trigger" type="checkbox" id="leechSeedL" />
-                                <label class="btn btn-wide" for="leechSeedL">Leech Seed</label>
-                            </div></td>
-                            <td><div class="right" title="Has this Pokemon been affected by Leech Seed?">
-                                <input aria-describedby="selectLeechSeedInstruction" class="visually-hidden calc-trigger" type="checkbox" id="leechSeedR" />
-                                <label class="btn btn-wide" for="leechSeedR">Leech Seed</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Has this Pokemon been revealed with Foresight or Odor Sleuth?">
-                                <div hidden id="selectRevealInstruction">Has this Pokemon been revealed with Foresight or Odor Sleuth?</div>
-                                <input aria-describedby="selectRevealInstruction" class="visually-hidden calc-trigger" type="checkbox" id="foresightL" />
-                                <label class="btn btn-wide" for="foresightL">Foresight</label>
-                            </div></td>
-                            <td><div class="right" title="Has this Pokemon been revealed with Foresight or Odor Sleuth?">
-                                <input aria-describedby="selectRevealInstruction" class="visually-hidden calc-trigger" type="checkbox" id="foresightR" />
-                                <label class="btn btn-wide" for="foresightR">Foresight</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Has this Pokemon's power been boosted by an ally's Helping Hand?">
-                                <div hidden id="selectHelpingHandInstruction">Has this Pokemon's power been boosted by an ally's Helping Hand?</div>
-                                <input aria-describedby="selectHelpingHandInstruction" class="visually-hidden calc-trigger" type="checkbox" id="helpingHandL" />
-                                <label class="btn btn-xxwide" for="helpingHandL">Helping Hand</label>
-                            </div></td>
-                            <td><div class="right" title="Has this Pokemon's power been boosted by an ally's Helping Hand?">
-                                <input aria-describedby="selectHelpingHandInstruction" class="visually-hidden calc-trigger" type="checkbox" id="helpingHandR" />
-                                <label class="btn btn-xxwide" for="helpingHandR">Helping Hand</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Is the Pokemon protected by an ally's Friend Guard?">
-                                <div hidden id="selectFriendGuardInstruction">Is the Pokemon protected by an ally's Friend Guard?</div>
-                                <input aria-describedby="selectFriendGuardInstruction" class="visually-hidden calc-trigger" type="checkbox" id="friendGuardL" />
-                                <label class="btn btn-xxwide" for="friendGuardL">Friend Guard</label>
-                            </div></td>
-                            <td><div class="right" title="Is the Pokemon protected by an ally's Friend Guard?">
-                                <input aria-describedby="selectFriendGuardInstruction" class="visually-hidden calc-trigger" type="checkbox" id="friendGuardR" />
-                                <label class="btn btn-xxwide" for="friendGuardR">Friend Guard</label>
-                            </div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="left" title="Is the Pokemon protected by an ally's Aurora Veil?">
-                                <div hidden id="selectAuroraVeilInstruction">Is the Pokemon protected by an ally's Aurora Veil?</div>
-                                <input aria-describedby="selectAuroraVeilInstruction" class="visually-hidden calc-trigger" type="checkbox" id="auroraVeilL" />
-                                <label class="btn btn-xxwide" for="auroraVeilL">Aurora Veil</label>
-                            </div></td>
-                            <td><div class="right" title="Is the Pokemon protected by an ally's Aurora Veil?">
-                                <input aria-describedby="selectAuroraVeilInstruction" class="visually-hidden calc-trigger" type="checkbox" id="auroraVeilR" />
-                                <label class="btn btn-xxwide" for="auroraVeilR">Aurora Veil</label>
-                            </div></td>
-                        </tr>
-								<tr>
-                            <td><div class="left" title="Has the Pokemon boosted all its stats one stage?">
-										  <div hidden id="selectStatBoostInstruction">Has the Pokemon boosted all its stats one stage?</div>
-                                <input aria-describedby="selectStatBoostInstruction" class="visually-hidden calc-trigger" type="checkbox" id="StatBoostL" />
-                                <label class="btn btn-xxwide" for="StatBoostL">+1 All Stats</label>
-									 </div></td>
-                            <td><div class="right" title="Has the Pokemon boosted all its stats one stage?">
-                                <input aria-describedby="selectStatBoostInstruction" class="visually-hidden calc-trigger" type="checkbox" id="StatBoostR" />
-                                <label class="btn btn-xxwide" for="StatBoostR">+1 All Stats</label>
-						 		  </div></td>
-                  		</tr>
-                    </tbody>
-                </table>
             </fieldset>
         </div>
     </div>

@@ -1,8 +1,9 @@
-// var items = document.getElementsByClassName("example");
-// items.forEach(addEventListener("click", myFunction));
-
-// function myFunction() {
-//     console.log("test")
+// var items = document.getElementsByClassName("calc-trigger");
+// items.forEach(addEventListener("change", updateCalculations));
+// updateCalculations();
+// 
+// function updateCalculations() {
+//     console.log("test");
 // }
 
 
