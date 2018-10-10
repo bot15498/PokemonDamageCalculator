@@ -13,7 +13,7 @@ input {
 }
 
 html, body {
-    font-family: sans-serif;
+    margin: 5px;
     font-size: 12pt;
     font-family: myFirstFont;
 }
@@ -21,6 +21,23 @@ html, body {
 body {
     background-color: #b3e6ff;
 }
+
+fieldset {
+    width: 100%;
+}
+
+#field {
+    text-align: center;
+}
+
+#defensivepokemon {
+    float: right;
+}
+#offesivepokemon {
+    float: left;
+}
+
+/************************ AUTO COMPLETE *************************/
 
 .autocomplete-container {
     position: absolute;
@@ -34,45 +51,46 @@ body {
     right: 0;
     overflow-y: scroll;
     max-height: 300px;
-  }
-  
-  .autocomplete-active {
+}
+
+.autocomplete-active {
     /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue !important;
     color: #ffffff;
-  }
-  
-  .autocomplete {
-      text-align: center;
-      display: inline-block;
-      max-height: 100px;
-  }
-  
-  .autocomplete-field {
-      max-width: 200px;
-      width: 200px;
-  }
-  
-  .autocomplete-item {
-      text-align: left;
-      font-size: 10pt;
-      background-color: whitesmoke;
-      user-select: none;
-      -moz-user-select: none;
-      -khtml-user-select: none;
-      -webkit-user-select: none;
-      -o-user-select: none;
-  }
-  .autocomplete-item:hover {
-      background-color: rgb(192, 192, 192);
-  }
-  
-  .autocomplete-item-hover {
-      background-color: rgb(192, 192, 192);
-  }
-  
-  .autocomplete-item:active {
-      text-align: left;
-      font-size: 10pt;
-      background-color: rgb(54, 233, 78);
-  }
+}
+
+.autocomplete {
+    text-align: center;
+    display: inline-block;
+    max-height: 100px;
+}
+
+.autocomplete-field {
+    max-width: 200px;
+    width: 200px;
+}
+
+.autocomplete-item {
+    text-align: left;
+    font-size: 10pt;
+    background-color: whitesmoke;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.autocomplete-item:hover {
+    background-color: rgb(192, 192, 192);
+}
+
+.autocomplete-item-hover {
+    background-color: rgb(192, 192, 192);
+}
+
+.autocomplete-item:active {
+    text-align: left;
+    font-size: 10pt;
+    background-color: rgb(54, 233, 78);
+}

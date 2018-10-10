@@ -19,20 +19,6 @@
 .button:active{
     background:#f2f2f2;
 }
-fieldset{
-    background-color:#f1f4f9;
-    border:1px solid #aaa;
-}
-legend{
-    font-weight:700;
-    text-align:center;
-}
-th,td{
-    padding:0;
-}
-th{
-    font-size:.8em;
-}
 .poke-info{
     width:30em
 }
@@ -75,16 +61,12 @@ th{
 .visually-hidden[type=radio]:checked+.btn{cursor:default}
 .visually-hidden{clip:rect(1px,1px,1px,1px);height:1px;overflow:hidden;position:absolute;top:auto;white-space:nowrap}
 .visually-hidden:disabled+.btn{color:#999}
-.poke-info label{display:inline-block;width:6em}
-.poke-info input:not([type]),.poke-info input[type=text],.poke-info span{display:inline-block;width:2.5em}
-.poke-info input[type=number]{display:inline-block;width:3em}
+fieldset label{display:inline-block;width:6em}
+fieldset input:not([type]),fieldset input[type=text],fieldset span{display:inline-block;width:2.5em}
+fieldset input[type=number]{display:inline-block;width:3em}
 .info-group{margin:1em 0}
-.set-selector{width:100%}
-.info-selectors select{width:8em}
-.move-selector{width:8.5em}
-.poke-info input.move-bp{width:2em}
 .move-type{width:5.5em}
 .move-cat{width:5.7em}
-.crit-btn{width:2.5em;height:1em;}
-.z-btn{width:1.5em;height:1em;}
+.crit-btn{width:2.5em;height:2em;}
+.z-btn{width:1.5em;height:2em;}
 [hidden],.hide{display:none}
