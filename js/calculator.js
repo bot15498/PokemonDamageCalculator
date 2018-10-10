@@ -75,10 +75,11 @@ function calculateHPStat(pokemonRawInfo,pokemonInfo) {
         return 1;
     }
     var hpBase = pokemonRawInfo["BaseStats"][0];
-    var ivBase = pokemonInfo["ev"]["hp"];
+    var ivBase = pokemonInfo["iv"]["hp"];
     var evBase = pokemonInfo["ev"]["hp"];
     var level = pokemonInfo["Level"];
-    return (2 * hpBase + ivBase + Math.floor(evBase / 4)) * (level / 100) + level + 10;
+    //return (2 * hpBase + ivBase + Math.floor(evBase / 4)) * (level / 100) + level + 10;
+    return ((((ivBase + 2 * hpBase + (evBase/4)+100) * level)/100) + 10);
 }
 
 /**
@@ -310,11 +311,11 @@ function damageRatioPercentage(damage, hp) {
     var ratioUpper = damage/hp;
     var percentageUpper = ratioUpper * 100;
 
-    var lowerBound = damage * 0.85;
+    var lowerBound = Math.floor(damage * 0.85);
     var ratioLower = lowerBound/hp;
     var percentageLower = ratioLower * 100;
 
-    return "Damage Percentage " + "(" + percentageLower + "% - " + percentageUpper + "%)";
+    return (Math.round(100*percentageLower)/100) + "% - " + (Math.round(100*percentageUpper)/100) + "%";
 }
 
 
