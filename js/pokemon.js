@@ -27,32 +27,24 @@ listContainer.id = inputField.parentNode.id + "-autocomplete-container";
 inputField.parentNode.appendChild(listContainer);
 inputField.addEventListener("input",function() {
     clearItems(this);
-    console.log(this.value);
-    for(key in pokemon) {
-        currPokemon = pokemon[key];
-        if(currPokemon["Name"].toLowerCase().includes(this.value.toLowerCase())) {
-            var toAdd = document.createElement("div");
-            toAdd.setAttribute("value",key);
-            toAdd.innerText = currPokemon["Name"];
-            toAdd.className = "autocomplete-item";
-            listContainer.appendChild(toAdd);
-        }
+    if(this.value != "") {
+        for(key in pokemon) {
+            currPokemon = pokemon[key];
+            if(currPokemon["Name"].toLowerCase().indexOf(this.value.toLowerCase()) != -1) {
+                var toAdd = document.createElement("div");
+                toAdd.setAttribute("value",key);
+                toAdd.innerText = currPokemon["Name"];
+                toAdd.className = "autocomplete-item";
+                listContainer.appendChild(toAdd);
+            }
+        }   
     }
 });
 
-// //populate with data from pokemon
-// for(key in pokemon) {
-//     currPokemon = pokemon[key];
-//     var toAdd = document.createElement("div");
-//     toAdd.setAttribute("value",key);
-//     toAdd.innerText = currPokemon["Name"];
-//     toAdd.className = "autocomplete-item";
-//     listContainer.appendChild(toAdd);
-// }
-
 function clearItems(inputField) {
     var container = document.getElementById(inputField.parentNode.id + "-autocomplete-container");
-    for(var i=0;i<container.children.length;i++) {
-        container.removeChild(container.children[i]);
-    }
+    // for(var i=0;i<container.childNodes.length;i++) {
+    //     container.removeChild(container.childNodes[i]);
+    // }
+    container.innerHTML = "";
 }
