@@ -26,6 +26,15 @@ fieldset {
     width: 100%;
 }
 
+div {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    font-size: 16pt;
+}
+
 #field {
     text-align: center;
 }

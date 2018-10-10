@@ -19,13 +19,6 @@
 .button:active{
     background:#f2f2f2;
 }
-.poke-info{
-    width:30em
-}
-.field-info{
-    text-align:center;
-    width:27.5em;
-}
 .btn {
     text-align:center;
     border:solid 1px #aaa;
@@ -61,9 +54,6 @@
 .visually-hidden[type=radio]:checked+.btn{cursor:default}
 .visually-hidden{clip:rect(1px,1px,1px,1px);height:1px;overflow:hidden;position:absolute;top:auto;white-space:nowrap}
 .visually-hidden:disabled+.btn{color:#999}
-fieldset label{display:inline-block;width:6em}
-fieldset input:not([type]),fieldset input[type=text],fieldset span{display:inline-block;width:2.5em}
-fieldset input[type=number]{display:inline-block;width:3em}
 .info-group{margin:1em 0}
 .move-type{width:5.5em}
 .move-cat{width:5.7em}
