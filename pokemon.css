@@ -36,12 +36,6 @@ body {
     max-height: 300px;
   }
   
-  .autocomplete-active {
-    /*when navigating through the items using the arrow keys:*/
-    background-color: DodgerBlue !important;
-    color: #ffffff;
-  }
-  
   .autocomplete {
       text-align: center;
       display: inline-block;
@@ -50,7 +44,7 @@ body {
   
   .autocomplete-field {
       max-width: 200px;
-      width: 200px;
+      width: 150px !important;
   }
   
   .autocomplete-item {

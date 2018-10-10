@@ -11,6 +11,7 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
     //make text field and child div to store buttons
     var inputField = pokemonAutocompleteFields[i];
     inputField.id = "pokemonInputField-" + i;
+    inputField.setAttribute("inputField",i);
     inputField.parentNode.id = "pokemonField-" + i;
     var listContainer = document.createElement("div");
     listContainer.setAttribute("currSelected",0);
@@ -19,7 +20,7 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
     inputField.parentNode.appendChild(listContainer);
     document.getElementById(pokemonAutocompleteFields[i].id).addEventListener("input",function() {
         clearItems(this);
-        var currField = i;
+        var currInputField = this.getAttribute("inputField");
         var container = document.getElementById(this.parentNode.id + "-autocomplete-container");
         container.setAttribute("currSelected",0);
         if(this.value != "") {
@@ -31,8 +32,16 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                     toAdd.innerText = currPokemon["Name"];
                     toAdd.className = "autocomplete-item";
                     toAdd.addEventListener("click",function() {
-                        console.log(this.getAttribute("value") + " in " + currField);
+                        console.log(this.getAttribute("value") + " in " + currInputField);
                         toAdd.parentElement.parentElement.firstElementChild.value = this.innerText;
+                        var currSelectedPokemon = pokemon[this.getAttribute("value")];
+                        //update 
+                        document.getElementById("baseHP-" + currInputField).value = currSelectedPokemon["BaseStats"][0];
+                        document.getElementById("baseAtk-" + currInputField).value = currSelectedPokemon["BaseStats"][1];
+                        document.getElementById("baseDef-" + currInputField).value = currSelectedPokemon["BaseStats"][2];
+                        document.getElementById("baseSpa-" + currInputField).value = currSelectedPokemon["BaseStats"][3];
+                        document.getElementById("baseSpd-" + currInputField).value = currSelectedPokemon["BaseStats"][4];
+                        document.getElementById("baseSpe-" + currInputField).value = currSelectedPokemon["BaseStats"][5];  
                     })
                     container.appendChild(toAdd);
                 }
