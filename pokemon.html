@@ -16,16 +16,16 @@
 <div class="wrapper">
 
     <div aria-label="Pokemon 0" role="region" class="panel">
-        <fieldset class="poke-info" id="p2">
+        <fieldset class="poke-info" id="p0">
             <legend align="center">Defensive Pokemon</legend>
-            <label for="pokemonL1">Pokemon</label>
-            <div id="pokemon2-selector" class="autocomplete">    
+            <label for="pokemon0-selector">Pokemon</label>
+            <div id="pokemon0-selector" class="autocomplete">    
                 <div style="position: relative">
                     <input type="text" class="autocomplete-field"/>
                 </div>
             </div>
             <label for="levelR1">Level</label>
-            <input class="level calc-trigger" id="levelR1" value="100" />
+            <input class="level calc-trigger" id="levelL0" value="100" />
 
             <!--<div class="container">
                 <div class="row">
@@ -84,11 +84,11 @@
                             <td>
                                 <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                             </td>
-                            <td><span class="total">341</span>
+                            <td><span id="hpTotal-0" class="total calc-trigger">341</span>
                             </td>
                             <td></td>
                         </tr>
-                        <tr class="at hide">
+                        <tr class="atk hide">
                             <th scope="row">
                                 <label>Attack</label>
                             </th>
@@ -101,7 +101,7 @@
                             <td>
                                 <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                             </td>
-                            <td><span class="total">236</span>
+                            <td><span id="atkTotal-0" class="total">236</span>
                             </td>
                             <td>
                                 <select class="boost calc-trigger">
@@ -121,7 +121,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="df">
+                        <tr class="def">
                             <th scope="row">
                                 <label>Defense</label>
                             </th>
@@ -134,7 +134,7 @@
                             <td>
                                 <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                             </td>
-                            <td><span class="total">236</span>
+                            <td><span id="defTotal-0" class="total calc-trigger">236</span>
                             </td>
                             <td>
                                 <select class="boost calc-trigger">
@@ -154,7 +154,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="sa hide">
+                        <tr class="spa hide">
                             <th scope="row">
                                 <label>Sp. Atk</label>
                             </th>
@@ -167,7 +167,7 @@
                             <td>
                                 <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                             </td>
-                            <td><span class="total">236</span>
+                            <td><span id="spaTotal-0" class="total calc-trigger">236</span>
                             </td>
                             <td>
                                 <select class="boost calc-trigger">
@@ -187,7 +187,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="sd">
+                        <tr class="spd">
                             <th scope="row">
                                 <label>Sp. Def</label>
                             </th>
@@ -200,7 +200,7 @@
                             <td>
                                 <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                             </td>
-                            <td><span class="total">236</span>
+                            <td><span id="spdTotal-0" class="total calc-trigger">236</span>
                             </td>
                             <td>
                                 <select class="boost calc-trigger">
@@ -220,7 +220,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="sp hide">
+                        <tr class="spe hide">
                             <th scope="row">
                                 <label>Speed</label>
                             </th>
@@ -233,7 +233,7 @@
                             <td>
                                 <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                             </td>
-                            <td><span class="total">236</span>
+                            <td><span id="speTotal-0" class="total calc-trigger">236</span>
                             </td>
                             <td>
                                 <select class="boost calc-trigger">
@@ -258,8 +258,8 @@
             </div>
             <div class="info-group">
                 <div>
-                    <label for="natureR1">Nature</label>
-                    <select class="nature calc-trigger" id="natureR1">
+                    <label for="natureL0">Nature</label>
+                    <select class="nature calc-trigger" id="natureL0">
                         <option value="Adamant">Adamant</option>
                         <option value="Bashful">Bashful</option>
                         <option value="Bold">Bold</option>
@@ -288,16 +288,16 @@
                     </select>
                 </div>
                 <div>
-                    <label for="abilityR1">Ability</label>
-                    <select class="ability terrain-trigger calc-trigger" id="abilityR1"></select>
+                    <label for="ability-0">Ability</label>
+                    <select class="ability terrain-trigger calc-trigger" id="ability-0"></select>
                 </div>
                 <div>
-                    <label for="itemR1">Item</label>
-                    <select class="item terrain-trigger calc-trigger" id="itemR1"></select>
+                    <label for="itemL0">Item</label>
+                    <select class="item terrain-trigger calc-trigger" id="itemL0"></select>
                 </div>
                 <div class = "hide">
-                    <label for="statusR1">Status</label>
-                    <select class="status calc-trigger" id="statusR1">
+                    <label for="statusL0">Status</label>
+                    <select class="status calc-trigger" id="statusL0">
                         <option value="Healthy">Healthy</option>
                         <option value="Poisoned">Poisoned</option>
                         <option value="Badly Poisoned">Badly Poisoned</option>
@@ -376,7 +376,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <label for="pokemonL1">Pokemon</label>
+                        <label for="pokemon1-selector">Pokemon</label>
                         <div id="pokemon1-selector" class="autocomplete">    
                             <div style="position: relative">
                                 <input type="text" class="autocomplete-field"/>
@@ -403,7 +403,7 @@
                                             <label>HP</label>
                                         </th>
                                         <td>
-                                            <input id="baseHP-1" class="base calc-trigger" value="100" readonly/>
+                                            <input id="baseHP-1" class="base calc-trigger" value="100" readonly disabled/>
                                         </td>
                                         <td>
                                             <input class="ivs calc-trigger" value="31" />
@@ -411,11 +411,11 @@
                                         <td>
                                             <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                         </td>
-                                        <td><span class="total">341</span>
+                                        <td><span id="hpTotal-1" class="total calc-trigger">341</span>
                                         </td>
                                         <td></td>
                                     </tr>
-                                    <tr class="at">
+                                    <tr class="atk">
                                         <th scope="row">
                                             <label>Attack</label>
                                         </th>
@@ -428,7 +428,7 @@
                                         <td>
                                             <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                         </td>
-                                        <td><span class="total">236</span>
+                                        <td><span id="atkTotal-1" class="total calc-trigger">236</span>
                                         </td>
                                         <td>
                                             <select class="boost calc-trigger">
@@ -448,7 +448,7 @@
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr class="df hide">
+                                    <tr class="def hide">
                                         <th scope="row">
                                             <label>Defense</label>
                                         </th>
@@ -461,7 +461,7 @@
                                         <td>
                                             <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                         </td>
-                                        <td><span class="total">236</span>
+                                        <td><span id="defTotal-1" class="total calc-trigger">236</span>
                                         </td>
                                         <td>
                                             <select class="boost calc-trigger">
@@ -481,7 +481,7 @@
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr class="sa">
+                                    <tr class="spa">
                                         <th scope="row">
                                             <label>Sp. Atk</label>
                                         </th>
@@ -494,7 +494,7 @@
                                         <td>
                                             <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                         </td>
-                                        <td><span class="total">236</span>
+                                        <td><span id="spaTotal-1" class="total calc-trigger">236</span>
                                         </td>
                                         <td>
                                             <select class="boost calc-trigger">
@@ -514,7 +514,7 @@
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr class="sd hide">
+                                    <tr class="spd hide">
                                         <th scope="row">
                                             <label>Sp. Def</label>
                                         </th>
@@ -527,7 +527,7 @@
                                         <td>
                                             <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                         </td>
-                                        <td><span class="total">236</span>
+                                        <td><span id="spdTotal-1" class="total calc-trigger">236</span>
                                         </td>
                                         <td>
                                             <select class="boost calc-trigger">
@@ -547,7 +547,7 @@
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr class="sp hide">
+                                    <tr class="spe hide">
                                         <th scope="row">
                                             <label>Speed</label>
                                         </th>
@@ -560,7 +560,7 @@
                                         <td>
                                             <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                         </td>
-                                        <td><span class="total">236</span>
+                                        <td><span id="speTotal-1" class="total calc-trigger">236</span>
                                         </td>
                                         <td>
                                             <select class="boost calc-trigger">
@@ -615,8 +615,8 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="abilityL1">Ability</label>
-                                <select class="ability terrain-trigger calc-trigger" id="abilityL1"></select>
+                                <label for="ability-1">Ability</label>
+                                <select class="ability terrain-trigger calc-trigger" id="ability-1"></select>
                             </div>
                             <div>
                                 <label for="itemL1">Item</label>
@@ -636,6 +636,9 @@
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="col">
                         <div hidden id="criticalHitInstruction">Force this attack to be a critical hit?</div>
                         <div hidden id="zMoveInstruction">Make this attack a Z-move?</div>
