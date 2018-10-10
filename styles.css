@@ -23,3 +23,22 @@ h3 {
 .bodyShowdown :hover {
     background-color: lightgrey;
 }
+
+.displayFourMoves {
+    text-align: center;
+}
+
+.displayFourMoves div {
+    background-color: whitesmoke;
+    text-align: center;
+    font-family: Arial;
+    font-size: 12pt;
+    display: inline-block;
+    padding: 5px;
+    margin: 10px;
+    width: 150px;
+    height: 60px;
+    border: 1px solid grey;
+}
+
+
