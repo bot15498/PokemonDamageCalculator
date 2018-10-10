@@ -25,8 +25,8 @@ function doCalculation() {
         atkPokemonInfo["Ability"] = document.getElementById("ability-0").value;
         defPokemonInfo["Ability"] = document.getElementById("ability-1").value;
         //get nature
-        atkPokemonInfo["Nature"] = document.getElementById("natureL0").value;
-        defPokemonInfo["Nature"] = document.getElementById("natureL1").value;
+        atkPokemonInfo["Nature"] = document.getElementById("nature-0").value;
+        defPokemonInfo["Nature"] = document.getElementById("nature-1").value;
         //get burn
         atkPokemonInfo["isBurned"] = document.getElementById("statusL1").value == "Burned";
         //get environment?
@@ -65,7 +65,6 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                     container.appendChild(toAdd);
                     toAdd.addEventListener("click",function() {
                         console.log(this.getAttribute("value") + " in " + currInputField);
-                        // clearItems(this.parentElement.parentElement.firstElementChild);
                         this.parentElement.parentElement.firstElementChild.value = this.innerText;
                         var currSelectedPokemon = pokemon[this.getAttribute("value")];
                         //update base info
@@ -83,7 +82,8 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                             pokemonAbility.innerHTML += "<option value=" + abilityName + ">" + abilityName + "</option>";
                         }
                         //update moves
-
+                        //clear autocomplete
+                        clearItems(this.parentElement.parentElement.firstElementChild);
                     })
                 } 
             }  
