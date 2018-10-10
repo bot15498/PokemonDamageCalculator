@@ -628,23 +628,6 @@
                                     <option value="Asleep">Asleep</option>
                                     <option value="Frozen">Frozen</option>
                                 </select>
-                                <select aria-label="Toxic counter" class="toxic-counter calc-trigger hide">
-                                    <option value="1">1/16</option>
-                                    <option value="2">2/16</option>
-                                    <option value="3">3/16</option>
-                                    <option value="4">4/16</option>
-                                    <option value="5">5/16</option>
-                                    <option value="6">6/16</option>
-                                    <option value="7">7/16</option>
-                                    <option value="8">8/16</option>
-                                    <option value="9">9/16</option>
-                                    <option value="10">10/16</option>
-                                    <option value="11">11/16</option>
-                                    <option value="12">12/16</option>
-                                    <option value="13">13/16</option>
-                                    <option value="14">14/16</option>
-                                    <option value="15">15/16</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -715,23 +698,30 @@
             <fieldset class="field-info">
                 <legend align="center">Field</legend>
                 <div aria-labelledby="selectBattleFormatInstruction" role="radiogroup" style="width: 10.6em; margin: 0 auto 5px;" title="Select the battle format.">
-                    <span class="visually-hidden" id="selectBattleFormatInstruction">Select the battle format.</span>
-                    <input class="visually-hidden calc-trigger" type="radio" name="format" value="Singles" id="singles-format" checked="checked" />
-                    <label class="btn btn-left" for="singles-format">Singles</label>
-                    <input class="visually-hidden calc-trigger" type="radio" name="format" value="Doubles" id="doubles-format" />
-                    <label class="btn btn-right" for="doubles-format">Doubles</label>
+                    Battle format:
+                    <div title="Select the battle format.">
+                        <input class="visually-hidden calc-trigger" type="radio" name="format" value="Singles" id="singles-format" checked="checked" />
+                        <label class="btn btn-left" for="singles-format">Singles</label>
+                        <input class="visually-hidden calc-trigger" type="radio" name="format" value="Doubles" id="doubles-format" />
+                        <label class="btn btn-right" for="doubles-format">Doubles</label>
+                    </div>
                 </div>
                 <div aria-labelledby="selectTerrainInstruction" role="radiogroup" title="Select the current terrain.">
-                    <span class="visually-hidden" id="selectTerrainInstruction">Select the current terrain.</span>
-                    <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Electric" id="electric" /><label class="btn btn-xxxwide btn-left" for="electric">Electric Terrain</label>
-                    <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Grassy" id="grassy" /><label class="btn btn-xxxwide btn-mid" for="grassy">Grassy Terrain</label>
-                    <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Misty" id="misty" /><label class="btn btn-xxxwide btn-mid" for="misty">Misty Terrain</label>
-                    <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Psychic" id="psychic" /><label class="btn btn-xxxwide btn-right" for="psychic">Psychic Terrain</label>
+                    Terrain:
+                    <div title="Select the terrain.">
+                        <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Electric" id="electric" />
+                        <label class="btn btn-xxxwide btn-left" for="electric">Electric Terrain</label>
+                        <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Grassy" id="grassy" />
+                        <label class="btn btn-xxxwide btn-mid" for="grassy">Grassy Terrain</label>
+                        <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Misty" id="misty" />
+                        <label class="btn btn-xxxwide btn-mid" for="misty">Misty Terrain</label>
+                        <input class="visually-hidden terrain-trigger calc-trigger" type="radio" name="terrain" value="Psychic" id="psychic" />
+                        <label class="btn btn-xxxwide btn-right" for="psychic">Psychic Terrain</label>
+                    </div>
                 </div>
-                <hr />
                 <div aria-labelledby="selectWeatherInstruction" role="radiogroup">
-                    <span class="visually-hidden" id="selectWeatherInstruction">Select the current weather condition.</span>
-                    <div style="width: 22.2em; margin: 5px auto;" title="Select the current weather condition.">
+                    Weather:
+                    <div title="Select the current weather condition.">
                         <input class="visually-hidden calc-trigger" type="radio" name="weather" value="" id="clear" checked="checked" />
                         <label class="btn btn-small btn-left" for="clear">None</label>
                         <input class="visually-hidden calc-trigger" type="radio" name="weather" value="Sun" id="sun" />
@@ -750,7 +740,7 @@
                         <label class="btn btn-xxxwide btn-right" for="strong-winds">Strong Winds</label>
                     </div>
                   </div>
-                <div style="width: 5.3em; margin: 5px auto;" title="Is gravity in effect?">
+                <div title="Is gravity in effect?">
                     <span hidden id="gravityInstruction">Is gravity in effect?</span>
                     <input aria-describedby="gravityInstruction" class="visually-hidden calc-trigger" type="checkbox" id="gravity" />
                     <label class="btn" for="gravity">Gravity</label>

@@ -53,17 +53,23 @@ th{
     width:5em;
     border-radius:8px
 }
+.btn-xsmall{width:1em}
+.btn-small{width:4em}
 .btn-wide{width:7em}
 .btn-xwide{width:8em}
 .btn-xxwide{width:9em}
 .btn-xxxwide{width:10em}
-.btn-small{width:4em}
-.btn-xsmall{width:1em}
-.btn-left{border-top-right-radius:0;border-bottom-right-radius:0}
-.btn-right{border-top-left-radius:0;border-bottom-left-radius:0}
-.btn-top{border-bottom-left-radius:0;border-bottom-right-radius:0}
-.btn-bottom{border-top-left-radius:0;border-top-right-radius:0}
-.btn-mid{border-radius:0}
+.btn-left{
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+}
+.btn-right{
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+}
+.btn-mid{
+    border-radius:0;
+}
 .visually-hidden:focus+.btn,.btn:hover{z-index:10;border-color:#777;background:#e3e3e3}
 .visually-hidden:checked+.btn{font-weight:700;color:#111;background:#f5f5f5}
 .visually-hidden[type=radio]:checked+.btn{cursor:default}

@@ -1,6 +1,7 @@
 var items = document.getElementsByClassName("calc-trigger");
-items.forEach(addEventListener("click", myFunction));
+items.forEach(addEventListener("change", updateCalculations));
+updateCalculations();
 
-function myFunction() {
-    console.log("test")
+function updateCalculations() {
+    console.log("test");
 }
