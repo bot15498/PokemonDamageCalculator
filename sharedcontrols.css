@@ -55,8 +55,6 @@
 .visually-hidden{clip:rect(1px,1px,1px,1px);height:1px;overflow:hidden;position:absolute;top:auto;white-space:nowrap}
 .visually-hidden:disabled+.btn{color:#999}
 .info-group{margin:1em 0}
-.move-type{width:5.5em}
-.move-cat{width:5.7em}
 .crit-btn{width:2.5em;height:2em;}
 .z-btn{width:1.5em;height:2em;}
 [hidden],.hide{display:none}
