@@ -45,7 +45,6 @@ fieldset {
     border-bottom: none;
     border-top: none;
     z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
     top: 100%;
     left: 0;
     right: 0;
@@ -54,7 +53,6 @@ fieldset {
 }
 
 .autocomplete-active {
-    /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue !important;
     color: #ffffff;
 }
@@ -94,6 +92,8 @@ fieldset {
     font-size: 10pt;
     background-color: rgb(54, 233, 78);
 }
+
+/************************ CALC AND MOVES DISPLAY CSS *************************/
 
 .displayFourCalcs, .displayFourMoves {
     text-align: center;
