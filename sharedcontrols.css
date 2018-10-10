@@ -1,5 +1,3 @@
-a img{border:0}
-
 .button{
     outline:none;
     cursor:pointer;
@@ -7,21 +5,19 @@ a img{border:0}
     text-decoration:none;
     text-shadow:0 1px 0 rgba(255,255,255,.4);
     border-radius:5px;
-    -webkit-box-shadow:0 1px 2px rgba(0,0,0,.2),inset 0 -1px 2px #fff;-moz-box-shadow:0 1px 2px rgba(0,0,0,.2),inset 0 -1px 2px #fff;
-    box-shadow:0 1px 2px rgba(0,0,0,.2),inset 0 -1px 2px #fff;white-space:nowrap;color:#222;border:solid 1px #aaa;
+    box-shadow:0 1px 2px rgba(0,0,0,.2),inset 0 -1px 2px #fff;
+    white-space:nowrap;
+    color:#222;
+    border:solid 1px #aaa;
     background:#e3e3e3;
-    background:-moz-linear-gradient(top,#f6f6f6,#e3e3e3);
-    background:linear-gradient(top,#f6f6f6,#e3e3e3);
 }
 
 .button:hover{
-    background:-moz-linear-gradient(top,#f2f2f2,#cfcfcf);
-    background:linear-gradient(top,#f2f2f2,#cfcfcf);
+    background:,#cfcfcf;
     border-color:#606060;
 }
 .button:active{
-    background:-moz-linear-gradient(top,#cfcfcf,#f2f2f2);
-    background:linear-gradient(top,#cfcfcf,#f2f2f2);
+    background:#f2f2f2;
 }
 fieldset{
     background-color:#f1f4f9;
@@ -37,11 +33,26 @@ th,td{
 th{
     font-size:.8em;
 }
-.poke-info{width:30em}
-.field-info,.poke-import{text-align:center;width:27.5em}
-.holder-0{position:absolute;top:151px}
-#holder-2 tr{white-space:nowrap}
-.btn{text-align:center;border:solid 1px #aaa;padding:4px;position:relative;cursor:pointer;color:#555;background:#e9e9e9;margin:-1px -3px 0;display:inline-block;width:5em;border-radius:8px}
+.poke-info{
+    width:30em
+}
+.field-info{
+    text-align:center;
+    width:27.5em;
+}
+.btn {
+    text-align:center;
+    border:solid 1px #aaa;
+    padding:4px;
+    position:relative;
+    cursor:pointer;
+    color:#555;
+    background:#e9e9e9;
+    margin:-1px -3px 0;
+    display:inline-block;
+    width:5em;
+    border-radius:8px
+}
 .btn-wide{width:7em}
 .btn-xwide{width:8em}
 .btn-xxwide{width:9em}
@@ -58,34 +69,16 @@ th{
 .visually-hidden[type=radio]:checked+.btn{cursor:default}
 .visually-hidden{clip:rect(1px,1px,1px,1px);height:1px;overflow:hidden;position:absolute;top:auto;white-space:nowrap}
 .visually-hidden:disabled+.btn{color:#999}
-.btn-group{display:inline-block;width:100%}
-.left{float:left}
-.right{float:right}
-.locked-move:checked+.btn{background:#ff9}
-.move-result-group{max-width:80em;min-width:50em;margin:1em 0 11.5em}
-.move-result-subgroup{float:left;width:50%}
-.move-result-group .btn{margin-right:1em}
-.main-result-group{margin:2em 0 1em}
-.result-move-header{font-size:.8em;font-weight:700;margin:0 0 5px}
 .poke-info label{display:inline-block;width:6em}
 .poke-info input:not([type]),.poke-info input[type=text],.poke-info span{display:inline-block;width:2.5em}
 .poke-info input[type=number]{display:inline-block;width:3em}
 .info-group{margin:1em 0}
 .set-selector{width:100%}
 .info-selectors select{width:8em}
-select.toxic-counter{width:4.5em}
-.move-selector,.move-bp,.move-type,.move-cat,.move-hits{font-size:.9em}
 .move-selector{width:8.5em}
 .poke-info input.move-bp{width:2em}
 .move-type{width:5.5em}
 .move-cat{width:5.7em}
-.move-hits{width:4.5em}
-.poke-info .crit-btn{font-size:.8em;width:2.5em;height:1em;padding:3px}
-.poke-info .z-btn{font-size:.8em;width:1.5em;height:1em;padding:3px}
-.field-info .btn{font-size:.8em}
+.crit-btn{width:2.5em;height:1em;}
+.z-btn{width:1.5em;height:1em;}
 [hidden],.hide{display:none}
-.select2-container .select2-choice>.select2-chosen{width:100%}
-.small-select.select2-container .select2-choice{font-size:.9em;height:18px;line-height:18px}
-.small-select.select2-container .select2-choice .select2-arrow b{background-position:0 -4px}
-.small-select.select2-dropdown-open .select2-choice .select2-arrow b{background-position:-18px -4px}
-.clear{clear:right}
