@@ -52,11 +52,6 @@ fieldset {
     max-height: 300px;
 }
 
-.autocomplete-active {
-    background-color: DodgerBlue !important;
-    color: #ffffff;
-}
-
 .autocomplete {
     text-align: center;
     display: inline-block;
@@ -65,7 +60,7 @@ fieldset {
 
 .autocomplete-field {
     max-width: 200px;
-    width: 200px;
+    width: 150px !important;
 }
 
 .autocomplete-item {
@@ -78,7 +73,6 @@ fieldset {
     -webkit-user-select: none;
     -o-user-select: none;
 }
-
 .autocomplete-item:hover {
     background-color: rgb(192, 192, 192);
 }

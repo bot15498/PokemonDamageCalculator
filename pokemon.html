@@ -12,23 +12,18 @@
 </head>
 
 <body>
-hey
-<div id="test" class="autocomplete">
-    <div id="testAutoComplete" style="position: relative">
-        <input type="text" id="pokemonField" class="autocomplete-field"/>
-    </div>
-</div>
-<script src="./js/pokemon.js"></script>
-
-
 
 <div class="wrapper">
 
-    <div id="defensivepokemon" class="panel">
-        <fieldset id="p2">
+    <div aria-label="Pokemon 0" role="region" class="panel">
+        <fieldset class="poke-info" id="p2">
             <legend align="center">Defensive Pokemon</legend>
             <label for="pokemonL1">Pokemon</label>
-            <input type="text" class="calc-trigger" />
+            <div id="pokemon2-selector" class="autocomplete">    
+                <div style="position: relative">
+                    <input type="text" class="autocomplete-field"/>
+                </div>
+            </div>
             <label for="levelR1">Level</label>
             <input class="level calc-trigger" id="levelR1" value="100" />
 
@@ -71,7 +66,6 @@ hey
                             <th scope="col">Base</th>
                             <th scope="col">IVs</th>
                             <th scope="col">EVs</th>
-                            <th class="hide" scope="col">DVs</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -82,7 +76,7 @@ hey
                                 <label>HP</label>
                             </th>
                             <td>
-                                <input class="base calc-trigger" value="100" />
+                                <input id="baseHP-0" class="base calc-trigger" value="100" readonly/>
                             </td>
                             <td>
                                 <input class="ivs calc-trigger" value="31" />
@@ -99,7 +93,7 @@ hey
                                 <label>Attack</label>
                             </th>
                             <td>
-                                <input class="base calc-trigger" value="100" />
+                                <input id="baseAtk-0" class="base calc-trigger" value="100" readonly/>
                             </td>
                             <td>
                                 <input class="ivs calc-trigger" value="31" />
@@ -132,7 +126,7 @@ hey
                                 <label>Defense</label>
                             </th>
                             <td>
-                                <input class="base calc-trigger" value="100" />
+                                <input id="baseDef-0" class="base calc-trigger" value="100" readonly/>
                             </td>
                             <td>
                                 <input class="ivs calc-trigger" value="31" />
@@ -165,7 +159,7 @@ hey
                                 <label>Sp. Atk</label>
                             </th>
                             <td>
-                                <input class="base calc-trigger" value="100" />
+                                <input id="baseSpa-0" class="base calc-trigger" value="100" readonly/>
                             </td>
                             <td>
                                 <input class="ivs calc-trigger" value="31" />
@@ -198,7 +192,7 @@ hey
                                 <label>Sp. Def</label>
                             </th>
                             <td>
-                                <input class="base calc-trigger" value="100" />
+                                <input id="baseSpd-0" class="base calc-trigger" value="100" readonly/>
                             </td>
                             <td>
                                 <input class="ivs calc-trigger" value="31" />
@@ -231,7 +225,7 @@ hey
                                 <label>Speed</label>
                             </th>
                             <td>
-                                <input class="base calc-trigger" value="100" />
+                                <input id="baseSpe-0" class="base calc-trigger" value="100" readonly/>
                             </td>
                             <td>
                                 <input class="ivs calc-trigger" value="31" />
@@ -383,7 +377,11 @@ hey
                 <div class="row">
                     <div class="col">
                         <label for="pokemonL1">Pokemon</label>
-                        <input type="text" class="calc-trigger" />
+                        <div id="pokemon1-selector" class="autocomplete">    
+                            <div style="position: relative">
+                                <input type="text" class="autocomplete-field"/>
+                            </div>
+                        </div>
                         <label for="levelL1">Level</label>
                         <input class="level calc-trigger" id="levelL1" value="100" />
 
@@ -395,7 +393,6 @@ hey
                                         <th scope="col">Base</th>
                                         <th scope="col">IVs</th>
                                         <th scope="col">EVs</th>
-                                        <th class="hide" scope="col">DVs</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -406,7 +403,7 @@ hey
                                             <label>HP</label>
                                         </th>
                                         <td>
-                                            <input class="base calc-trigger" value="100" />
+                                            <input id="baseHP-1" class="base calc-trigger" value="100" readonly/>
                                         </td>
                                         <td>
                                             <input class="ivs calc-trigger" value="31" />
@@ -423,7 +420,7 @@ hey
                                             <label>Attack</label>
                                         </th>
                                         <td>
-                                            <input class="base calc-trigger" value="100" />
+                                            <input id="baseAtk-1" class="base calc-trigger" value="100" readonly/>
                                         </td>
                                         <td>
                                             <input class="ivs calc-trigger" value="31" />
@@ -456,7 +453,7 @@ hey
                                             <label>Defense</label>
                                         </th>
                                         <td>
-                                            <input class="base calc-trigger" value="100" />
+                                            <input id="baseDef-1" class="base calc-trigger" value="100" readonly/>
                                         </td>
                                         <td>
                                             <input class="ivs calc-trigger" value="31" />
@@ -489,7 +486,7 @@ hey
                                             <label>Sp. Atk</label>
                                         </th>
                                         <td>
-                                            <input class="base calc-trigger" value="100" />
+                                            <input id="baseSpa-1" class="base calc-trigger" value="100" readonly/>
                                         </td>
                                         <td>
                                             <input class="ivs calc-trigger" value="31" />
@@ -522,7 +519,7 @@ hey
                                             <label>Sp. Def</label>
                                         </th>
                                         <td>
-                                            <input class="base calc-trigger" value="100" />
+                                            <input id= "baseSpd-1" class="base calc-trigger" value="100" readonly/>
                                         </td>
                                         <td>
                                             <input class="ivs calc-trigger" value="31" />
@@ -555,7 +552,7 @@ hey
                                             <label>Speed</label>
                                         </th>
                                         <td>
-                                            <input class="base calc-trigger" value="100" />
+                                            <input id="baseSpe-1" class="base calc-trigger" value="100" readonly/>
                                         </td>
                                         <td>
                                             <input class="ivs calc-trigger" value="31" />
@@ -770,7 +767,7 @@ hey
 
 </div>
 
-
+<script src="./js/pokemon.js"></script>
 </body>
 
 </html>
