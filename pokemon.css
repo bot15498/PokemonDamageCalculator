@@ -106,103 +106,102 @@ h2 {
     padding: 0px;
 }
 
-.move-set div {
+
+.move-set input[type=text] {
     text-align: center;
-    background-color: whitesmoke;
-    text-align: center;
+    font-family: Arial;
     font-size: 12pt;
     display: inline-block;
-    width: 150px;
-    height: 60px;
+    height: 40px;
     border: 1px solid grey;
 }
 
-.typeNormal {
+.typeNormal.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(60,14%,97%),  hsl(60,14%,84%));
     border-color: hsl(60,14%,70%);
 }
 
-.typeFighting {
+.typeFighting.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(3,40%,97%),  hsl(3,40%,84%));
     border-color: hsl(3,40%,70%);
 }
 
-.typeFlying {
+.typeFlying.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(255,20%,97%),  hsl(255,20%,84%));
     border-color: hsl(255,20%,70%);
 }
 
-.typePoison {
+.typePoison.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(300,30%,97%),  hsl(300,30%,84%));
     border-color: hsl(300,30%,70%);
 }
 
-.typeGround {
+.typeGround.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(44,27%,97%),  hsl(44,27%,84%));
     border-color: hsl(44,27%,70%);
 }
 
-.typeRock {
+.typeRock.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(49,35%,97%),  hsl(49,35%,84%));
     border-color: hsl(49,35%,70%);
 }
 
-.typeBug {
+.typeBug.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(66,42%,97%),  hsl(66,42%,84%));
     border-color: hsl(66,42%,70%);
 }
 
-.typeGhost {
+.typeGhost.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(262,21%,97%),  hsl(262,21%,84%));
     border-color: hsl(262,21%,70%);
 }
 
-.typeSteel {
+.typeSteel.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(240,6%,97%),  hsl(240,6%,84%));
     border-color: hsl(240,6%,70%);
 }
 
-.typeFire {
+.typeFire.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(25,40%,97%),  hsl(25,40%,84%));
     border-color: hsl(25,40%,70%);
 }
 
-.typeWater {
+.typeWater.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(222,29%,97%),  hsl(222,29%,84%));
     border-color: hsl(222,29%,70%);
 }
 
-.typeGrass {
+.typeGrass.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(100,30%,97%),  hsl(100,30%,84%));
     border-color: hsl(100,30%,70%);
 }
 
-.typeElectric {
+.typeElectric.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(48,41%,97%),  hsl(48,41%,84%));
     border-color: hsl(48,41%,70%);
 }
 
-.typePsychic {
+.typePsychic.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(342,33%,97%),  hsl(342,33%,84%));
     border-color: hsl(342,33%,70%);
 }
 
-.typeIce {
+.typeIce.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(180,15%,97%),  hsl(180,15%,84%));
     border-color: hsl(180,15%,70%);
 }
 
-.typeDragon {
+.typeDragon.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(257,39%,97%),  hsl(257,39%,84%));
     border-color: hsl(257,39%,70%);
 }
 
-.typeDark {
+.typeDark.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(24,18%,97%),  hsl(24,18%,84%));
     border-color: hsl(24,18%,70%);
 }
 
-.typeFairy {
+.typeFairy.autocomplete-field {
     background: linear-gradient(to bottom,  hsl(310,41%,97%),  hsl(310,41%,84%));
     border-color: hsl(310,41%,70%);
 }

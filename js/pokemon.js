@@ -125,7 +125,7 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                             pokemonAbility.innerHTML += "<option value=" + abilityName + ">" + abilityName + "</option>";
                         }
                         //update moves
-                        for(var i=1;i<=1;i++) {
+                        for(var i=1;i<=4;i++) {
                             moveAutocomplete(currInputField,i);
                         }
                         //clear autocomplete
