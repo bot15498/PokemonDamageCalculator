@@ -36,6 +36,14 @@ var statChangeDict = {
     "-5" : 2/7,
     "-6" : 2/8
 }
+var statDict = {
+    1 : "hp",
+    2 : "atk",
+    3 : "def",
+    4 : "spa",
+    5 : "spd",
+    6 : "spe"
+}
 
 /**
  * Calculates the A/D ratio of a damage calculation
@@ -91,7 +99,7 @@ function calculateHPStat(pokemonRawInfo,pokemonInfo) {
     }
     var hpBase = pokemonRawInfo["BaseStats"][0];
     var ivBase = pokemonInfo["hp"]["iv"];
-    var evBase = pokemonInfo["hp"]["iv"];
+    var evBase = pokemonInfo["hp"]["ev"];
     var level = pokemonInfo["Level"];
     return (2 * hpBase + ivBase + Math.floor(evBase / 4)) * (level / 100) + level + 10;
 }
@@ -242,8 +250,8 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
             break;
     }
     var statBase = pokemonRawInfo["BaseStats"][statType]
-    var ivBase = pokemonInfo["iv"]["hp"];
-    var evBase = pokemonInfo["ev"]["hp"];
+    var ivBase = pokemonInfo[statDict[statType]]["iv"];
+    var evBase = pokemonInfo[statDict[statType]]["ev"];
     var level = pokemonInfo["Level"];
     return Math.floor((Math.floor((2 * statBase + ivBase + Math.floor(evBase)) * level / 100) + 5) * natureModifier)
 }
