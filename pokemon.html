@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="sharedcontrols.css">
     <link rel="stylesheet" type="text/css" href="pokemon.css">
     <script src="./js/pokemonlist.js"></script>
+    <script src="./js/moves.js"></script>
 </head>
 
 <body>
@@ -19,14 +20,14 @@
         <h1 align="center">Defensive Pokemon</h1>
         <div class="row">
             <div class="col">
-                <label for="pokemonL1">Pokemon</label>
-                <div id="pokemon2-selector" class="autocomplete">
+                <label for="pokemon0-selector">Pokemon</label>
+                <div id="pokemon0-selector" class="autocomplete">
                     <div style="position: relative">
-                        <input type="text" class="autocomplete-field"/>
+                        <input type="text" class="autocomplete-field autocomplete-pokemon-field"/>
                     </div>
                 </div>
-                <label for="levelR1">Level</label>
-                <input class="level calc-trigger" id="levelR1" value="100" />
+                <label for="levelL0">Level</label>
+                <input class="level calc-trigger" id="levelL0" value="100" />
             </div>
         </div>
         <div class="row">
@@ -234,8 +235,8 @@
             <div class="col">
                 <div class="info-group">
                     <div>
-                        <label for="natureR1">Nature</label>
-                        <select class="nature calc-trigger" id="natureR1">
+                        <label for="nature-0">Nature</label>
+                        <select class="nature calc-trigger" id="nature-0">
                             <option value="Adamant">Adamant</option>
                             <option value="Bashful">Bashful</option>
                             <option value="Bold">Bold</option>
@@ -264,16 +265,16 @@
                         </select>
                     </div>
                     <div>
-                        <label for="abilityR1">Ability</label>
-                        <select class="ability calc-trigger" id="abilityR1"></select>
+                        <label for="ability-0">Ability</label>
+                        <select class="ability calc-trigger" id="ability-0"></select>
                     </div>
                     <div>
                         <label for="itemR1">Item</label>
                         <select class="item calc-trigger" id="itemR1"></select>
                     </div>
                     <div class = "hide">
-                        <label for="statusR1">Status</label>
-                        <select class="status calc-trigger" id="statusR1">
+                        <label for="statusL0">Status</label>
+                        <select class="status calc-trigger" id="statusL0">
                             <option value="Healthy">Healthy</option>
                             <option value="Poisoned">Poisoned</option>
                             <option value="Badly Poisoned">Badly Poisoned</option>
@@ -330,10 +331,10 @@
         <h1 align="center">Offensive Pokemon</h1>
         <div class="row">
             <div class="col">
-                <label for="pokemonL1">Pokemon</label>
+                <label for="pokemon1-selector">Pokemon</label>
                 <div id="pokemon1-selector" class="autocomplete">
                     <div style="position: relative">
-                        <input type="text" class="autocomplete-field"/>
+                        <input type="text" class="autocomplete-field autocomplete-pokemon-field"/>
                     </div>
                 </div>
                 <label for="levelL1">Level</label>
@@ -544,8 +545,8 @@
             <div class="col">
                 <div class="info-group">
                     <div>
-                        <label for="natureL1">Nature</label>
-                        <select class="nature calc-trigger" id="natureL1">
+                        <label for="nature-1">Nature</label>
+                        <select class="nature calc-trigger" id="nature-1">
                             <option value="Adamant">Adamant</option>
                             <option value="Bashful">Bashful</option>
                             <option value="Bold">Bold</option>
@@ -574,8 +575,8 @@
                         </select>
                     </div>
                     <div>
-                        <label for="abilityL1">Ability</label>
-                        <select class="ability terrain-trigger calc-trigger" id="abilityL1"></select>
+                        <label for="ability-1">Ability</label>
+                        <select class="ability terrain-trigger calc-trigger" id="ability-1"></select>
                     </div>
                     <div>
                         <label for="itemL1">Item</label>
@@ -598,53 +599,89 @@
         </div>
     </div>
     <div id="moves" class="container">
+
+        <h2> Moves and Percent Damage: </h2>
+
+
         <div hidden id="criticalHitInstruction">Force this attack to be a critical hit?</div>
         <div hidden id="zMoveInstruction">Make this attack a Z-move?</div>
         <div class="row">
+
             <div class="col">
                 <div class="move-set">
-                    <select class="calc-trigger small-select"></select>
+
+                    <div id="pokemon1-move1-selector" class="autocomplete">
+                        <div id="pokemon1-move1" style="position: relative">
+                            <input id="pokemon1-move1-input" type="text" class="typePsychic autocomplete-field"/>
+                        </div>
+                    </div>
+
+                    <h2 id="calc1"> Calc 1 </h2>
+
                     <input class="move-crit calc-trigger visually-hidden" type="checkbox" id="critL1" />
                     <label class="btn crit-btn" for="critL1" title="Force this attack to be a critical hit?">Crit</label>
                     <input class="move-z calc-trigger visually-hidden" type="checkbox" id="zL1"/>
                     <label class="btn z-btn" for="zL1" title="Make this attack a Z-move?">Z</label>
-                    <div id="move1" class="typeGrass"> Move 1 </div>
-                    <h2 id="calc1"> Calc 1 </h2>
+
                 </div>
             </div>
+
             <div class="col">
                 <div class="move-set">
-                    <select class="calc-trigger small-select"></select>
+
+                    <div id="pokemon1-move2-selector" class="autocomplete">
+                        <div id="pokemon1-move2" style="position: relative">
+                            <input id="pokemon1-move2-input" type="text" class="typeWater autocomplete-field"/>
+                        </div>
+                    </div>
+
+                    <h2 id="calc2"> Calc 2 </h2>
+
                     <input class="move-crit calc-trigger visually-hidden" type="checkbox" id="critL2" />
                     <label class="btn crit-btn" for="critL2" title="Force this attack to be a critical hit?">Crit</label>
                     <input class="move-z calc-trigger visually-hidden" type="checkbox" id="zL2"/>
                     <label class="btn z-btn" for="zL2" title="Make this attack a Z-move?">Z</label>
-                    <div id="move2" class="typeFire"> Move 1 </div>
-                    <h2 id="calc2"> Calc 2 </h2>
                 </div>
             </div>
+
             <div class="col">
                 <div class="move-set">
-                    <select class="calc-trigger small-select"></select>
+
+                    <div id="pokemon1-move3-selector" class="autocomplete">
+                        <div id="pokemon1-move3" style="position: relative">
+                            <input id="pokemon1-move3-input" type="text" class="typeGrass autocomplete-field"/>
+                        </div>
+                    </div>
+
+                    <h2 id="calc3"> Calc 3 </h2>
+
                     <input class="move-crit calc-trigger visually-hidden" type="checkbox" id="critL3" />
                     <label class="btn crit-btn" for="critL3" title="Force this attack to be a critical hit?">Crit</label>
                     <input class="move-z calc-trigger visually-hidden" type="checkbox" id="zL3"/>
                     <label class="btn z-btn" for="zL3" title="Make this attack a Z-move?">Z</label>
-                    <div id="move3" class="typeDark"> Move 3 </div>
-                    <h2 id="calc3"> Calc 3 </h2>
+
                 </div>
             </div>
+
             <div class="col">
                 <div class="move-set">
-                    <select class="calc-trigger small-select"></select>
+
+                    <div id="pokemon1-move4-selector" class="autocomplete">
+                        <div id="pokemon1-move4" style="position: relative">
+                            <input id="pokemon1-move4-input" type="text" class="typeIce autocomplete-field"/>
+                        </div>
+                    </div>
+
+                    <h2 id="calc4"> Calc 4 </h2>
+
                     <input class="move-crit calc-trigger visually-hidden" type="checkbox" id="critL4" />
                     <label class="btn crit-btn" for="critL4" title="Force this attack to be a critical hit?">Crit</label>
                     <input class="move-z calc-trigger visually-hidden" type="checkbox" id="zL4"/>
                     <label class="btn z-btn" for="zL4" title="Make this attack a Z-move?">Z</label>
-                    <div id="move4" class="typePsychic"> Move 4 </div>
-                    <h2 id="calc4"> Calc 4 </h2>
+
                 </div>
             </div>
+
         </div>
     </div>
 

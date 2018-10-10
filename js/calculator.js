@@ -98,10 +98,11 @@ function calculateHPStat(pokemonRawInfo,pokemonInfo) {
         return 1;
     }
     var hpBase = pokemonRawInfo["BaseStats"][0];
-    var ivBase = pokemonInfo["hp"]["iv"];
-    var evBase = pokemonInfo["hp"]["ev"];
+    var ivBase = pokemonInfo["iv"]["hp"];
+    var evBase = pokemonInfo["ev"]["hp"];
     var level = pokemonInfo["Level"];
-    return (2 * hpBase + ivBase + Math.floor(evBase / 4)) * (level / 100) + level + 10;
+    //return (2 * hpBase + ivBase + Math.floor(evBase / 4)) * (level / 100) + level + 10;
+    return ((((ivBase + 2 * hpBase + (evBase/4)+100) * level)/100) + 10);
 }
 
 /**
@@ -262,7 +263,7 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
  * @param {*} atkPokemonInfo a JSON object of the attacking pokemon's EV/IV/Nature data
  * @param {*} defPokemonInfo a JSON object of the defending pokemon's EV/IV/Nature data
  * @param {*} fieldInfo a JSON object of the field
- * @returns {string} The percent damage a move is predicted to do.
+ * @returns {number} The damage value of the attack
  */
 function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     var attackInfo = moves[attackMove];
@@ -302,7 +303,7 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     }
     for(var typeID in atkPokemonRawInfo["Type"]) { //STAB
         actualTypeID = atkPokemonRawInfo["Type"][typeID];
-        if(typeDict[actualTypeID] == attackInfo["Type"] && atkPokemonRawInfo["Ability"] == "Adaptability") {
+        if(typeDict[actualTypeID] == attackInfo["Type"] && atkPokemonInfo["Ability"] == "Adaptability") {
             modifier = modifier * 2;
         } else if(typeDict[actualTypeID] == attackInfo["Type"]) {
             modifier = modifier * 1.5;
@@ -320,8 +321,26 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
 
     //get damage before randomness
     var damageNoRandom = baseDamage * modifier
-    return damageNoRandom;
+    return Math.floor(damageNoRandom);
 }
+
+/**
+ * Calculates the damage ratio percentage an attack does
+ * @param {number} damage: the damage calculation
+ * @param {Int32Array} the integer value for HP
+ * @return {string} Lower and Upper bound of damage
+ */
+function damageRatioPercentage(damage, hp) {
+    var ratioUpper = damage/hp;
+    var percentageUpper = ratioUpper * 100;
+
+    var lowerBound = Math.floor(damage * 0.85);
+    var ratioLower = lowerBound/hp;
+    var percentageLower = ratioLower * 100;
+
+    return (Math.round(100*percentageLower)/100) + "% - " + (Math.round(100*percentageUpper)/100) + "%";
+}
+
 
 var pokemon1 = {
     "ID" : "1",
