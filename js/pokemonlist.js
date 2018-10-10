@@ -60787,7 +60787,7 @@ var pokemon = {
         ]
     },
     "778": {
-        "Name": "Mimikyu-disguised",
+        "Name": "Mimikyu",
         "Ability": [
             "Disguise"
         ],
@@ -65226,7 +65226,7 @@ var pokemon = {
         ]
     },
     "10033": {
-        "Name": "Venusaur-mega",
+        "Name": "Mega Venusaur",
         "Ability": [
             "Thick-fat"
         ],
@@ -65297,7 +65297,7 @@ var pokemon = {
         ]
     },
     "10034": {
-        "Name": "Charizard-mega-x",
+        "Name": "Mega Charizard X",
         "Ability": [
             "Tough-claws"
         ],
@@ -65389,7 +65389,7 @@ var pokemon = {
         ]
     },
     "10035": {
-        "Name": "Charizard-mega-y",
+        "Name": "Mega Charizard Y",
         "Ability": [
             "Drought"
         ],
@@ -65481,7 +65481,7 @@ var pokemon = {
         ]
     },
     "10036": {
-        "Name": "Blastoise-mega",
+        "Name": "Mega Blastoise",
         "Ability": [
             "Mega-launcher"
         ],
@@ -65564,7 +65564,7 @@ var pokemon = {
         ]
     },
     "10037": {
-        "Name": "Alakazam-mega",
+        "Name": "Mega Alakazam",
         "Ability": [
             "Trace"
         ],
@@ -65636,7 +65636,7 @@ var pokemon = {
         ]
     },
     "10038": {
-        "Name": "Gengar-mega",
+        "Name": "Mega Gengar",
         "Ability": [
             "Shadow-tag"
         ],
@@ -65719,7 +65719,7 @@ var pokemon = {
         ]
     },
     "10039": {
-        "Name": "Kangaskhan-mega",
+        "Name": "Mega Kangaskhan",
         "Ability": [
             "Parental-bond"
         ],
@@ -65820,7 +65820,7 @@ var pokemon = {
         ]
     },
     "10040": {
-        "Name": "Pinsir-mega",
+        "Name": "Mega Pinsir",
         "Ability": [
             "Aerilate"
         ],
@@ -65903,7 +65903,7 @@ var pokemon = {
         ]
     },
     "10041": {
-        "Name": "Gyarados-mega",
+        "Name": "Mega Gyarados",
         "Ability": [
             "Mold-breaker"
         ],
@@ -65985,7 +65985,7 @@ var pokemon = {
         ]
     },
     "10042": {
-        "Name": "Aerodactyl-mega",
+        "Name": "Mega Aerodactyl",
         "Ability": [
             "Tough-claws"
         ],
@@ -66068,7 +66068,7 @@ var pokemon = {
         ]
     },
     "10043": {
-        "Name": "Mewtwo-mega-x",
+        "Name": "Mega Mewtwo X",
         "Ability": [
             "Steadfast"
         ],
@@ -66168,7 +66168,7 @@ var pokemon = {
         ]
     },
     "10044": {
-        "Name": "Mewtwo-mega-y",
+        "Name": "Mega Mewtwo Y",
         "Ability": [
             "Insomnia"
         ],
@@ -66267,7 +66267,7 @@ var pokemon = {
         ]
     },
     "10045": {
-        "Name": "Ampharos-mega",
+        "Name": "Mega Ampharos",
         "Ability": [
             "Mold-breaker"
         ],
@@ -66343,7 +66343,7 @@ var pokemon = {
         ]
     },
     "10046": {
-        "Name": "Scizor-mega",
+        "Name": "Mega Scizor",
         "Ability": [
             "Technician"
         ],
@@ -66419,7 +66419,7 @@ var pokemon = {
         ]
     },
     "10047": {
-        "Name": "Heracross-mega",
+        "Name": "Mega Heracross",
         "Ability": [
             "Skill-link"
         ],
@@ -66507,7 +66507,7 @@ var pokemon = {
         ]
     },
     "10048": {
-        "Name": "Houndoom-mega",
+        "Name": "Mega Houndoom",
         "Ability": [
             "Solar-power"
         ],
@@ -66582,7 +66582,7 @@ var pokemon = {
         ]
     },
     "10049": {
-        "Name": "Tyranitar-mega",
+        "Name": "Mega Tyranitar",
         "Ability": [
             "Sand-stream"
         ],
@@ -66681,7 +66681,7 @@ var pokemon = {
         ]
     },
     "10050": {
-        "Name": "Blaziken-mega",
+        "Name": "Mega Blaziken",
         "Ability": [
             "Speed-boost"
         ],
@@ -66774,7 +66774,7 @@ var pokemon = {
         ]
     },
     "10051": {
-        "Name": "Gardevoir-mega",
+        "Name": "Mega Gardevoir",
         "Ability": [
             "Pixilate"
         ],
@@ -66847,7 +66847,7 @@ var pokemon = {
         ]
     },
     "10052": {
-        "Name": "Mawile-mega",
+        "Name": "Mega Mawile",
         "Ability": [
             "Huge-power"
         ],
@@ -66939,7 +66939,7 @@ var pokemon = {
         ]
     },
     "10053": {
-        "Name": "Aggron-mega",
+        "Name": "Mega Aggron",
         "Ability": [
             "Filter"
         ],
@@ -67038,7 +67038,7 @@ var pokemon = {
         ]
     },
     "10054": {
-        "Name": "Medicham-mega",
+        "Name": "Mega Medicham",
         "Ability": [
             "Pure-power"
         ],
@@ -67113,7 +67113,7 @@ var pokemon = {
         ]
     },
     "10055": {
-        "Name": "Manectric-mega",
+        "Name": "Mega Manectric",
         "Ability": [
             "Intimidate"
         ],
@@ -67179,7 +67179,7 @@ var pokemon = {
         ]
     },
     "10056": {
-        "Name": "Banette-mega",
+        "Name": "Mega Banette",
         "Ability": [
             "Prankster"
         ],
@@ -67247,7 +67247,7 @@ var pokemon = {
         ]
     },
     "10057": {
-        "Name": "Absol-mega",
+        "Name": "Mega Absol",
         "Ability": [
             "Magic-bounce"
         ],
@@ -67346,7 +67346,7 @@ var pokemon = {
         ]
     },
     "10058": {
-        "Name": "Garchomp-mega",
+        "Name": "Mega Garchomp",
         "Ability": [
             "Sand-force"
         ],
@@ -67429,7 +67429,7 @@ var pokemon = {
         ]
     },
     "10059": {
-        "Name": "Lucario-mega",
+        "Name": "Mega Lucario",
         "Ability": [
             "Adaptability"
         ],
@@ -67513,7 +67513,7 @@ var pokemon = {
         ]
     },
     "10060": {
-        "Name": "Abomasnow-mega",
+        "Name": "Mega Abomasnow",
         "Ability": [
             "Snow-warning"
         ],
@@ -67650,7 +67650,7 @@ var pokemon = {
         ]
     },
     "10062": {
-        "Name": "Latias-mega",
+        "Name": "Mega Latias",
         "Ability": [
             "Levitate"
         ],
@@ -67731,7 +67731,7 @@ var pokemon = {
         ]
     },
     "10063": {
-        "Name": "Latios-mega",
+        "Name": "Mega Latios",
         "Ability": [
             "Levitate"
         ],
@@ -67811,7 +67811,7 @@ var pokemon = {
         ]
     },
     "10064": {
-        "Name": "Swampert-mega",
+        "Name": "Mega Swampert",
         "Ability": [
             "Swift-swim"
         ],
@@ -67895,7 +67895,7 @@ var pokemon = {
         ]
     },
     "10065": {
-        "Name": "Sceptile-mega",
+        "Name": "Mega Sceptile",
         "Ability": [
             "Lightning-rod"
         ],
@@ -67985,7 +67985,7 @@ var pokemon = {
         ]
     },
     "10066": {
-        "Name": "Sableye-mega",
+        "Name": "Mega Sableye",
         "Ability": [
             "Magic-bounce"
         ],
@@ -68070,7 +68070,7 @@ var pokemon = {
         ]
     },
     "10067": {
-        "Name": "Altaria-mega",
+        "Name": "Mega Altaria",
         "Ability": [
             "Pixilate"
         ],
@@ -68150,7 +68150,7 @@ var pokemon = {
         ]
     },
     "10068": {
-        "Name": "Gallade-mega",
+        "Name": "Mega Gallade",
         "Ability": [
             "Inner-focus"
         ],
@@ -68245,7 +68245,7 @@ var pokemon = {
         ]
     },
     "10069": {
-        "Name": "Audino-mega",
+        "Name": "Mega Audino",
         "Ability": [
             "Healer"
         ],
@@ -68331,7 +68331,7 @@ var pokemon = {
         ]
     },
     "10070": {
-        "Name": "Sharpedo-mega",
+        "Name": "Mega Sharpedo",
         "Ability": [
             "Strong-jaw"
         ],
@@ -68409,7 +68409,7 @@ var pokemon = {
         ]
     },
     "10071": {
-        "Name": "Slowbro-mega",
+        "Name": "Mega Slowbro",
         "Ability": [
             "Shell-armor"
         ],
@@ -68490,7 +68490,7 @@ var pokemon = {
         ]
     },
     "10072": {
-        "Name": "Steelix-mega",
+        "Name": "Mega Steelix",
         "Ability": [
             "Sand-force"
         ],
@@ -68568,7 +68568,7 @@ var pokemon = {
         ]
     },
     "10073": {
-        "Name": "Pidgeot-mega",
+        "Name": "Mega Pidgeot",
         "Ability": [
             "No-guard"
         ],
@@ -68629,7 +68629,7 @@ var pokemon = {
         ]
     },
     "10074": {
-        "Name": "Glalie-mega",
+        "Name": "Mega Glalie",
         "Ability": [
             "Refrigerate"
         ],
@@ -68695,7 +68695,7 @@ var pokemon = {
         ]
     },
     "10075": {
-        "Name": "Diancie-mega",
+        "Name": "Mega Diancie",
         "Ability": [
             "Magic-bounce"
         ],
@@ -68760,7 +68760,7 @@ var pokemon = {
         ]
     },
     "10076": {
-        "Name": "Metagross-mega",
+        "Name": "Mega Metagross",
         "Ability": [
             "Tough-claws"
         ],
@@ -68996,7 +68996,7 @@ var pokemon = {
         ]
     },
     "10079": {
-        "Name": "Rayquaza-mega",
+        "Name": "Mega Rayquaza",
         "Ability": [
             "Delta-stream"
         ],
@@ -69602,7 +69602,7 @@ var pokemon = {
         ]
     },
     "10087": {
-        "Name": "Camerupt-mega",
+        "Name": "Mega Camerupt",
         "Ability": [
             "Sheer-force"
         ],
@@ -69675,7 +69675,7 @@ var pokemon = {
         ]
     },
     "10088": {
-        "Name": "Lopunny-mega",
+        "Name": "Mega Lopunny",
         "Ability": [
             "Scrappy"
         ],
@@ -69757,7 +69757,7 @@ var pokemon = {
         ]
     },
     "10089": {
-        "Name": "Salamence-mega",
+        "Name": "Mega Salamence",
         "Ability": [
             "Aerilate"
         ],
@@ -69839,7 +69839,7 @@ var pokemon = {
         ]
     },
     "10090": {
-        "Name": "Beedrill-mega",
+        "Name": "Mega Beedrill",
         "Ability": [
             "Adaptability"
         ],
