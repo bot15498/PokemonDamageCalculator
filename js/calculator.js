@@ -239,7 +239,7 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
  * @param {*} atkPokemonInfo a JSON object of the attacking pokemon's EV/IV/Nature data
  * @param {*} defPokemonInfo a JSON object of the defending pokemon's EV/IV/Nature data
  * @param {*} fieldInfo a JSON object of the field
- * @returns {string} The percent damage a move is predicted to do.
+ * @returns {number} The damage value of the attack
  */
 function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     var attackInfo = moves[attackMove];
@@ -297,8 +297,26 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
 
     //get damage before randomness
     var damageNoRandom = baseDamage * modifier
-    return damageNoRandom;
+    return Math.floor(damageNoRandom);
 }
+
+/**
+ * Calculates the damage ratio percentage an attack does
+ * @param {number} damage: the damage calculation
+ * @param {Int32Array} the integer value for HP
+ * @return {string} Lower and Upper bound of damage
+ */
+function damageRatioPercentage(damage, hp) {
+    var ratioUpper = damage/hp;
+    var percentageUpper = ratioUpper * 100;
+
+    var lowerBound = damage * 0.85;
+    var ratioLower = lowerBound/hp;
+    var percentageLower = ratioLower * 100;
+
+    return "Damage Percentage " + "(" + percentageLower + "% - " + percentageUpper + "%)";
+}
+
 
 var pokemon1 = {
     "ID" : "1",
