@@ -2,41 +2,47 @@
 //Check moves.js for moves json
 //Check typechart.js for type chart json
 var typeDict = {
-    "1" : "Normal",
-    "2" : "Fighting",
-    "3" : "Flying",
-    "4" : "Poison",
-    "5" : "Ground",
-    "6" : "Rock",
-    "7" : "Bug",
-    "8" : "Ghost",
-    "9" : "Steel",
-    "10" : "Fire",
-    "11" : "Water",
-    "12" : "Grass",
-    "13" : "Electric",
-    "14" : "Psychic",
-    "15" : "Ice",
-    "16" : "Dragon",
-    "17" : "Dark",
-    "18" : "Fairy"
+    1 : "Normal",
+    2 : "Fighting",
+    3 : "Flying",
+    4 : "Poison",
+    5 : "Ground",
+    6 : "Rock",
+    7 : "Bug",
+    8 : "Ghost",
+    9 : "Steel",
+    10 : "Fire",
+    11 : "Water",
+    12 : "Grass",
+    13 : "Electric",
+    14 : "Psychic",
+    15 : "Ice",
+    16 : "Dragon",
+    17 : "Dark",
+    18 : "Fairy"
 }
 
 /**
  * Calculates the A/D ratio of a damage calculation
  * @param {*} attackInfo The JSON object of an attack
- * @param {*} atkPokemonRawInfo The JSON object of the attacking pokemon
- * @param {*} defPokemonRawInfo The JSON object of the defending pokemon
+ * @param {*} atkPokemonInfo The JSON object of the attacking pokemon
+ * @param {*} defPokemonInfo The JSON object of the defending pokemon
  * @returns {*} The ratio of A/D
  */
-function calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo) {
-    var ratio = 0;
+function calculateDefenseRatio(attackInfo,atkPokemonInfo,defPokemonInfo) {
+    var ratio = 1;
+    var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
+    var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
+    var atkPokemonAtk = calculateAttackStat(atkPokemonRawInfo,atkPokemonInfo);
+    var atkPokemonSpa = calculateSpecialAttackStat(atkPokemonRawInfo,atkPokemonInfo);
+    var defPokemonDef = calculateDefenseStat(defPokemonRawInfo,defPokemonInfo);
+    var defPokemonSpd = calculateSpecialDefenseStat(defPokemonRawInfo,defPokemonInfo);
     if(attackInfo["Name"] == "Secret Sword" || attackInfo["Name"] == "Psyshock" || attackInfo["Name"] == "Psystrike") {
-        ratio = atkPokemonRawInfo["BaseStats"][4] / defPokemonRawInfo["BaseStats"][2];
+        ratio = atkPokemonSpa/defPokemonDef;
     } else if(attackInfo["Category"] == "Physical") {
-        ratio = atkPokemonRawInfo["BaseStats"][1] / defPokemonRawInfo["BaseStats"][2];
+        ratio = atkPokemonAtk/defPokemonDef;
     } else if(attackInfo["Category"] == "Special") {
-        ratio = atkPokemonRawInfo["BaseStats"][3] / defPokemonRawInfo["BaseStats"][4];
+        ratio = atkPokemonSpa/defPokemonSpd;
     }
     return ratio;
 }
@@ -49,10 +55,11 @@ function calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo) {
  */
 function typeCheck(attackInfo,defPokemonRawInfo) {
     var modifier = 1;
-    for(typeID in defPokemonRawInfo["Type"]) {
+    for(var typeID in defPokemonRawInfo["Type"]) {
+        actualTypeID = defPokemonRawInfo["Type"][typeID];
         var attackType = attackInfo["Type"];
-        var defendType = typeDict[typeID];
-        modifier = modifer * typechart[attackType][defendType];
+        var defendType = typeDict[actualTypeID];
+        modifier = modifier * typechart[attackType][defendType];
     }
     return modifier;
 }
@@ -219,7 +226,7 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
             natureModifier = 1;
             break;
     }
-    var statBase = pokemonInfo["BaseStats"][statType]
+    var statBase = pokemonRawInfo["BaseStats"][statType]
     var ivBase = pokemonInfo["iv"]["hp"];
     var evBase = pokemonInfo["ev"]["hp"];
     var level = pokemonInfo["Level"];
@@ -240,8 +247,8 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
     //calculate base damage
     var power = attackInfo["Power"]
-    var levelCalc = 2 * attkPokemonInfo["Level"] / 5 + 2
-    var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo);
+    var levelCalc = 2 * atkPokemonInfo["Level"] / 5 + 2
+    var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonInfo,defPokemonInfo);
     var baseDamage = levelCalc * power * defenseRatio / 50 + 2
     //calculate modifier
     var modifier = 1;
@@ -270,17 +277,18 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
         var critModifier = fieldInfo["isCritical"] ? 1.5 : 1;
         modifier = modifier * critModifier;
     }
-    for(typeID in atkPokemonRawInfo["Type"]) { //STAB
-        if(typeDict[typeID] == attackInfo["Type"] && atkPokemonRawInfo["Ability"] == "Adaptability") {
+    for(var typeID in atkPokemonRawInfo["Type"]) { //STAB
+        actualTypeID = atkPokemonRawInfo["Type"][typeID];
+        if(typeDict[actualTypeID] == attackInfo["Type"] && atkPokemonRawInfo["Ability"] == "Adaptability") {
             modifier = modifier * 2;
-        } else if(typeDict[typeID] == attackInfo["Type"]) {
+        } else if(typeDict[actualTypeID] == attackInfo["Type"]) {
             modifier = modifier * 1.5;
         }
     }
-    modifer = modifer * typeCheck(attackInfo,defPokemonRawInfo); //type checking
+    modifier = modifier * typeCheck(attackInfo,defPokemonRawInfo); //type checking
     if(atkPokemonInfo.hasOwnProperty("isBurned")) { //burn
         var burnModifier = 1;
-        if(atkPokemonInfo["isBurned"] && atkPokemonRawInfo["Ability"] != "Guts" && attackInfo["Type"] == "Physical") {
+        if(atkPokemonInfo["isBurned"] && atkPokemonInfo["Ability"] != "Guts" && attackInfo["Type"] == "Physical") {
             burnModifier = 0.5;
         }
         modifier = modifier * burnModifier;
@@ -289,4 +297,49 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
 
     //get damage before randomness
     var damageNoRandom = baseDamage * modifier
+    return damageNoRandom;
+}
+
+var pokemon1 = {
+    "ID" : "1",
+    "Level" : 100,
+    "Ability" : "Overgrow",
+    "iv" : {
+        "hp" : 31,
+        "atk" : 31,
+        "def" : 31,
+        "spa" : 31,
+        "spd" : 31,
+        "spe" : 31
+    },
+    "ev" : {
+        "hp" : 0,
+        "atk" : 252,
+        "def" : 0,
+        "spa" : 0,
+        "spd" : 4,
+        "spe" : 252
+    }
+}
+
+var pokemon2 = {
+    "ID" : "1",
+    "Level" : 100,
+    "Ability" : "Overgrow",
+    "iv" : {
+        "hp" : 31,
+        "atk" : 31,
+        "def" : 31,
+        "spa" : 31,
+        "spd" : 31,
+        "spe" : 31
+    },
+    "ev" : {
+        "hp" : 0,
+        "atk" : 0,
+        "def" : 252,
+        "spa" : 0,
+        "spd" : 4,
+        "spe" : 252
+    }
 }
