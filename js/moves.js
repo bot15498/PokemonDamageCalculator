@@ -1478,7 +1478,7 @@ var moves = {
         "Name" : "Poison Jab",
         "Category" : "Physical",
         "Power" : 80,
-        "Type" : "Normal"
+        "Type" : "Poison"
     },
     "399" : {
         "Name" : "Dark Pulse",

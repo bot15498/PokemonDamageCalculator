@@ -192,6 +192,8 @@ function moveAutocomplete(pokemonNum,moveNum) {
     listContainer.className = "autocomplete-container";
     listContainer.id = inputField.parentNode.id + "-autocomplete-container";
     inputField.parentNode.appendChild(listContainer);
+    clearItems(inputField);
+    inputField.value = "";
     document.getElementById("pokemon" + pokemonNum + "-move" + moveNum + "-input").addEventListener("input",function() {
         clearItems(this);
         var currPokemonNum = listContainer.getAttribute("pokemonNum");
@@ -297,9 +299,17 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                             pokemonAbility.innerHTML += "<option value=" + abilityName + ">" + abilityName + "</option>";
                         }
                         //update moves
+                        // for(var i=1;i<=4;i++) {
+                        //     if(currInputField == 1) {
+                        //         moveAutocomplete(currInputField,i);
+                        //     }
+                        // }
+                        //clear move autocomplete
                         for(var i=1;i<=4;i++) {
                             if(currInputField == 1) {
-                                moveAutocomplete(currInputField,i);
+                                var moveInputField = document.getElementById("pokemon" + currInputField + "-move" + i + "-input");
+                                clearItems(moveInputField);
+                                moveInputField.value = "";
                             }
                         }
                         //clear autocomplete
