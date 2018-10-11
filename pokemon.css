@@ -9,13 +9,12 @@
 }
 
 input {
-    width: 40px;
+    width: 50px;
 }
 
 html, body {
     margin: 5px;
     font-size: 12pt;
-    font-family: myFirstFont;
 }
 
 body {
@@ -32,6 +31,7 @@ div {
 }
 
 h1 {
+    font-family: myFirstFont;
     font-size: 16pt;
 }
 
@@ -59,6 +59,8 @@ h1 {
     right: 0;
     overflow-y: scroll;
     max-height: 300px;
+    font-family: Arial;
+    font-weight: bold;
 }
 
 .autocomplete {
@@ -109,8 +111,9 @@ h2 {
 
 .move-set input[type=text] {
     text-align: center;
+    font-weight: bold;
     font-family: Arial;
-    font-size: 12pt;
+    font-size: 9pt;
     display: inline-block;
     height: 40px;
     border: 1px solid grey;

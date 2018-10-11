@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="pokemon.css">
     <script src="./js/pokemonlist.js"></script>
     <script src="./js/moves.js"></script>
+    <script src="./js/calculator.js"></script>
+    <script src="./js/typechart.js"></script>
 </head>
 
 <body>
@@ -17,17 +19,17 @@
 <div class="wrapper">
 
     <div class="container">
-        <h1 align="center">Defensive Pokemon</h1>
+        <h1 align="center" class="pokemon-font">Defensive Pokemon</h1>
         <div class="row">
             <div class="col">
-                <label for="pokemon0-selector">Pokemon</label>
+                <label for="pokemon0-selector">Pokemon:</label>
                 <div id="pokemon0-selector" class="autocomplete">
                     <div style="position: relative">
                         <input type="text" class="autocomplete-field autocomplete-pokemon-field"/>
                     </div>
                 </div>
-                <label for="levelL0">Level</label>
-                <input class="level calc-trigger" id="levelL0" value="100" />
+                <label for="level-0">Level:</label>
+                <input class="level calc-trigger" id="level-0" value="100" />
             </div>
         </div>
         <div class="row">
@@ -53,12 +55,12 @@
                                     <input id="baseHP-0" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivHP-0" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evHP-0" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">341</span>
+                                <td><span id="totalHP-0" class="total">341</span>
                                 </td>
                                 <td></td>
                             </tr>
@@ -70,15 +72,15 @@
                                     <input id="baseAtk-0" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivAtk-0" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evAtk-0" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalAtk-0" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id = "boostAtk-0" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -103,15 +105,15 @@
                                     <input id="baseDef-0" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivDef-0" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evDef-0" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalDef-0" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id="boostDef-0" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -136,15 +138,15 @@
                                     <input id="baseSpa-0" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivSpa-0" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evSpa-0"class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalSpa-0" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id="boostSpa-0" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -169,15 +171,15 @@
                                     <input id="baseSpd-0" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivSpd-0" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evSpd-0" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalSpd-0" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id="boostSpd-0" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -202,15 +204,15 @@
                                     <input id="baseSpe-0" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivSpe-0" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evSpe-0" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalSpe-0" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id="boostSpe-0" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -331,14 +333,14 @@
         <h1 align="center">Offensive Pokemon</h1>
         <div class="row">
             <div class="col">
-                <label for="pokemon1-selector">Pokemon</label>
+                <label for="pokemon1-selector">Pokemon:</label>
                 <div id="pokemon1-selector" class="autocomplete">
                     <div style="position: relative">
                         <input type="text" class="autocomplete-field autocomplete-pokemon-field"/>
                     </div>
                 </div>
-                <label for="levelL1">Level</label>
-                <input class="level calc-trigger" id="levelL1" value="100" />
+                <label for="level-1">Level:</label>
+                <input class="level calc-trigger" id="level-1" value="100" />
             </div>
         </div>
         <div class="row">
@@ -364,12 +366,12 @@
                                     <input id="baseHP-1" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivHP-1" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evHP-1" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">341</span>
+                                <td><span id="totalHP-1" class="total">341</span>
                                 </td>
                                 <td></td>
                             </tr>
@@ -381,15 +383,15 @@
                                     <input id="baseAtk-1" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivAtk-1" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evAtk-1" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalAtk-1" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id="boostAtk-1" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -414,15 +416,15 @@
                                     <input id="baseDef-1" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivDef-1" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evDef-1" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalDef-1" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id="boostDef-1" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -447,15 +449,15 @@
                                     <input id="baseSpa-1" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivSpa-1" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evSpa-1" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalSpa-1" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id="boostSpa-1" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -480,15 +482,15 @@
                                     <input id= "baseSpd-1" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id= "ivSpd-1" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id= "evSpd-1" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalSpd-1" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id="boostSpd-1" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -513,15 +515,15 @@
                                     <input id="baseSpe-1" class="base calc-trigger" value="100" readonly/>
                                 </td>
                                 <td>
-                                    <input class="ivs calc-trigger" value="31" />
+                                    <input id="ivSpe-1" class="ivs calc-trigger" value="31" />
                                 </td>
                                 <td>
-                                    <input class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
+                                    <input id="evSpe-1" class="evs calc-trigger" type="number" min="0" max="252" step="4" value="0" />
                                 </td>
-                                <td><span class="total">236</span>
+                                <td><span id="totalSpe-1" class="total">236</span>
                                 </td>
                                 <td>
-                                    <select class="boost calc-trigger">
+                                    <select id="boostSpe-1" class="boost calc-trigger">
                                         <option value="6">+6</option>
                                         <option value="5">+5</option>
                                         <option value="4">+4</option>
@@ -607,7 +609,7 @@
         <div hidden id="zMoveInstruction">Make this attack a Z-move?</div>
         <div class="row">
 
-            <div class="col">
+            <div class="col no-padding">
                 <div class="move-set">
 
                     <div id="pokemon1-move1-selector" class="autocomplete">
@@ -626,7 +628,7 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col no-padding">
                 <div class="move-set">
 
                     <div id="pokemon1-move2-selector" class="autocomplete">
@@ -644,7 +646,7 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col no-padding">
                 <div class="move-set">
 
                     <div id="pokemon1-move3-selector" class="autocomplete">
@@ -663,7 +665,7 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col no-padding">
                 <div class="move-set">
 
                     <div id="pokemon1-move4-selector" class="autocomplete">

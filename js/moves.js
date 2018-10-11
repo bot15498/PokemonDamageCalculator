@@ -177,7 +177,7 @@ var moves = {
         "Type" : "Normal"
     },
     "34" : {
-        "Name" : "Boy Slam",
+        "Name" : "Body Slam",
         "Category" : "Physical",
         "Power" : 85,
         "Type" : "Normal"
@@ -1478,7 +1478,7 @@ var moves = {
         "Name" : "Poison Jab",
         "Category" : "Physical",
         "Power" : 80,
-        "Type" : "Normal"
+        "Type" : "Poison"
     },
     "399" : {
         "Name" : "Dark Pulse",

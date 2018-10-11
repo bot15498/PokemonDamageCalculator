@@ -37,12 +37,12 @@ var statChangeDict = {
     "-6" : 2/8
 }
 var statDict = {
-    1 : "hp",
-    2 : "atk",
-    3 : "def",
-    4 : "spa",
-    5 : "spd",
-    6 : "spe"
+    1 : "HP",
+    2 : "Atk",
+    3 : "Def",
+    4 : "Spa",
+    5 : "Spd",
+    6 : "Spe"
 }
 
 /**
@@ -56,10 +56,10 @@ function calculateDefenseRatio(attackInfo,atkPokemonInfo,defPokemonInfo) {
     var ratio = 1;
     var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
     var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
-    var atkPokemonAtk = calculateAttackStat(atkPokemonRawInfo,atkPokemonInfo) * statChangeDict[atkPokemonInfo["atk"]["boost"]];
-    var atkPokemonSpa = calculateSpecialAttackStat(atkPokemonRawInfo,atkPokemonInfo) * statChangeDict[atkPokemonInfo["spa"]["boost"]];
-    var defPokemonDef = calculateDefenseStat(defPokemonRawInfo,defPokemonInfo) * statChangeDict[defPokemonDef["def"]["boost"]];
-    var defPokemonSpd = calculateSpecialDefenseStat(defPokemonRawInfo,defPokemonInfo) * statChangeDict[defPokemonDef["spd"]["boost"]];
+    var atkPokemonAtk = calculateAttackStat(atkPokemonRawInfo,atkPokemonInfo) * statChangeDict[atkPokemonInfo["Atk"]["boost"]];
+    var atkPokemonSpa = calculateSpecialAttackStat(atkPokemonRawInfo,atkPokemonInfo) * statChangeDict[atkPokemonInfo["Spa"]["boost"]];
+    var defPokemonDef = calculateDefenseStat(defPokemonRawInfo,defPokemonInfo) * statChangeDict[defPokemonInfo["Def"]["boost"]];
+    var defPokemonSpd = calculateSpecialDefenseStat(defPokemonRawInfo,defPokemonInfo) * statChangeDict[defPokemonInfo["Spd"]["boost"]];
     if(attackInfo["Name"] == "Secret Sword" || attackInfo["Name"] == "Psyshock" || attackInfo["Name"] == "Psystrike") {
         ratio = atkPokemonSpa/defPokemonDef;
     } else if(attackInfo["Category"] == "Physical") {
@@ -97,10 +97,10 @@ function calculateHPStat(pokemonRawInfo,pokemonInfo) {
     if(pokemonRawInfo["Name"] == "Shedinja") { //the shedinja case
         return 1;
     }
-    var hpBase = pokemonRawInfo["BaseStats"][0];
-    var ivBase = pokemonInfo["iv"]["hp"];
-    var evBase = pokemonInfo["ev"]["hp"];
-    var level = pokemonInfo["Level"];
+    var hpBase = parseInt(pokemonRawInfo["BaseStats"][0]);
+    var ivBase = parseInt(pokemonInfo["HP"]["IV"]);
+    var evBase = parseInt(pokemonInfo["HP"]["EV"]);
+    var level = parseInt(pokemonInfo["Level"]);
     //return (2 * hpBase + ivBase + Math.floor(evBase / 4)) * (level / 100) + level + 10;
     return ((((ivBase + 2 * hpBase + (evBase/4)+100) * level)/100) + 10);
 }
@@ -250,10 +250,10 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
             natureModifier = 1;
             break;
     }
-    var statBase = pokemonRawInfo["BaseStats"][statType]
-    var ivBase = pokemonInfo[statDict[statType]]["iv"];
-    var evBase = pokemonInfo[statDict[statType]]["ev"];
-    var level = pokemonInfo["Level"];
+    var statBase = parseInt(pokemonRawInfo["BaseStats"][statType]);
+    var ivBase = parseInt(pokemonInfo[statDict[statType]]["IV"]);
+    var evBase = parseInt(pokemonInfo[statDict[statType]]["EV"]);
+    var level = parseInt(pokemonInfo["Level"]);
     return Math.floor((Math.floor((2 * statBase + ivBase + Math.floor(evBase)) * level / 100) + 5) * natureModifier)
 }
 
@@ -270,10 +270,11 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
     var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
     //calculate base damage
-    var power = attackInfo["Power"]
-    var levelCalc = 2 * atkPokemonInfo["Level"] / 5 + 2
+    var power = parseInt(attackInfo["Power"]);
+    var levelCalc = 2 * parseFloat(atkPokemonInfo["Level"]) / 5 + 2;
     var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonInfo,defPokemonInfo);
     var baseDamage = levelCalc * power * defenseRatio / 50 + 2
+    console.log(attackMove,attackInfo);
     //calculate modifier
     var modifier = 1;
     if(fieldInfo.hasOwnProperty("isSingles")) { //target
