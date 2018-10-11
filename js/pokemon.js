@@ -144,15 +144,15 @@ function doCalculation() {
         atkPokemonInfo["Spe"]["boost"] = document.getElementById("boostAtk-1").value;
 
         //get ability
-        atkPokemonInfo["Ability"] = document.getElementById("ability-0").value;
-        defPokemonInfo["Ability"] = document.getElementById("ability-1").value;
+        atkPokemonInfo["Ability"] = document.getElementById("ability-1").value;
+        defPokemonInfo["Ability"] = document.getElementById("ability-0").value;
         //get nature
-        atkPokemonInfo["Nature"] = document.getElementById("nature-0").value;
-        defPokemonInfo["Nature"] = document.getElementById("nature-1").value;
+        atkPokemonInfo["Nature"] = document.getElementById("nature-1").value;
+        defPokemonInfo["Nature"] = document.getElementById("nature-0").value;
         //get burn
         atkPokemonInfo["isBurned"] = document.getElementById("statusL1").value == "Burned";
 
-        //get environment?
+        //get environment
         var environment = {};
 
         //update totals
@@ -169,7 +169,6 @@ function doCalculation() {
         document.getElementById("totalSpa-0").innerText = calculateSpecialAttackStat(defPokemonRawInfo,defPokemonInfo);
         document.getElementById("totalSpd-0").innerText = calculateSpecialDefenseStat(defPokemonRawInfo,defPokemonInfo);
         document.getElementById("totalSpe-0").innerText = calculateSpeedStat(defPokemonRawInfo,defPokemonInfo);
-
 
         //get move
         for(var i=1;i<=4;i++) {
@@ -358,6 +357,9 @@ for(var i=0;i<calcComponents.length;i++) {
         doCalculation();
     })
 }
+
+
+
 //default pokemon
 var atkPokemonInputField = document.getElementById("pokemonInputField-1");
 var defPokemonInputField = document.getElementById("pokemonInputField-0");
@@ -398,4 +400,5 @@ for(var i=1;i<=4;i++) {
     clearItems(moveInputField);
     moveInputField.value = "";
     document.getElementById("calc" + i).innerText = "0% - 0%";
+    moveInputField.removeAttribute("move-id");
 }

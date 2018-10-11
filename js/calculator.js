@@ -112,7 +112,7 @@ function calculateHPStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for Attack
  */
 function calculateAttackStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,1);
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,2);
 }
 
 /**
@@ -122,7 +122,7 @@ function calculateAttackStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for Defense
  */
 function calculateDefenseStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,2);
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,3);
 }
 
 /**
@@ -132,7 +132,7 @@ function calculateDefenseStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for Special Attack
  */
 function calculateSpecialAttackStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,3);
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,4);
 }
 
 /**
@@ -142,7 +142,7 @@ function calculateSpecialAttackStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for SpecialDefense
  */
 function calculateSpecialDefenseStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,4);
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,5);
 }
 
 /**
@@ -152,7 +152,7 @@ function calculateSpecialDefenseStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for Speed
  */
 function calculateSpeedStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,5);
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,6);
 }
 
 /**
@@ -274,7 +274,6 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     var levelCalc = 2 * parseFloat(atkPokemonInfo["Level"]) / 5 + 2;
     var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonInfo,defPokemonInfo);
     var baseDamage = levelCalc * power * defenseRatio / 50 + 2
-    console.log(attackMove,attackInfo);
     //calculate modifier
     var modifier = 1;
     if(fieldInfo.hasOwnProperty("isSingles")) { //target
@@ -303,7 +302,7 @@ function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
         modifier = modifier * critModifier;
     }
     for(var typeID in atkPokemonRawInfo["Type"]) { //STAB
-        actualTypeID = atkPokemonRawInfo["Type"][typeID];
+        var actualTypeID = atkPokemonRawInfo["Type"][typeID];
         if(typeDict[actualTypeID] == attackInfo["Type"] && atkPokemonInfo["Ability"] == "Adaptability") {
             modifier = modifier * 2;
         } else if(typeDict[actualTypeID] == attackInfo["Type"]) {
