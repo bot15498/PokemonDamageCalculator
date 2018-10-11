@@ -67,12 +67,6 @@ var moves = {
         "Power" : 55,
         "Type" : "Normal"
     },
-    "12" : {
-        "Name" : "Guilotine",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Normal"
-    },
     "13" : {
         "Name" : "Razor Wind",
         "Category" : "Special",
@@ -230,13 +224,6 @@ var moves = {
         "Power" : 60,
         "Type" : "Dark"
     },
-    "49" : {
-        "Name" : "Sonic Boom",
-        "Category" : "Special",
-        "Power" : 0,
-        "Type" : "Normal",
-        "SpecialCase" : "1"
-    },
     "51" : {
         "Name" : "Acid",
         "Category" : "Special",
@@ -327,20 +314,6 @@ var moves = {
         "Power" : 80,
         "Type" : "Fighting"
     },
-    "67" : {
-        "Name" : "Low Kick",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Fighting",
-        "SpecialCase" : "1"
-    },
-    "69" : {
-        "Name" : "Seismic Toss",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Fighting",
-        "SpecialCase" : "1"
-    },
     "70" : {
         "Name" : "Strength",
         "Category" : "Physical",
@@ -376,13 +349,6 @@ var moves = {
         "Category" : "Special",
         "Power" : 120,
         "Type" : "Grass"
-    },
-    "82" : {
-        "Name" : "Dragon Rage",
-        "Category" : "Special",
-        "Power" : 0,
-        "Type" : "Dragon",
-        "SpecialCase" : "1"
     },
     "83" : {
         "Name" : "Fire Spin",
@@ -449,13 +415,6 @@ var moves = {
         "Category" : "Physical",
         "Power" : 20,
         "Type" : "Normal"
-    },
-    "101" : {
-        "Name" : "Night Shade",
-        "Category" : "Special",
-        "Power" : 0,
-        "Type" : "Ghost",
-        "SpecialCase" : "1"
     },
     "120" : {
         "Name" : "Self-Destruct",
@@ -578,13 +537,6 @@ var moves = {
         "Power" : 70,
         "Type" : "Normal"
     },
-    "149" : {
-        "Name" : "Psywave",
-        "Category" : "Special",
-        "Power" : 0,
-        "Type" : "Psychic",
-        "SpecialCase" : "1"
-    },
     "152" : {
         "Name" : "Crabhammer",
         "Category" : "Physical",
@@ -665,13 +617,6 @@ var moves = {
         "Category" : "Special",
         "Power" : 50,
         "Type" : "Normal"
-    },
-    "175" : {
-        "Name" : "Flail",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Normal",
-        "SpecialCase" : "1"
     },
     "177" : {
         "Name" : "Aeroblast",
@@ -1367,25 +1312,11 @@ var moves = {
         "Power" : 100,
         "Type" : "Fighting"
     },
-    "360" : {
-        "Name" : "Gyro Ball",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Steel",
-        "SpecialCase": "1"
-    },
     "362" : {
         "Name" : "Brine",
         "Category" : "Special",
         "Power" : 65,
         "Type" : "Water",
-        "SpecialCase" : "1"
-    },
-    "363" : {
-        "Name" : "Natural Gift",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Normal",
         "SpecialCase" : "1"
     },
     "364" : {
@@ -1423,26 +1354,6 @@ var moves = {
         "Category" : "Physical",
         "Power" : 60,
         "Type" : "Dark"
-    },
-    "374" : {
-        "Name" : "Fling",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Dark",
-        "SpecialCase" : "1"
-    },
-    "376" : {
-        "Name" : "Wring Out",
-        "Category" : "Special",
-        "Power" : 0,
-        "Type" : "Normal"
-    },
-    "386" : {
-        "Name" : "Punishment",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Dark",
-        "SpecialCase" : "1"
     },
     "387" : {
         "Name" : "Last Resort",
@@ -1732,13 +1643,6 @@ var moves = {
         "Power" : 100,
         "Type" : "Rock"
     },
-    "447" : {
-        "Name" : "Grass Knot",
-        "Category" : "Special",
-        "Power" : 0,
-        "Type" : "Grass",
-        "SpecialCase" : "1"
-    },
     "448" : {
         "Name" : "Chatter",
         "Category" : "Special",
@@ -1807,13 +1711,6 @@ var moves = {
         "Power" : 100,
         "Type" : "Dragon"
     },
-    "462" : {
-        "Name" : "Crush Grip",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Normal",
-        "SpecialCase" : "1"
-    },
     "463" : {
         "Name" : "Magma Storm",
         "Category" : "Special",
@@ -1876,25 +1773,11 @@ var moves = {
         "Power" : 95,
         "Type" : "Poison"
     },
-    "484" : {
-        "Name" : "Heavy Slam",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Steel",
-        "SpecialCase" : "1"
-    },
     "485" : {
         "Name" : "Synchronoise",
         "Category" : "Special",
         "Power" : 120,
         "Type" : "Psychic"
-    },
-    "486" : {
-        "Name" : "Electro Ball",
-        "Category" : "Special",
-        "Power" : 0,
-        "Type" : "Electric",
-        "SpecialCase" : "1"
     },
     "488" : {
         "Name" : "Flame Charge",
@@ -2103,13 +1986,6 @@ var moves = {
         "Category" : "Physical",
         "Power" : 75,
         "Type" : "Water"
-    },
-    "535" : {
-        "Name" : "Heat Crash",
-        "Category" : "Physical",
-        "Power" : 0,
-        "Type" : "Fire",
-        "SpecialCase" : "1"
     },
     "536" : {
         "Name" : "Leaf Tornado",

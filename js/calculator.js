@@ -67,6 +67,9 @@ function calculateDefenseRatio(attackInfo,atkPokemonInfo,defPokemonInfo) {
     } else if(attackInfo["Category"] == "Special") {
         ratio = atkPokemonSpa/defPokemonSpd;
     }
+    if(atkPokemonInfo["Item"] == "Life-orb") {
+        ratio = ratio * 5324/4096;
+    }
     return ratio;
 }
 
@@ -102,7 +105,7 @@ function calculateHPStat(pokemonRawInfo,pokemonInfo) {
     var evBase = parseInt(pokemonInfo["HP"]["EV"]);
     var level = parseInt(pokemonInfo["Level"]);
     //return (2 * hpBase + ivBase + Math.floor(evBase / 4)) * (level / 100) + level + 10;
-    return ((((ivBase + 2 * hpBase + (evBase/4)+100) * level)/100) + 10);
+    return Math.floor((((ivBase + 2 * hpBase + (evBase/4)+100) * level)/100) + 10);
 }
 
 /**
@@ -112,7 +115,11 @@ function calculateHPStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for Attack
  */
 function calculateAttackStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,2);
+    var modifier = 1;
+    if(pokemonInfo["Item"] == "Choice-band"){
+        modifier = 1.5;
+    }
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,2) * modifier;
 }
 
 /**
@@ -132,7 +139,11 @@ function calculateDefenseStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for Special Attack
  */
 function calculateSpecialAttackStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,4);
+    var modifier = 1;
+    if(pokemonInfo["Item"] == "Choice-specs"){
+        modifier = 1.5;
+    }
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,4) * modifier;
 }
 
 /**
@@ -167,84 +178,84 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
     natureModifier = 1;
     switch(pokemonInfo["Nature"]) {
         case "Lonely":
-            if(statType == 1) { natureModifier = 1.1; }
-            if(statType == 2) { natureModifier = 0.9; }
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; }
             break; 
         case "Brave":
-            if(statType == 1) { natureModifier = 1.1; }
-            if(statType == 5) { natureModifier = 0.9; } 
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 6) { natureModifier = 0.9; } 
             break; 
         case "Adamant":
-            if(statType == 1) { natureModifier = 1.1; }
-            if(statType == 3) { natureModifier = 0.9; } 
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
             break; 
         case "Naughty":
-            if(statType == 1) { natureModifier = 1.1; }
-            if(statType == 4) { natureModifier = 0.9; } 
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
             break; 
         case "Bold":
-            if(statType == 2) { natureModifier = 1.1; }
-            if(statType == 1) { natureModifier = 0.9; } 
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
             break; 
         case "Relaxed":
-            if(statType == 2) { natureModifier = 1.1; }
-            if(statType == 5) { natureModifier = 0.9; } 
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 6) { natureModifier = 0.9; } 
             break; 
         case "Impish":
-            if(statType == 2) { natureModifier = 1.1; }
-            if(statType == 3) { natureModifier = 0.9; } 
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
             break; 
         case "Lax":
-            if(statType == 2) { natureModifier = 1.1; }
-            if(statType == 4) { natureModifier = 0.9; } 
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
             break; 
         case "Timid":
-            if(statType == 5) { natureModifier = 1.1; }
-            if(statType == 1) { natureModifier = 0.9; } 
+            if(statType == 6) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
             break; 
         case "Hasty":
-            if(statType == 5) { natureModifier = 1.1; }
-            if(statType == 2) { natureModifier = 0.9; } 
+            if(statType == 6) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
             break; 
         case "Jolly":
-            if(statType == 5) { natureModifier = 1.1; }
-            if(statType == 3) { natureModifier = 0.9; } 
+            if(statType == 6) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
             break; 
         case "Naive":
-            if(statType == 5) { natureModifier = 1.1; }
-            if(statType == 4) { natureModifier = 0.9; } 
+            if(statType == 6) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
             break; 
         case "Modest":
-            if(statType == 3) { natureModifier = 1.1; }
-            if(statType == 1) { natureModifier = 0.9; } 
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
             break; 
         case "Mild":
-            if(statType == 3) { natureModifier = 1.1; }
-            if(statType == 2) { natureModifier = 0.9; } 
-            break; 
-        case "Quiet":
-            if(statType == 3) { natureModifier = 1.1; }
-            if(statType == 5) { natureModifier = 0.9; } 
-            break; 
-        case "Rash":
-            if(statType == 3) { natureModifier = 1.1; }
-            if(statType == 4) { natureModifier = 0.9; } 
-            break; 
-        case "Calm":
-            if(statType == 4) { natureModifier = 1.1; }
-            if(statType == 1) { natureModifier = 0.9; } 
-            break; 
-        case "Gentle":
-            if(statType == 4) { natureModifier = 1.1; }
-            if(statType == 2) { natureModifier = 0.9; } 
-            break; 
-        case "Sassy":
-            if(statType == 4) { natureModifier = 1.1; }
-            if(statType == 5) { natureModifier = 0.9; } 
-            break; 
-        case "Careful":
             if(statType == 4) { natureModifier = 1.1; }
             if(statType == 3) { natureModifier = 0.9; } 
+            break; 
+        case "Quiet":
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 6) { natureModifier = 0.9; } 
+            break; 
+        case "Rash":
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
+            break; 
+        case "Calm":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
+            break; 
+        case "Gentle":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
+            break; 
+        case "Sassy":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 6) { natureModifier = 0.9; } 
+            break; 
+        case "Careful":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
             break; 
         default:
             natureModifier = 1;
