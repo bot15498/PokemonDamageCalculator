@@ -347,7 +347,7 @@ var typechart = { //typechart[attack type][defend type]
         "Ground" : 1,
         "Rock" : 1,
         "Bug" : 1,
-        "Ghost" : 0,
+        "Ghost" : 1,
         "Steel" : 0.5,
         "Fire" : 0.5,
         "Water" : 1,
