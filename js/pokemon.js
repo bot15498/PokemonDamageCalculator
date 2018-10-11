@@ -7,20 +7,65 @@ function clearItems(inputField) {
 }
 
 function doCalculation() {
-    var atkPokemonInputField = document.getElementById("pokemonInputField-0");
-    var defPokemonInputField = document.getElementById("pokemonInputField-1");
+    var defPokemonInputField = document.getElementById("pokemonInputField-0");
+    var atkPokemonInputField = document.getElementById("pokemonInputField-1");
     if(atkPokemonInputField.getAttribute("value") != null
             && defPokemonInputField.getAttribute("value") != null) {
         var atkPokemonInfo = {};
         var defPokemonInfo = {};
+
         //get pokemon id
         atkPokemonInfo["ID"] = atkPokemonInputField.getAttribute("value");
         defPokemonInfo["ID"] = defPokemonInputField.getAttribute("value");
         //get level
-        atkPokemonInfo["Level"] = document.getElementById("levelL0").value;
-        defPokemonInfo["Level"] = document.getElementById("levelL1").value;
-        //get evs
-        //get ivs
+        atkPokemonInfo["Level"] = document.getElementById("level-0").value;
+        defPokemonInfo["Level"] = document.getElementById("level-1").value;
+
+        //get defender base stats
+        defPokemonInfo["BaseHP"] = document.getElementById("baseHP-0").value;
+        defPokemonInfo["BaseAtk"] = document.getElementById("baseHP-0").value;
+        defPokemonInfo["BaseDef"] = document.getElementById("baseDef-0").value;
+        defPokemonInfo["BaseSpa"] = document.getElementById("baseSpa-0").value;
+        defPokemonInfo["BaseSpd"] = document.getElementById("baseSpd-0").value;
+        defPokemonInfo["BaseSpe"] = document.getElementById("baseSpe-0").value;
+        //get attacker base stats
+        atkPokemonInfo["BaseHP"] = document.getElementById("baseHP-1").value;
+        atkPokemonInfo["BaseAtk"] = document.getElementById("baseHP-1").value;
+        atkPokemonInfo["BaseDef"] = document.getElementById("baseDef-1").value;
+        atkPokemonInfo["BaseSpa"] = document.getElementById("baseSpa-1").value;
+        atkPokemonInfo["BaseSpd"] = document.getElementById("baseSpd-1").value;
+        atkPokemonInfo["BaseSpe"] = document.getElementById("baseSpe-1").value;
+
+        //get defender ivs
+        defPokemonInfo["IvHP"] = document.getElementById("ivHP-0").value;
+        defPokemonInfo["IvAtk"] = document.getElementById("ivAtk-0").value;
+        defPokemonInfo["IvDef"] = document.getElementById("ivDef-0").value;
+        defPokemonInfo["IvSpa"] = document.getElementById("ivSpa-0").value;
+        defPokemonInfo["IvSpd"] = document.getElementById("ivSpd-0").value;
+        defPokemonInfo["IvSpe"] = document.getElementById("ivSpe-0").value;
+        //get attacker ivs
+        atkPokemonInfo["IvHP"] = document.getElementById("ivHP-1").value;
+        atkPokemonInfo["IvAtk"] = document.getElementById("ivAtk-1").value;
+        atkPokemonInfo["IvDef"] = document.getElementById("ivDef-1").value;
+        atkPokemonInfo["IvSpa"] = document.getElementById("ivSpa-1").value;
+        atkPokemonInfo["IvSpd"] = document.getElementById("ivSpd-1").value;
+        atkPokemonInfo["IvSpe"] = document.getElementById("ivSpe-1").value;
+
+        //get defender evs
+        defPokemonInfo["EvHP"] = document.getElementById("evHP-0").value;
+        defPokemonInfo["EvAtk"] = document.getElementById("evAtk-0").value;
+        defPokemonInfo["EvDef"] = document.getElementById("evDef-0").value;
+        defPokemonInfo["EvSpa"] = document.getElementById("evSpa-0").value;
+        defPokemonInfo["EvSpd"] = document.getElementById("evSpd-0").value;
+        defPokemonInfo["EvSpe"] = document.getElementById("evSpe-0").value;
+        //get attacker evs
+        atkPokemonInfo["EvHP"] = document.getElementById("evHP-1").value;
+        atkPokemonInfo["EvAtk"] = document.getElementById("evAtk-1").value;
+        atkPokemonInfo["EvDef"] = document.getElementById("evDef-1").value;
+        atkPokemonInfo["EvSpa"] = document.getElementById("evSpa-1").value;
+        atkPokemonInfo["EvSpd"] = document.getElementById("evSpd-1").value;
+        atkPokemonInfo["EvSpe"] = document.getElementById("evSpe-1").value;
+
         //get ability
         atkPokemonInfo["Ability"] = document.getElementById("ability-0").value;
         defPokemonInfo["Ability"] = document.getElementById("ability-1").value;
@@ -29,8 +74,10 @@ function doCalculation() {
         defPokemonInfo["Nature"] = document.getElementById("nature-1").value;
         //get burn
         atkPokemonInfo["isBurned"] = document.getElementById("statusL1").value == "Burned";
+
         //get environment?
         var environment = {};
+
         //get move
 
         var maxDamage = calculate(33,atkPokemonInfo,defPokemonInfo,environment);
@@ -72,7 +119,7 @@ function moveAutocomplete(pokemonNum,moveNum) {
                 }
             }
             if(container.children.length > 0) {
-                container.children[container.getAttribute("currSelected")].classList.add("autocomplete-item-hover"); 
+                container.children[container.getAttribute("currSelected")].classList.add("autocomplete-item-hover");
             }
         }
     });
@@ -116,7 +163,7 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                         document.getElementById("baseDef-" + currInputField).value = currSelectedPokemon["BaseStats"][2];
                         document.getElementById("baseSpa-" + currInputField).value = currSelectedPokemon["BaseStats"][3];
                         document.getElementById("baseSpd-" + currInputField).value = currSelectedPokemon["BaseStats"][4];
-                        document.getElementById("baseSpe-" + currInputField).value = currSelectedPokemon["BaseStats"][5];  
+                        document.getElementById("baseSpe-" + currInputField).value = currSelectedPokemon["BaseStats"][5];
                         //update abilities
                         var pokemonAbility = document.getElementById("ability-" + currInputField);
                         pokemonAbility.innerHTML = ""; //clear
@@ -131,10 +178,10 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                         //clear autocomplete
                         clearItems(this.parentElement.parentElement.firstElementChild);
                     })
-                } 
-            }  
+                }
+            }
             if(container.children.length > 0) {
-                container.children[container.getAttribute("currSelected")].classList.add("autocomplete-item-hover"); 
+                container.children[container.getAttribute("currSelected")].classList.add("autocomplete-item-hover");
             }
         }
     });
@@ -147,7 +194,7 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                 currSelected--;
                 container.children[currSelected].classList.add("autocomplete-item-hover");
                 container.setAttribute("currSelected",currSelected);
-            } 
+            }
         } else if(e.keyCode == 40) { //down arrow
             if(container.getAttribute("currSelected") < container.children.length) {
                 var currSelected = container.getAttribute("currSelected");
