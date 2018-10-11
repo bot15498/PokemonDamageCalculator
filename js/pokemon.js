@@ -6,6 +6,76 @@ function clearItems(inputField) {
     container.innerHTML = "";
 }
 
+function removeType(inputField) {
+    for(var i=0;i<inputField.classList.length;i++) {
+        var className = inputField.classList[i];
+        if(className.startsWith("type")) {
+            inputField.classList.remove(className);
+        }
+    }
+}
+
+function changeTypeColor(inputField,currMoveType) {
+    //var inputField = container.parentElement.firstElementChild;
+    removeType(inputField);
+    switch(currMoveType) {
+        case "Normal":
+            inputField.classList.add("typeNormal");
+            break;
+        case "Fighting":
+            inputField.classList.add("typeFighting");
+            break;
+        case "Flying":
+            inputField.classList.add("typeFlying");
+            break;
+        case "Poison":
+            inputField.classList.add("typePoison");
+            break;
+        case "Ground":
+            inputField.classList.add("typeGround");
+            break;
+        case "Rock":
+            inputField.classList.add("typeRock");
+            break;
+        case "Bug":
+            inputField.classList.add("typeBug");
+            break;
+        case "Ghost":
+            inputField.classList.add("typeGhost");
+            break;
+        case "Steel":
+            inputField.classList.add("typeSteel");
+            break;
+        case "Fire":
+            inputField.classList.add("typeFire");
+            break;
+        case "Water":
+            inputField.classList.add("typeWater");
+            break;
+        case "Grass":
+            inputField.classList.add("typeGrass");
+            break;
+        case "Electric":
+            inputField.classList.add("typeElectric");
+            break;
+        case "Psychic":
+            inputField.classList.add("typePsychic");
+            break;
+        case "Ice":
+            inputField.classList.add("typeIce");
+            break;
+        case "Dragon":
+            inputField.classList.add("typeDragon");
+            break;
+        case "Dark":
+            inputField.classList.add("typeDark");
+            break;
+        case "Fairy":
+            inputField.classList.add("typeFairy");
+            break;
+    }
+}
+
 function doCalculation() {
     var atkPokemonInputField = document.getElementById("pokemonInputField-0");
     var defPokemonInputField = document.getElementById("pokemonInputField-1");
@@ -60,13 +130,16 @@ function moveAutocomplete(pokemonNum,moveNum) {
                 if(moves[currMove.toString()]["Name"].toLowerCase().indexOf(this.value.toLowerCase()) != -1) {
                     var toAdd = document.createElement("div");
                     toAdd.setAttribute("move-id",move);
+                    //changeTypeColor(container,moves[currMove.toString()]);
                     toAdd.innerText = moves[currMove.toString()]["Name"];
+                    toAdd.setAttribute("type",moves[currMove.toString()]["Type"]);
                     toAdd.className = "autocomplete-item";
                     container.appendChild(toAdd);
                     toAdd.addEventListener("click",function() {
                         //just add it to text box and clear the list
                         var inputField = this.parentElement.parentElement.firstElementChild;
                         inputField.value = this.innerText;
+                        changeTypeColor(inputField,this.getAttribute("type"));
                         clearItems(this.parentElement.parentElement.firstElementChild);
                     })
                 }
