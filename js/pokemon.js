@@ -221,8 +221,10 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                             pokemonAbility.innerHTML += "<option value=" + abilityName + ">" + abilityName + "</option>";
                         }
                         //update moves
-                        for(var i=1;i<=4;i++) {
-                            moveAutocomplete(currInputField,i);
+                        if(currInputField==1) {
+                            for(var i=1;i<=4;i++) {
+                                moveAutocomplete(currInputField,i);
+                            }
                         }
                         //clear autocomplete
                         clearItems(this.parentElement.parentElement.firstElementChild);
@@ -266,4 +268,41 @@ for(var i=0;i<calcComponents.length;i++) {
     currComponent.addEventListener("change",function() {
         console.log(this);
     })
+}
+//default pokemon
+var atkPokemonInputField = document.getElementById("pokemonInputField-1");
+var defPokemonInputField = document.getElementById("pokemonInputField-0");
+atkPokemonInputField.parentElement.parentElement.setAttribute("value",151);
+defPokemonInputField.parentElement.parentElement.setAttribute("value",151);
+atkPokemonInputField.value = "Mew";
+defPokemonInputField.value = "Mew";
+console.log(atkPokemonInputField);
+var currSelectedPokemon = pokemon[151];
+console.log(currSelectedPokemon);
+//update base info
+document.getElementById("baseHP-0").value = currSelectedPokemon["BaseStats"][0];
+document.getElementById("baseAtk-0").value = currSelectedPokemon["BaseStats"][1];
+document.getElementById("baseDef-0").value = currSelectedPokemon["BaseStats"][2];
+document.getElementById("baseSpa-0").value = currSelectedPokemon["BaseStats"][3];
+document.getElementById("baseSpd-0").value = currSelectedPokemon["BaseStats"][4];
+document.getElementById("baseSpe-0").value = currSelectedPokemon["BaseStats"][5];  
+document.getElementById("baseHP-1").value = currSelectedPokemon["BaseStats"][0];
+document.getElementById("baseAtk-1").value = currSelectedPokemon["BaseStats"][1];
+document.getElementById("baseDef-1").value = currSelectedPokemon["BaseStats"][2];
+document.getElementById("baseSpa-1").value = currSelectedPokemon["BaseStats"][3];
+document.getElementById("baseSpd-1").value = currSelectedPokemon["BaseStats"][4];
+document.getElementById("baseSpe-1").value = currSelectedPokemon["BaseStats"][5]; 
+//update abilities
+var pokemonAbilityDef = document.getElementById("ability-0");
+pokemonAbilityDef.innerHTML = ""; //clear
+var pokemonAbilityAtk = document.getElementById("ability-1");
+pokemonAbilityAtk.innerHTML = ""; //clear
+for(var i=0;i<currSelectedPokemon["Ability"].length;i++) {
+    var abilityName = currSelectedPokemon["Ability"][i];
+    pokemonAbilityAtk.innerHTML += "<option value=" + abilityName + ">" + abilityName + "</option>";
+    pokemonAbilityDef.innerHTML += "<option value=" + abilityName + ">" + abilityName + "</option>";   
+}
+//update moves
+for(var i=1;i<=4;i++) {
+    moveAutocomplete(1,i);
 }
