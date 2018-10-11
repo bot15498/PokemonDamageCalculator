@@ -177,7 +177,7 @@ var moves = {
         "Type" : "Normal"
     },
     "34" : {
-        "Name" : "Boy Slam",
+        "Name" : "Body Slam",
         "Category" : "Physical",
         "Power" : 85,
         "Type" : "Normal"
