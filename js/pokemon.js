@@ -9,62 +9,69 @@ function clearItems(inputField) {
 function doCalculation() {
     var defPokemonInputField = document.getElementById("pokemonInputField-0");
     var atkPokemonInputField = document.getElementById("pokemonInputField-1");
-    if(atkPokemonInputField.getAttribute("value") != null
-            && defPokemonInputField.getAttribute("value") != null) {
+    if(atkPokemonInputField.parentElement.parentElement.getAttribute("value") != null
+            && defPokemonInputField.parentElement.parentElement.getAttribute("value") != null) {
         var atkPokemonInfo = {};
         var defPokemonInfo = {};
 
         //get pokemon id
-        atkPokemonInfo["ID"] = atkPokemonInputField.getAttribute("value");
-        defPokemonInfo["ID"] = defPokemonInputField.getAttribute("value");
+        atkPokemonInfo["ID"] = atkPokemonInputField.parentElement.parentElement.getAttribute("value");
+        defPokemonInfo["ID"] = defPokemonInputField.parentElement.parentElement.getAttribute("value");
+        var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
+        var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]]; 
         //get level
         atkPokemonInfo["Level"] = document.getElementById("level-0").value;
         defPokemonInfo["Level"] = document.getElementById("level-1").value;
 
-        //get defender base stats
-        defPokemonInfo["BaseHP"] = document.getElementById("baseHP-0").value;
-        defPokemonInfo["BaseAtk"] = document.getElementById("baseHP-0").value;
-        defPokemonInfo["BaseDef"] = document.getElementById("baseDef-0").value;
-        defPokemonInfo["BaseSpa"] = document.getElementById("baseSpa-0").value;
-        defPokemonInfo["BaseSpd"] = document.getElementById("baseSpd-0").value;
-        defPokemonInfo["BaseSpe"] = document.getElementById("baseSpe-0").value;
-        //get attacker base stats
-        atkPokemonInfo["BaseHP"] = document.getElementById("baseHP-1").value;
-        atkPokemonInfo["BaseAtk"] = document.getElementById("baseHP-1").value;
-        atkPokemonInfo["BaseDef"] = document.getElementById("baseDef-1").value;
-        atkPokemonInfo["BaseSpa"] = document.getElementById("baseSpa-1").value;
-        atkPokemonInfo["BaseSpd"] = document.getElementById("baseSpd-1").value;
-        atkPokemonInfo["BaseSpe"] = document.getElementById("baseSpe-1").value;
-
         //get defender ivs
-        defPokemonInfo["IvHP"] = document.getElementById("ivHP-0").value;
-        defPokemonInfo["IvAtk"] = document.getElementById("ivAtk-0").value;
-        defPokemonInfo["IvDef"] = document.getElementById("ivDef-0").value;
-        defPokemonInfo["IvSpa"] = document.getElementById("ivSpa-0").value;
-        defPokemonInfo["IvSpd"] = document.getElementById("ivSpd-0").value;
-        defPokemonInfo["IvSpe"] = document.getElementById("ivSpe-0").value;
-        //get attacker ivs
-        atkPokemonInfo["IvHP"] = document.getElementById("ivHP-1").value;
-        atkPokemonInfo["IvAtk"] = document.getElementById("ivAtk-1").value;
-        atkPokemonInfo["IvDef"] = document.getElementById("ivDef-1").value;
-        atkPokemonInfo["IvSpa"] = document.getElementById("ivSpa-1").value;
-        atkPokemonInfo["IvSpd"] = document.getElementById("ivSpd-1").value;
-        atkPokemonInfo["IvSpe"] = document.getElementById("ivSpe-1").value;
+        atkPokemonInfo["HP"] = {};
+        atkPokemonInfo["Atk"] = {};
+        atkPokemonInfo["Def"] = {};
+        atkPokemonInfo["Spa"] = {};
+        atkPokemonInfo["Spd"] = {};
+        atkPokemonInfo["Spe"] = {};
+        defPokemonInfo["HP"] = {};
+        defPokemonInfo["Atk"] = {};
+        defPokemonInfo["Def"] = {};
+        defPokemonInfo["Spa"] = {};
+        defPokemonInfo["Spd"] = {};
+        defPokemonInfo["Spe"] = {};
+        
+        defPokemonInfo["HP"]["IV"] = document.getElementById("ivHP-0").value;
+        defPokemonInfo["HP"]["EV"] = document.getElementById("evHP-0").value;
+        defPokemonInfo["Atk"]["IV"] = document.getElementById("ivAtk-0").value;
+        defPokemonInfo["Atk"]["EV"] = document.getElementById("evAtk-0").value;
+        defPokemonInfo["Atk"]["boost"] = document.getElementById("boostAtk-0").value;
+        defPokemonInfo["Def"]["IV"] = document.getElementById("ivDef-0").value;
+        defPokemonInfo["Def"]["EV"] = document.getElementById("evDef-0").value;
+        defPokemonInfo["Def"]["boost"] = document.getElementById("boostDef-0").value;
+        defPokemonInfo["Spa"]["IV"] = document.getElementById("ivSpa-0").value;
+        defPokemonInfo["Spa"]["EV"] = document.getElementById("evSpa-0").value;
+        defPokemonInfo["Spa"]["boost"] = document.getElementById("boostSpa-0").value;
+        defPokemonInfo["Spd"]["IV"] = document.getElementById("ivSpd-0").value;
+        defPokemonInfo["Spd"]["EV"] = document.getElementById("evSpd-0").value;
+        defPokemonInfo["Spd"]["boost"] = document.getElementById("boostSpd-0").value;
+        defPokemonInfo["Spe"]["IV"] = document.getElementById("ivSpe-0").value;
+        defPokemonInfo["Spe"]["EV"] = document.getElementById("evSpe-0").value;
+        defPokemonInfo["Spe"]["boost"] = document.getElementById("boostSpe-0").value;
 
-        //get defender evs
-        defPokemonInfo["EvHP"] = document.getElementById("evHP-0").value;
-        defPokemonInfo["EvAtk"] = document.getElementById("evAtk-0").value;
-        defPokemonInfo["EvDef"] = document.getElementById("evDef-0").value;
-        defPokemonInfo["EvSpa"] = document.getElementById("evSpa-0").value;
-        defPokemonInfo["EvSpd"] = document.getElementById("evSpd-0").value;
-        defPokemonInfo["EvSpe"] = document.getElementById("evSpe-0").value;
-        //get attacker evs
-        atkPokemonInfo["EvHP"] = document.getElementById("evHP-1").value;
-        atkPokemonInfo["EvAtk"] = document.getElementById("evAtk-1").value;
-        atkPokemonInfo["EvDef"] = document.getElementById("evDef-1").value;
-        atkPokemonInfo["EvSpa"] = document.getElementById("evSpa-1").value;
-        atkPokemonInfo["EvSpd"] = document.getElementById("evSpd-1").value;
-        atkPokemonInfo["EvSpe"] = document.getElementById("evSpe-1").value;
+        atkPokemonInfo["HP"]["IV"] = document.getElementById("ivHP-1").value;
+        atkPokemonInfo["HP"]["EV"] = document.getElementById("evHP-1").value;
+        atkPokemonInfo["Atk"]["IV"] = document.getElementById("ivAtk-1").value;
+        atkPokemonInfo["Atk"]["EV"] = document.getElementById("evAtk-1").value;
+        atkPokemonInfo["Atk"]["boost"] = document.getElementById("boostAtk-1").value;
+        atkPokemonInfo["Def"]["IV"] = document.getElementById("ivDef-1").value;
+        atkPokemonInfo["Def"]["EV"] = document.getElementById("evDef-1").value;
+        atkPokemonInfo["Def"]["boost"] = document.getElementById("boostDef-1").value;
+        atkPokemonInfo["Spa"]["IV"] = document.getElementById("ivSpa-1").value;
+        atkPokemonInfo["Spa"]["EV"] = document.getElementById("evSpa-1").value;
+        atkPokemonInfo["Spa"]["boost"] = document.getElementById("boostSpa-1").value;
+        atkPokemonInfo["Spd"]["IV"] = document.getElementById("ivSpd-1").value;
+        atkPokemonInfo["Spd"]["EV"] = document.getElementById("evSpd-1").value;
+        atkPokemonInfo["Spd"]["boost"] = document.getElementById("boostSpd-1").value;
+        atkPokemonInfo["Spe"]["IV"] = document.getElementById("ivAtk-1").value;
+        atkPokemonInfo["Spe"]["EV"] = document.getElementById("evAtk-1").value;
+        atkPokemonInfo["Spe"]["boost"] = document.getElementById("boostAtk-1").value;
 
         //get ability
         atkPokemonInfo["Ability"] = document.getElementById("ability-0").value;
@@ -78,9 +85,31 @@ function doCalculation() {
         //get environment?
         var environment = {};
 
-        //get move
+        //update totals
+        document.getElementById("totalHP-1").innerText = calculateHPStat(atkPokemonRawInfo,atkPokemonInfo);
+        document.getElementById("totalAtk-1").innerText = calculateAttackStat(atkPokemonRawInfo,atkPokemonInfo);
+        document.getElementById("totalDef-1").innerText = calculateDefenseStat(atkPokemonRawInfo,atkPokemonInfo);
+        document.getElementById("totalSpa-1").innerText = calculateSpecialAttackStat(atkPokemonRawInfo,atkPokemonInfo);
+        document.getElementById("totalSpd-1").innerText = calculateSpecialDefenseStat(atkPokemonRawInfo,atkPokemonInfo);
+        document.getElementById("totalSpe-1").innerText = calculateSpeedStat(atkPokemonRawInfo,atkPokemonInfo);
+        var enemyHP = calculateHPStat(defPokemonRawInfo,defPokemonInfo);
+        document.getElementById("totalHP-0").innerText = enemyHP;
+        document.getElementById("totalAtk-0").innerText = calculateAttackStat(defPokemonRawInfo,defPokemonInfo);
+        document.getElementById("totalDef-0").innerText = calculateDefenseStat(defPokemonRawInfo,defPokemonInfo);
+        document.getElementById("totalSpa-0").innerText = calculateSpecialAttackStat(defPokemonRawInfo,defPokemonInfo);
+        document.getElementById("totalSpd-0").innerText = calculateSpecialDefenseStat(defPokemonRawInfo,defPokemonInfo);
+        document.getElementById("totalSpe-0").innerText = calculateSpeedStat(defPokemonRawInfo,defPokemonInfo);
 
-        var maxDamage = calculate(33,atkPokemonInfo,defPokemonInfo,environment);
+
+        //get move
+        for(var i=1;i<=4;i++) {
+            var moveID = document.getElementById("pokemon1-move" + i+"-input").getAttribute("move-id");
+            if(moveID != null) {
+                var maxDamage = calculate(moveID,atkPokemonInfo,defPokemonInfo,environment);
+                console.log(maxDamage);
+                document.getElementById("calc" + i).innerText = damageRatioPercentage(maxDamage,enemyHP);    
+            }
+        }
     }
 }
 
@@ -106,7 +135,7 @@ function moveAutocomplete(pokemonNum,moveNum) {
                 var currMove = currPokemon["Moves"][move];
                 if(moves[currMove.toString()]["Name"].toLowerCase().indexOf(this.value.toLowerCase()) != -1) {
                     var toAdd = document.createElement("div");
-                    toAdd.setAttribute("move-id",move);
+                    toAdd.setAttribute("move-id",currMove);
                     toAdd.innerText = moves[currMove.toString()]["Name"];
                     toAdd.className = "autocomplete-item";
                     container.appendChild(toAdd);
@@ -114,6 +143,7 @@ function moveAutocomplete(pokemonNum,moveNum) {
                         //just add it to text box and clear the list
                         var inputField = this.parentElement.parentElement.firstElementChild;
                         inputField.value = this.innerText;
+                        inputField.setAttribute("move-id", this.getAttribute("move-id"));
                         clearItems(this.parentElement.parentElement.firstElementChild);
                     })
                 }
@@ -173,7 +203,9 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                         }
                         //update moves
                         for(var i=1;i<=4;i++) {
-                            moveAutocomplete(currInputField,i);
+                            if(currInputField == 1) {
+                                moveAutocomplete(currInputField,i);
+                            }
                         }
                         //clear autocomplete
                         clearItems(this.parentElement.parentElement.firstElementChild);
@@ -215,6 +247,7 @@ console.log(calcComponents.length);
 for(var i=0;i<calcComponents.length;i++) {
     var currComponent = calcComponents[i];
     currComponent.addEventListener("change",function() {
-        console.log(this);
+        //console.log(this);
+        doCalculation();
     })
 }
