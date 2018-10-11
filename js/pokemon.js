@@ -310,10 +310,12 @@ for(var i=0;i<pokemonAutocompleteFields.length;i++) {
                                 var moveInputField = document.getElementById("pokemon" + currInputField + "-move" + i + "-input");
                                 clearItems(moveInputField);
                                 moveInputField.value = "";
+                                document.getElementById("calc" + i).innerText = "0% - 0%";
                             }
                         }
                         //clear autocomplete
                         clearItems(this.parentElement.parentElement.firstElementChild);
+                        //
                     })
                 }
             }
@@ -392,4 +394,8 @@ for(var i=0;i<currSelectedPokemon["Ability"].length;i++) {
 //update moves
 for(var i=1;i<=4;i++) {
     moveAutocomplete(1,i);
+    var moveInputField = document.getElementById("pokemon" + 1 + "-move" + i + "-input");
+    clearItems(moveInputField);
+    moveInputField.value = "";
+    document.getElementById("calc" + i).innerText = "0% - 0%";
 }
