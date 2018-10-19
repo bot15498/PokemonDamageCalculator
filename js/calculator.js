@@ -37,12 +37,12 @@ var statChangeDict = {
     "-6" : 2/8
 }
 var statDict = {
-    1 : "HP",
-    2 : "Atk",
-    3 : "Def",
-    4 : "Spa",
-    5 : "Spd",
-    6 : "Spe"
+    0 : "HP",
+    1 : "Atk",
+    2 : "Def",
+    3 : "SpA",
+    4 : "SpD",
+    5 : "Spe"
 }
 
 /**
@@ -52,14 +52,14 @@ var statDict = {
  * @param {*} defPokemonInfo The JSON object of the defending pokemon
  * @returns {*} The ratio of A/D
  */
-function calculateDefenseRatio(attackInfo,atkPokemonInfo,defPokemonInfo) {
+function calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo) {
     var ratio = 1;
-    var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
-    var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
+    // var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
+    // var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
     var atkPokemonAtk = calculateAttackStat(atkPokemonRawInfo,atkPokemonInfo) * statChangeDict[atkPokemonInfo["Atk"]["boost"]];
-    var atkPokemonSpa = calculateSpecialAttackStat(atkPokemonRawInfo,atkPokemonInfo) * statChangeDict[atkPokemonInfo["Spa"]["boost"]];
+    var atkPokemonSpa = calculateSpecialAttackStat(atkPokemonRawInfo,atkPokemonInfo) * statChangeDict[atkPokemonInfo["SpA"]["boost"]];
     var defPokemonDef = calculateDefenseStat(defPokemonRawInfo,defPokemonInfo) * statChangeDict[defPokemonInfo["Def"]["boost"]];
-    var defPokemonSpd = calculateSpecialDefenseStat(defPokemonRawInfo,defPokemonInfo) * statChangeDict[defPokemonInfo["Spd"]["boost"]];
+    var defPokemonSpd = calculateSpecialDefenseStat(defPokemonRawInfo,defPokemonInfo) * statChangeDict[defPokemonInfo["SpD"]["boost"]];
     if(attackInfo["Name"] == "Secret Sword" || attackInfo["Name"] == "Psyshock" || attackInfo["Name"] == "Psystrike") {
         ratio = atkPokemonSpa/defPokemonDef;
     } else if(attackInfo["Category"] == "Physical") {
@@ -116,10 +116,10 @@ function calculateHPStat(pokemonRawInfo,pokemonInfo) {
  */
 function calculateAttackStat(pokemonRawInfo,pokemonInfo) {
     var modifier = 1;
-    if(pokemonInfo["Item"] == "Choice-band"){
+    if(items[pokemonInfo["Item"].toString()]["Name"] == "Choice-band"){
         modifier = 1.5;
     }
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,2) * modifier;
+    return Math.floor(calculateOtherStat(pokemonRawInfo,pokemonInfo,1) * modifier);
 }
 
 /**
@@ -129,7 +129,7 @@ function calculateAttackStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for Defense
  */
 function calculateDefenseStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,3);
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,2);
 }
 
 /**
@@ -140,10 +140,10 @@ function calculateDefenseStat(pokemonRawInfo,pokemonInfo) {
  */
 function calculateSpecialAttackStat(pokemonRawInfo,pokemonInfo) {
     var modifier = 1;
-    if(pokemonInfo["Item"] == "Choice-specs"){
+    if(items[pokemonInfo["Item"].toString()]["Name"] == "Choice-specs"){
         modifier = 1.5;
     }
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,4) * modifier;
+    return Math.floor(calculateOtherStat(pokemonRawInfo,pokemonInfo,3) * modifier);
 }
 
 /**
@@ -153,7 +153,7 @@ function calculateSpecialAttackStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for SpecialDefense
  */
 function calculateSpecialDefenseStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,5);
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,4);
 }
 
 /**
@@ -163,7 +163,7 @@ function calculateSpecialDefenseStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for Speed
  */
 function calculateSpeedStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,6);
+    return calculateOtherStat(pokemonRawInfo,pokemonInfo,5);
 }
 
 /**
@@ -178,84 +178,84 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
     natureModifier = 1;
     switch(pokemonInfo["Nature"]) {
         case "Lonely":
-            if(statType == 2) { natureModifier = 1.1; }
-            if(statType == 3) { natureModifier = 0.9; }
+            if(statType == 1) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; }
             break; 
         case "Brave":
-            if(statType == 2) { natureModifier = 1.1; }
-            if(statType == 6) { natureModifier = 0.9; } 
+            if(statType == 1) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
             break; 
         case "Adamant":
-            if(statType == 2) { natureModifier = 1.1; }
-            if(statType == 4) { natureModifier = 0.9; } 
+            if(statType == 1) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
             break; 
         case "Naughty":
+            if(statType == 1) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
+            break; 
+        case "Bold":
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 1) { natureModifier = 0.9; } 
+            break; 
+        case "Relaxed":
             if(statType == 2) { natureModifier = 1.1; }
             if(statType == 5) { natureModifier = 0.9; } 
             break; 
-        case "Bold":
-            if(statType == 3) { natureModifier = 1.1; }
-            if(statType == 2) { natureModifier = 0.9; } 
-            break; 
-        case "Relaxed":
-            if(statType == 3) { natureModifier = 1.1; }
-            if(statType == 6) { natureModifier = 0.9; } 
-            break; 
         case "Impish":
-            if(statType == 3) { natureModifier = 1.1; }
-            if(statType == 4) { natureModifier = 0.9; } 
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
             break; 
         case "Lax":
+            if(statType == 2) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
+            break; 
+        case "Timid":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 1) { natureModifier = 0.9; } 
+            break; 
+        case "Hasty":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
+            break; 
+        case "Jolly":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
+            break; 
+        case "Naive":
+            if(statType == 5) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
+            break; 
+        case "Modest":
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 1) { natureModifier = 0.9; } 
+            break; 
+        case "Mild":
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
+            break; 
+        case "Quiet":
             if(statType == 3) { natureModifier = 1.1; }
             if(statType == 5) { natureModifier = 0.9; } 
             break; 
-        case "Timid":
-            if(statType == 6) { natureModifier = 1.1; }
-            if(statType == 2) { natureModifier = 0.9; } 
-            break; 
-        case "Hasty":
-            if(statType == 6) { natureModifier = 1.1; }
-            if(statType == 3) { natureModifier = 0.9; } 
-            break; 
-        case "Jolly":
-            if(statType == 6) { natureModifier = 1.1; }
-            if(statType == 4) { natureModifier = 0.9; } 
-            break; 
-        case "Naive":
-            if(statType == 6) { natureModifier = 1.1; }
-            if(statType == 5) { natureModifier = 0.9; } 
-            break; 
-        case "Modest":
-            if(statType == 4) { natureModifier = 1.1; }
-            if(statType == 2) { natureModifier = 0.9; } 
-            break; 
-        case "Mild":
-            if(statType == 4) { natureModifier = 1.1; }
-            if(statType == 3) { natureModifier = 0.9; } 
-            break; 
-        case "Quiet":
-            if(statType == 4) { natureModifier = 1.1; }
-            if(statType == 6) { natureModifier = 0.9; } 
-            break; 
         case "Rash":
-            if(statType == 4) { natureModifier = 1.1; }
-            if(statType == 5) { natureModifier = 0.9; } 
+            if(statType == 3) { natureModifier = 1.1; }
+            if(statType == 4) { natureModifier = 0.9; } 
             break; 
         case "Calm":
-            if(statType == 5) { natureModifier = 1.1; }
-            if(statType == 2) { natureModifier = 0.9; } 
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 1) { natureModifier = 0.9; } 
             break; 
         case "Gentle":
-            if(statType == 5) { natureModifier = 1.1; }
-            if(statType == 3) { natureModifier = 0.9; } 
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 2) { natureModifier = 0.9; } 
             break; 
         case "Sassy":
-            if(statType == 5) { natureModifier = 1.1; }
-            if(statType == 6) { natureModifier = 0.9; } 
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 5) { natureModifier = 0.9; } 
             break; 
         case "Careful":
-            if(statType == 5) { natureModifier = 1.1; }
-            if(statType == 4) { natureModifier = 0.9; } 
+            if(statType == 4) { natureModifier = 1.1; }
+            if(statType == 3) { natureModifier = 0.9; } 
             break; 
         default:
             natureModifier = 1;
@@ -276,14 +276,14 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
  * @param {*} fieldInfo a JSON object of the field
  * @returns {number} The damage value of the attack
  */
-function calculate(attackMove,atkPokemonInfo,defPokemonInfo,fieldInfo) {
+function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     var attackInfo = moves[attackMove];
-    var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
-    var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
+    // var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
+    // var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
     //calculate base damage
     var power = parseInt(attackInfo["Power"]);
     var levelCalc = 2 * parseFloat(atkPokemonInfo["Level"]) / 5 + 2;
-    var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonInfo,defPokemonInfo);
+    var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo);
     var baseDamage = levelCalc * power * defenseRatio / 50 + 2
     //calculate modifier
     var modifier = 1;
@@ -350,41 +350,4 @@ function damageRatioPercentage(damage, hp) {
     var percentageLower = ratioLower * 100;
 
     return (Math.round(100*percentageLower)/100) + "% - " + (Math.round(100*percentageUpper)/100) + "%";
-}
-
-
-var pokemon1 = {
-    "ID" : "1",
-    "Level" : 100,
-    "Ability" : "Overgrow",
-    "hp" : {
-        "ev" : 252,
-        "iv" : 31,
-        "boost" : 0
-    },
-    "atk" : {
-        "ev" : 0,
-        "iv" : 31,
-        "boost" : 0
-    },
-    "def" : {
-        "ev" : 0,
-        "iv" : 31,
-        "boost" : 0
-    },
-    "spa" : {
-        "ev" : 0,
-        "iv" : 31,
-        "boost" : 0
-    },
-    "spd" : {
-        "ev" : 0,
-        "iv" : 31,
-        "boost" : 0
-    },
-    "spe" : {
-        "ev" : 0,
-        "iv" : 31,
-        "boost" : 0
-    },
 }
