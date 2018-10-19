@@ -1,0 +1,35 @@
+body {
+    background-color: #b3e6ff;
+    margin: 5px 5px;
+}
+
+.stats.modlabel {
+    text-align: center;
+}
+
+.stats.evs, .stats.ivs {
+    max-width: 70px;
+}
+
+.stats.label {
+    max-width: 35px;
+}
+
+.stats.extraOptions {
+    width: 100px;
+    height: 30px;
+}
+
+.stats.extraOptions.long {
+    width: 120px;
+}
+
+.itemSelect {
+    width: 120px;
+}
+
+.ui-autocomplete {
+    max-height: 380px;
+    overflow-y: auto;   /* prevent horizontal scrollbar */
+    overflow-x: hidden; /* add padding to account for vertical scrollbar */
+}
