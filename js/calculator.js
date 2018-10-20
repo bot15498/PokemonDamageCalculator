@@ -341,7 +341,7 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
     actualMaxDamage = Math.floor(actualMaxDamage * modifier);
     actualMinDamage = Math.floor(actualMinDamage * modifier);
     modifier = 1;
-    //TODO: Target,Weather,Critical,Reflect/Lightscreen,
+    //TODO: Weather,Reflect/Lightscreen,
 
     //get damage before randomness
     return [Math.floor(actualMinDamage),Math.floor(actualMaxDamage)];
