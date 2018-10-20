@@ -10,7 +10,7 @@ $( ".pokemonSelect" ).autocomplete({
     return false;
   },
   focus: function(event,ui) {
-    this.value = ui.item.label; 
+    //this.value = ui.item.label; 
     return false;
   }
 });
@@ -34,7 +34,7 @@ $( ".itemSelect" ).autocomplete({
       return false;
     },
     focus: function(event,ui) {
-      this.value = ui.item.label; 
+      //this.value = ui.item.label; 
       return false;
     },
     minLength:2
@@ -72,6 +72,8 @@ function updateMoves(pokemonInfo, sourcePokemon) {
     }
     //clear move slot
     sourcePokemon.find($(".moveSelect")).val("");
+    sourcePokemon.find($(".moveOutput")).text("0% - 0%");
+    sourcePokemon.find($(".moveSelect")).attr("selectedMove","");
     //change source
     sourcePokemon.find($(".moveSelect")).autocomplete({
         source: $.map(pokemonInfo["Moves"],function(item) {
@@ -84,15 +86,17 @@ function updateMoves(pokemonInfo, sourcePokemon) {
             return false;
         },
         focus: function(event,ui) {
-            this.value = ui.item.label; 
+            //this.value = ui.item.label; 
             return false;
         }
     });
 }
-$(".moves-trigger").change(function(){
+$(".moves1-trigger").change(function(){
     var currPokemon1ID = $("#pokemon1").find($(".pokemonSelect"))[0].getAttribute("selectedPokemon");
     var currPokemon1 = pokemon[currPokemon1ID];
     updateMoves(currPokemon1,$("#pokemon1"));
+})
+$(".moves2-trigger").change(function(){
     var currPokemon2ID = $("#pokemon2").find($(".pokemonSelect"))[0].getAttribute("selectedPokemon");
     var currPokemon2 = pokemon[currPokemon2ID];
     updateMoves(currPokemon2,$("#pokemon2"));
@@ -139,6 +143,7 @@ function refreshPokemon(pokemonInfo,target) {
     spreadInfo["Status"] = target.find($(".stats.extraOptions.status")).val();
     spreadInfo["Nature"] = target.find($(".stats.extraOptions.nature")).val();
     spreadInfo["Item"] = target.find($(".itemSelect"))[0].getAttribute("selectedItem");
+    spreadInfo["Ability"] = target.find($(".stats.extraOptions.ability"))[0].value;
     spreadInfo["HP"] = {};
     spreadInfo["HP"]["IV"] = $(hp).find($(".stats.ivs")).val();
     spreadInfo["HP"]["EV"] = $(hp).find($(".stats.evs")).val();
@@ -149,19 +154,19 @@ function refreshPokemon(pokemonInfo,target) {
     spreadInfo["Def"] = {};
     spreadInfo["Def"]["IV"] = $(def).find($(".stats.ivs")).val();
     spreadInfo["Def"]["EV"] = $(def).find($(".stats.evs")).val();
-    spreadInfo["Def"]["boost"] = $(atk).find($(".stats.boost")).val();
+    spreadInfo["Def"]["boost"] = $(def).find($(".stats.boost")).val();
     spreadInfo["SpA"] = {};
     spreadInfo["SpA"]["IV"] = $(spa).find($(".stats.ivs")).val();
     spreadInfo["SpA"]["EV"] = $(spa).find($(".stats.evs")).val();
-    spreadInfo["SpA"]["boost"] = $(atk).find($(".stats.boost")).val();
+    spreadInfo["SpA"]["boost"] = $(spa).find($(".stats.boost")).val();
     spreadInfo["SpD"] = {};
     spreadInfo["SpD"]["IV"] = $(spd).find($(".stats.ivs")).val();
     spreadInfo["SpD"]["EV"] = $(spd).find($(".stats.evs")).val();
-    spreadInfo["SpD"]["boost"] = $(atk).find($(".stats.boost")).val();
+    spreadInfo["SpD"]["boost"] = $(spd).find($(".stats.boost")).val();
     spreadInfo["Spe"] = {};
     spreadInfo["Spe"]["IV"] = $(spe).find($(".stats.ivs")).val();
     spreadInfo["Spe"]["EV"] = $(spe).find($(".stats.evs")).val();
-    spreadInfo["Spe"]["boost"] = $(atk).find($(".stats.boost")).val();
+    spreadInfo["Spe"]["boost"] = $(spe).find($(".stats.boost")).val();
     //calculate actual stats
     var hpActualStat = calculateHPStat(pokemonInfo,spreadInfo);
     var atkActualStat = calculateAttackStat(pokemonInfo,spreadInfo);
@@ -202,12 +207,16 @@ function refreshMoves(target,pokemon1,pokemon2,pokemon1Spread,pokemon2Spread) {
     }
     target.find($(".moveSelect")).each(function(i,item) {
         var targetMoveOutID = item.id + "-output";
-        if($(item).attr("selectedMove") != null) {
+        if($(item).attr("selectedMove") != null && $(item).attr("selectedMove") != "") {
             var currMoveID = $(item).attr("selectedMove");
-            var damage = calculate(currMoveID,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonSpread,defPokemonSpread,{});
-            var low = parseFloat(parseFloat(damage * 0.85 / opponentPokemonHP * 100).toFixed());
-            var high = parseFloat(parseFloat(damage / opponentPokemonHP * 100).toFixed(2));
-            var outString = "" + low + "% - " + high + "%";
+            //get field info
+            var fieldInfo = {};
+            fieldInfo["isCrit"] = $("#" + item.id+"-crit").is(":checked");
+            var damageArr = calculate(currMoveID,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonSpread,defPokemonSpread,fieldInfo);
+            var lowPercent = parseFloat(parseFloat(damageArr[0] / opponentPokemonHP * 100).toFixed(2));
+            var highPercent = parseFloat(parseFloat(damageArr[1] / opponentPokemonHP * 100).toFixed(2));
+            var outString = "" + lowPercent + "% - " + highPercent + "% (" 
+                    + damageArr[0] + " - " + damageArr[1] + ")";
             $("#" + targetMoveOutID).text(outString);
         } else{
             $("#" + targetMoveOutID).text("0% - 0%");

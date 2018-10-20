@@ -52,23 +52,39 @@ var statDict = {
  * @param {*} defPokemonInfo The JSON object of the defending pokemon
  * @returns {*} The ratio of A/D
  */
-function calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo) {
+function calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     var ratio = 1;
     // var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
     // var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
-    var atkPokemonAtk = calculateAttackStat(atkPokemonRawInfo,atkPokemonInfo) * statChangeDict[atkPokemonInfo["Atk"]["boost"]];
-    var atkPokemonSpa = calculateSpecialAttackStat(atkPokemonRawInfo,atkPokemonInfo) * statChangeDict[atkPokemonInfo["SpA"]["boost"]];
-    var defPokemonDef = calculateDefenseStat(defPokemonRawInfo,defPokemonInfo) * statChangeDict[defPokemonInfo["Def"]["boost"]];
-    var defPokemonSpd = calculateSpecialDefenseStat(defPokemonRawInfo,defPokemonInfo) * statChangeDict[defPokemonInfo["SpD"]["boost"]];
+    var atkBoost = statChangeDict[atkPokemonInfo["Atk"]["boost"]];
+    var spaBoost = statChangeDict[atkPokemonInfo["SpA"]["boost"]];
+    var defBoost = statChangeDict[defPokemonInfo["Def"]["boost"]];
+    var spdBoost = statChangeDict[defPokemonInfo["SpD"]["boost"]];
+    console.log(defPokemonInfo);
+    if(fieldInfo["isCrit"]) {
+        if(atkBoost < 1) {
+            atkBoost = 1;
+        }
+        if(spaBoost < 1) {
+            spaBoost = 1;
+        }
+        if(defBoost > 1) {
+            defBoost = 1;
+        }
+        if(spdBoost > 1) {
+            spdBoost = 1;
+        }
+    }
+    var atkPokemonAtk = Math.floor(calculateAttackStat(atkPokemonRawInfo,atkPokemonInfo) * atkBoost);
+    var atkPokemonSpa = Math.floor(calculateSpecialAttackStat(atkPokemonRawInfo,atkPokemonInfo) * spaBoost);
+    var defPokemonDef = Math.floor(calculateDefenseStat(defPokemonRawInfo,defPokemonInfo) * defBoost);
+    var defPokemonSpd = Math.floor(calculateSpecialDefenseStat(defPokemonRawInfo,defPokemonInfo) * spdBoost);
     if(attackInfo["Name"] == "Secret Sword" || attackInfo["Name"] == "Psyshock" || attackInfo["Name"] == "Psystrike") {
         ratio = atkPokemonSpa/defPokemonDef;
     } else if(attackInfo["Category"] == "Physical") {
         ratio = atkPokemonAtk/defPokemonDef;
     } else if(attackInfo["Category"] == "Special") {
         ratio = atkPokemonSpa/defPokemonSpd;
-    }
-    if(atkPokemonInfo["Item"] == "Life-orb") {
-        ratio = ratio * 5324/4096;
     }
     return ratio;
 }
@@ -265,11 +281,12 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
     var ivBase = parseInt(pokemonInfo[statDict[statType]]["IV"]);
     var evBase = parseInt(pokemonInfo[statDict[statType]]["EV"]);
     var level = parseInt(pokemonInfo["Level"]);
-    return Math.floor((Math.floor((2 * statBase + ivBase + Math.floor(evBase)) * level / 100) + 5) * natureModifier)
+    return Math.floor((Math.floor((2 * statBase + ivBase + Math.floor(evBase/4)) * level / 100) + 5) * natureModifier)
 }
 
 /**
  * Does a damage calculation 
+ * https://www.smogon.com/bw/articles/bw_complete_damage_formula#chain-mod
  * @param {*} attackMove the ID of the attack
  * @param {*} atkPokemonInfo a JSON object of the attacking pokemon's EV/IV/Nature data
  * @param {*} defPokemonInfo a JSON object of the defending pokemon's EV/IV/Nature data
@@ -283,56 +300,51 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
     //calculate base damage
     var power = parseInt(attackInfo["Power"]);
     var levelCalc = 2 * parseFloat(atkPokemonInfo["Level"]) / 5 + 2;
-    var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo);
-    var baseDamage = levelCalc * power * defenseRatio / 50 + 2
+    var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo,fieldInfo);
+    var baseDamage = Math.floor(levelCalc * power * defenseRatio / 50) + 2
     //calculate modifier
     var modifier = 1;
-    if(fieldInfo.hasOwnProperty("isSingles")) { //target
-        var targetModifier = fieldInfo["isSingles"] ? 1 : 0.75
-        modifier = modifier * targetModifier;
+    var actualDamage = baseDamage;
+
+    //Target
+    if(attackInfo["Target"] == "Multi-Target") {
+        actualDamage = Math.floor(actualDamage * 0.75);
     }
-    if(fieldInfo.hasOwnProperty("Weather")) { //weather
-        var weatherModifier = 1;
-        if(fieldInfo["Weather"] == "Rain") {
-            if(attackInfo["Type"] == "Water") {
-                weatherModifier = 1.5;
-            } else if(attackInfo["Type"] == "Fire") {
-                weatherModifier = 0.5
-            }
-        } else if(fieldInfo["Weather"] == "Sun") {
-            if(attackInfo["Type"] == "Fire") {
-                weatherModifier = 1.5;
-            } else if(attackInfo["Type"] == "Water") {
-                weatherModifier = 0.5
-            }
-        }
-        modifier = modifier * weatherModifier;
+    //critical
+    if(fieldInfo["isCrit"]) {
+        actualDamage = Math.floor(actualDamage * 1.5);
     }
-    if(fieldInfo.hasOwnProperty("isCritical")) { //crit
-        var critModifier = fieldInfo["isCritical"] ? 1.5 : 1;
-        modifier = modifier * critModifier;
-    }
-    for(var typeID in atkPokemonRawInfo["Type"]) { //STAB
+    //Random factor split
+    var actualMaxDamage = actualDamage;
+    var actualMinDamage = Math.floor(actualMaxDamage * 0.85);
+    //STAB
+    for(var typeID in atkPokemonRawInfo["Type"]) {
         var actualTypeID = atkPokemonRawInfo["Type"][typeID];
         if(typeDict[actualTypeID] == attackInfo["Type"] && atkPokemonInfo["Ability"] == "Adaptability") {
-            modifier = modifier * 2;
+            modifier = 2;
         } else if(typeDict[actualTypeID] == attackInfo["Type"]) {
-            modifier = modifier * 1.5;
+            modifier = 1.5;
         }
     }
-    modifier = modifier * typeCheck(attackInfo,defPokemonRawInfo); //type checking
-    if(atkPokemonInfo.hasOwnProperty("isBurned")) { //burn
-        var burnModifier = 1;
-        if(atkPokemonInfo["isBurned"] && atkPokemonInfo["Ability"] != "Guts" && attackInfo["Type"] == "Physical") {
-            burnModifier = 0.5;
-        }
-        modifier = modifier * burnModifier;
+    actualMaxDamage = Math.floor(actualMaxDamage * modifier);
+    actualMinDamage = Math.floor(actualMinDamage * modifier);
+    modifier = 1;
+    //type checking
+    modifier = typeCheck(attackInfo,defPokemonRawInfo); 
+    actualMaxDamage = Math.floor(actualMaxDamage * modifier);
+    actualMinDamage = Math.floor(actualMinDamage * modifier);
+    modifier = 1;
+    //burn
+    if(atkPokemonInfo["Status"] == 1 && attackInfo["Category"] == "Physical" && atkPokemonInfo["Ability"] != "Guts") {
+        modifier = 0.5;
     }
-    //TODO: other factors.
+    actualMaxDamage = Math.floor(actualMaxDamage * modifier);
+    actualMinDamage = Math.floor(actualMinDamage * modifier);
+    modifier = 1;
+    //TODO: Target,Weather,Critical,Reflect/Lightscreen,
 
     //get damage before randomness
-    var damageNoRandom = baseDamage * modifier
-    return Math.floor(damageNoRandom);
+    return [Math.floor(actualMinDamage),Math.floor(actualMaxDamage)];
 }
 
 /**

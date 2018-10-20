@@ -19,7 +19,7 @@
 
 <body>
     <div id="pokemon1">
-        <input type="text" class="pokemonSelect calc-trigger ability-trigger moves-trigger" />
+        <input type="text" class="pokemonSelect calc-trigger ability-trigger moves1-trigger" />
         <table>
             <tr>
                 <td class="stats" valign="top">
@@ -263,7 +263,7 @@
                                         <td>
                                             <select class="stats extraOptions status calc-trigger">
                                                 <option value="0">Healthy</option>
-                                                <option value="1">Burn</option>
+                                                <option value="1">Burned</option>
                                                 <option value="0">Paralyzed</option>
                                                 <option value="0">Poisoned</option>
                                                 <option value="0">Toxic</option>
@@ -279,7 +279,7 @@
                                     <tr>
                                         <td>Ability</td>
                                         <td>
-                                            <select class="stats extraOptions long ability calc-trigger">
+                                            <select class="stats extraOptions ability long calc-trigger">
                                                 <option>--</option>
                                             </select>
                                         </td>
@@ -301,349 +301,349 @@
                 <td class="moves" valign="top">
                     Moves: <br/>
                     <input id="p1m1" class="moveSelect calc-trigger" type="text" />
-                    <input class="moves calc-trigger" type="checkbox" />Crit?
+                    <input id="p1m1-crit" class="moves calc-trigger" type="checkbox" />Crit?
                     <input class="moves calc-trigger" type="checkbox" />Z?
                     <br/>
-                    <span id="p1m1-output">0% - 0%</span>
+                    <span id="p1m1-output" class="moveOutput">0% - 0%</span>
                     <br/>
 
                     <input id="p1m2" class="moveSelect calc-trigger" type="text" />
-                    <input class="moves calc-trigger" type="checkbox" />Crit?
+                    <input id="p1m2-crit" class="moves calc-trigger" type="checkbox" />Crit?
                     <input class="moves calc-trigger" type="checkbox" />Z?
                     <br/>
-                    <span id="p1m2-output">0% - 0%</span>
+                    <span id="p1m2-output" class="moveOutput">0% - 0%</span>
                     <br/>
 
                     <input id="p1m3" class="moveSelect calc-trigger" type="text" />
-                    <input class="moves calc-trigger" type="checkbox" />Crit?
+                    <input id="p1m3-crit" class="moves calc-trigger" type="checkbox" />Crit?
                     <input class="moves calc-trigger" type="checkbox" />Z?
                     <br/>
-                    <span id="p1m3-output">0% - 0%</span>
+                    <span id="p1m3-output" class="moveOutput">0% - 0%</span>
                     <br/>
 
                     <input id="p1m4" class="moveSelect calc-trigger" type="text" />
-                    <input class="moves calc-trigger" type="checkbox" />Crit?
+                    <input id="p1m4-crit" class="moves calc-trigger" type="checkbox" />Crit?
                     <input class="moves calc-trigger" type="checkbox" />Z?
                     <br/>
-                    <span id="p1m4-output">0% - 0%</span>
+                    <span id="p1m4-output" class="moveOutput">0% - 0%</span>
                     <br/>
                 </td>
             </tr>
         </table>
     </div>
     <div id="pokemon2">
-            <input type="text" class="pokemonSelect calc-trigger ability-trigger moves-trigger" />
-            <table>
-                <tr>
-                    <td class="stats" valign="top">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td></td>
-                                    <td class="stats modlabel">Base</td>
-                                    <td class="stats modlabel">IVs</td>
-                                    <td class="stats modlabel">EVs</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="stats hp">
-                                    <td class="stats label">
-                                        <b>HP</b>
-                                    </td>
-                                    <td>
-                                        <span class="stats baseStat">100</span>
-                                    </td>
-                                    <td>
-                                        <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
-                                    </td>
-                                    <td>
-                                        <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
-                                    </td>
-                                    <td>
-                                        <span class="stats actualStat">100</span>
-                                    </td>
-                                </tr>
-                                <tr class="stats atk">
-                                    <td class="stats label">
-                                        <b>Atk</b>
-                                    </td>
-                                    <td>
-                                        <span class="stats baseStat">100</span>
-                                    </td>
-                                    <td>
-                                        <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
-                                    </td>
-                                    <td>
-                                        <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
-                                    </td>
-                                    <td>
-                                        <span class="stats actualStat">100</span>
-                                    </td>
-                                    <td>
-                                        <select class="stats boost calc-trigger">
-                                            <option value="6">+6</option>
-                                            <option value="5">+5</option>
-                                            <option value="4">+4</option>
-                                            <option value="3">+3</option>
-                                            <option value="2">+2</option>
-                                            <option value="1">+1</option>
-                                            <option selected="selected" value="0">--</option>
-                                            <option value="-1">-1</option>
-                                            <option value="-2">-2</option>
-                                            <option value="-3">-3</option>
-                                            <option value="-4">-4</option>
-                                            <option value="-5">-5</option>
-                                            <option value="-6">-6</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr class="stats def">
-                                    <td class="stats label">
-                                        <b>Def</b>
-                                    </td>
-                                    <td>
-                                        <span class="stats baseStat">100</span>
-                                    </td>
-                                    <td>
-                                        <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
-                                    </td>
-                                    <td>
-                                        <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
-                                    </td>
-                                    <td>
-                                        <span class="stats actualStat">100</span>
-                                    </td>
-                                    <td>
-                                        <select class="stats boost calc-trigger">
-                                            <option value="6">+6</option>
-                                            <option value="5">+5</option>
-                                            <option value="4">+4</option>
-                                            <option value="3">+3</option>
-                                            <option value="2">+2</option>
-                                            <option value="1">+1</option>
-                                            <option selected="selected" value="0">--</option>
-                                            <option value="-1">-1</option>
-                                            <option value="-2">-2</option>
-                                            <option value="-3">-3</option>
-                                            <option value="-4">-4</option>
-                                            <option value="-5">-5</option>
-                                            <option value="-6">-6</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr class="stats spa">
-                                    <td class="stats label">
-                                        <b>SpA</b>
-                                    </td>
-                                    <td>
-                                        <span class="stats baseStat">100</span>
-                                    </td>
-                                    <td>
-                                        <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
-                                    </td>
-                                    <td>
-                                        <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
-                                    </td>
-                                    <td>
-                                        <span class="stats actualStat">100</span>
-                                    </td>
-                                    <td>
-                                        <select class="stats boost calc-trigger">
-                                            <option value="6">+6</option>
-                                            <option value="5">+5</option>
-                                            <option value="4">+4</option>
-                                            <option value="3">+3</option>
-                                            <option value="2">+2</option>
-                                            <option value="1">+1</option>
-                                            <option selected="selected" value="0">--</option>
-                                            <option value="-1">-1</option>
-                                            <option value="-2">-2</option>
-                                            <option value="-3">-3</option>
-                                            <option value="-4">-4</option>
-                                            <option value="-5">-5</option>
-                                            <option value="-6">-6</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr class="stats spd">
-                                    <td class="stats label">
-                                        <b>SpD</b>
-                                    </td>
-                                    <td>
-                                        <span class="stats baseStat">100</span>
-                                    </td>
-                                    <td>
-                                        <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
-                                    </td>
-                                    <td>
-                                        <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
-                                    </td>
-                                    <td>
-                                        <span class="stats actualStat">100</span>
-                                    </td>
-                                    <td>
-                                        <select class="stats boost calc-trigger">
-                                            <option value="6">+6</option>
-                                            <option value="5">+5</option>
-                                            <option value="4">+4</option>
-                                            <option value="3">+3</option>
-                                            <option value="2">+2</option>
-                                            <option value="1">+1</option>
-                                            <option selected="selected" value="0">--</option>
-                                            <option value="-1">-1</option>
-                                            <option value="-2">-2</option>
-                                            <option value="-3">-3</option>
-                                            <option value="-4">-4</option>
-                                            <option value="-5">-5</option>
-                                            <option value="-6">-6</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr class="stats spe">
-                                    <td class="stats label">
-                                        <b>Spe</b>
-                                    </td>
-                                    <td>
-                                        <span class="stats baseStat">100</span>
-                                    </td>
-                                    <td>
-                                        <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
-                                    </td>
-                                    <td>
-                                        <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
-                                    </td>
-                                    <td>
-                                        <span class="stats actualStat">100</span>
-                                    </td>
-                                    <td>
-                                        <select class="stats boost calc-trigger">
-                                            <option value="6">+6</option>
-                                            <option value="5">+5</option>
-                                            <option value="4">+4</option>
-                                            <option value="3">+3</option>
-                                            <option value="2">+2</option>
-                                            <option value="1">+1</option>
-                                            <option selected="selected" value="0">--</option>
-                                            <option value="-1">-1</option>
-                                            <option value="-2">-2</option>
-                                            <option value="-3">-3</option>
-                                            <option value="-4">-4</option>
-                                            <option value="-5">-5</option>
-                                            <option value="-6">-6</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table>
+        <input type="text" class="pokemonSelect calc-trigger ability-trigger moves2-trigger" />
+        <table>
+            <tr>
+                <td class="stats" valign="top">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>
-                                    <table>
-                                        <tr>
-                                            <td>Nature</td>
-                                            <td>
-                                                <select class="stats extraOptions nature calc-trigger" size="1" data-size="5">
-                                                    <option value="Adamant">Adamant (+Atk, -SpA)</option>
-                                                    <option value="Bashful">Bashful</option>
-                                                    <option value="Bold">Bold (+Def, -Atk)</option>
-                                                    <option value="Brave">Brave (+Atk, -Spe)</option>
-                                                    <option value="Calm">Calm (+SpD, -Atk)</option>
-                                                    <option value="Careful">Careful (+SpD, -SpA)</option>
-                                                    <option value="Docile">Docile</option>
-                                                    <option value="Gentle">Gentle (+SpD, -Def)</option>
-                                                    <option value="Hardy">Hardy</option>
-                                                    <option value="Hasty">Hasty (+Spe, -Def)</option>
-                                                    <option value="Impish">Impish (+Def, -SpA)</option>
-                                                    <option value="Jolly">Jolly (+Spe, -SpA)</option>
-                                                    <option value="Lax">Lax (+Def, -SpD)</option>
-                                                    <option value="Lonely">Lonely (+Atk, -Def)</option>
-                                                    <option value="Mild">Mild (+SpA, -Def)</option>
-                                                    <option value="Modest">Modest (+SpA, -Atk)</option>
-                                                    <option value="Naive">Naive (+Spe, -SpD)</option>
-                                                    <option value="Naughty">Naughty (+Atk, -SpD)</option>
-                                                    <option value="Quiet">Quiet (+SpA, -Spe)</option>
-                                                    <option value="Quirky">Quirky</option>
-                                                    <option value="Rash">Rash (+SpA, -SpD)</option>
-                                                    <option value="Relaxed">Relaxed (+Def, -Spe)</option>
-                                                    <option value="Sassy">Sassy (+SpD, -Spe)</option>
-                                                    <option value="Serious" selected="selected">Serious</option>
-                                                    <option value="Timid">Timid (+Spe, -Atk)</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Status</td>
-                                            <td>
-                                                <select class="stats extraOptions status calc-trigger">
-                                                    <option value="0">Healthy</option>
-                                                    <option value="1">Burn</option>
-                                                    <option value="0">Paralyzed</option>
-                                                    <option value="0">Poisoned</option>
-                                                    <option value="0">Toxic</option>
-                                                    <option value="0">Sleep</option>
-                                                    <option value="0">Frozen</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                <td></td>
+                                <td class="stats modlabel">Base</td>
+                                <td class="stats modlabel">IVs</td>
+                                <td class="stats modlabel">EVs</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="stats hp">
+                                <td class="stats label">
+                                    <b>HP</b>
                                 </td>
                                 <td>
-                                    <table>
-                                        <tr>
-                                            <td>Ability</td>
-                                            <td>
-                                                <select class="stats extraOptions long ability calc-trigger">
-                                                    <option>--</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Item</td>
-                                            <td>
-                                                <!--<select class="stats extraOptions items calc-trigger">
-                                                    <option value="0" selected="selected">--</option>
-                                                </select>-->
-                                                <input type="text" class="itemSelect calc-trigger" selectedItem="0"/>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    <span class="stats baseStat">100</span>
+                                </td>
+                                <td>
+                                    <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
+                                </td>
+                                <td>
+                                    <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
+                                </td>
+                                <td>
+                                    <span class="stats actualStat">100</span>
                                 </td>
                             </tr>
-                        </table>
-                    </td>
-                    <td class="moves" valign="top">
-                        Moves: <br/>
-                        <input id="p2m1" class="moveSelect calc-trigger" type="text" />
-                        <input class="moves calc-trigger" type="checkbox" />Crit?
-                        <input class="moves calc-trigger" type="checkbox" />Z?
-                        <br/>
-                        <span id="p2m1-output">0% - 0%</span>
-                        <br/>
-    
-                        <input id="p2m2" class="moveSelect calc-trigger" type="text" />
-                        <input class="moves calc-trigger" type="checkbox" />Crit?
-                        <input class="moves calc-trigger" type="checkbox" />Z?
-                        <br/>
-                        <span id="p2m2-output">0% - 0%</span>
-                        <br/>
-    
-                        <input id="p2m3" class="moveSelect calc-trigger" type="text" />
-                        <input class="moves calc-trigger" type="checkbox" />Crit?
-                        <input class="moves calc-trigger" type="checkbox" />Z?
-                        <br/>
-                        <span id="p2m3-output">0% - 0%</span>
-                        <br/>
-    
-                        <input id="p2m4" class="moveSelect calc-trigger" type="text" />
-                        <input class="moves calc-trigger" type="checkbox" />Crit?
-                        <input class="moves calc-trigger" type="checkbox" />Z?
-                        <br/>
-                        <span id="p2m4-output">0% - 0%</span>
-                        <br/>
-                    </td>
-                </tr>
-            </table>
-        </div>
+                            <tr class="stats atk">
+                                <td class="stats label">
+                                    <b>Atk</b>
+                                </td>
+                                <td>
+                                    <span class="stats baseStat">100</span>
+                                </td>
+                                <td>
+                                    <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
+                                </td>
+                                <td>
+                                    <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
+                                </td>
+                                <td>
+                                    <span class="stats actualStat">100</span>
+                                </td>
+                                <td>
+                                    <select class="stats boost calc-trigger">
+                                        <option value="6">+6</option>
+                                        <option value="5">+5</option>
+                                        <option value="4">+4</option>
+                                        <option value="3">+3</option>
+                                        <option value="2">+2</option>
+                                        <option value="1">+1</option>
+                                        <option selected="selected" value="0">--</option>
+                                        <option value="-1">-1</option>
+                                        <option value="-2">-2</option>
+                                        <option value="-3">-3</option>
+                                        <option value="-4">-4</option>
+                                        <option value="-5">-5</option>
+                                        <option value="-6">-6</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="stats def">
+                                <td class="stats label">
+                                    <b>Def</b>
+                                </td>
+                                <td>
+                                    <span class="stats baseStat">100</span>
+                                </td>
+                                <td>
+                                    <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
+                                </td>
+                                <td>
+                                    <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
+                                </td>
+                                <td>
+                                    <span class="stats actualStat">100</span>
+                                </td>
+                                <td>
+                                    <select class="stats boost calc-trigger">
+                                        <option value="6">+6</option>
+                                        <option value="5">+5</option>
+                                        <option value="4">+4</option>
+                                        <option value="3">+3</option>
+                                        <option value="2">+2</option>
+                                        <option value="1">+1</option>
+                                        <option selected="selected" value="0">--</option>
+                                        <option value="-1">-1</option>
+                                        <option value="-2">-2</option>
+                                        <option value="-3">-3</option>
+                                        <option value="-4">-4</option>
+                                        <option value="-5">-5</option>
+                                        <option value="-6">-6</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="stats spa">
+                                <td class="stats label">
+                                    <b>SpA</b>
+                                </td>
+                                <td>
+                                    <span class="stats baseStat">100</span>
+                                </td>
+                                <td>
+                                    <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
+                                </td>
+                                <td>
+                                    <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
+                                </td>
+                                <td>
+                                    <span class="stats actualStat">100</span>
+                                </td>
+                                <td>
+                                    <select class="stats boost calc-trigger">
+                                        <option value="6">+6</option>
+                                        <option value="5">+5</option>
+                                        <option value="4">+4</option>
+                                        <option value="3">+3</option>
+                                        <option value="2">+2</option>
+                                        <option value="1">+1</option>
+                                        <option selected="selected" value="0">--</option>
+                                        <option value="-1">-1</option>
+                                        <option value="-2">-2</option>
+                                        <option value="-3">-3</option>
+                                        <option value="-4">-4</option>
+                                        <option value="-5">-5</option>
+                                        <option value="-6">-6</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="stats spd">
+                                <td class="stats label">
+                                    <b>SpD</b>
+                                </td>
+                                <td>
+                                    <span class="stats baseStat">100</span>
+                                </td>
+                                <td>
+                                    <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
+                                </td>
+                                <td>
+                                    <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
+                                </td>
+                                <td>
+                                    <span class="stats actualStat">100</span>
+                                </td>
+                                <td>
+                                    <select class="stats boost calc-trigger">
+                                        <option value="6">+6</option>
+                                        <option value="5">+5</option>
+                                        <option value="4">+4</option>
+                                        <option value="3">+3</option>
+                                        <option value="2">+2</option>
+                                        <option value="1">+1</option>
+                                        <option selected="selected" value="0">--</option>
+                                        <option value="-1">-1</option>
+                                        <option value="-2">-2</option>
+                                        <option value="-3">-3</option>
+                                        <option value="-4">-4</option>
+                                        <option value="-5">-5</option>
+                                        <option value="-6">-6</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="stats spe">
+                                <td class="stats label">
+                                    <b>Spe</b>
+                                </td>
+                                <td>
+                                    <span class="stats baseStat">100</span>
+                                </td>
+                                <td>
+                                    <input class="stats ivs calc-trigger" min="0" max="31" step="1" value="31" type="number">
+                                </td>
+                                <td>
+                                    <input class="stats evs calc-trigger" min="0" max="252" step="4" value="0" type="number">
+                                </td>
+                                <td>
+                                    <span class="stats actualStat">100</span>
+                                </td>
+                                <td>
+                                    <select class="stats boost calc-trigger">
+                                        <option value="6">+6</option>
+                                        <option value="5">+5</option>
+                                        <option value="4">+4</option>
+                                        <option value="3">+3</option>
+                                        <option value="2">+2</option>
+                                        <option value="1">+1</option>
+                                        <option selected="selected" value="0">--</option>
+                                        <option value="-1">-1</option>
+                                        <option value="-2">-2</option>
+                                        <option value="-3">-3</option>
+                                        <option value="-4">-4</option>
+                                        <option value="-5">-5</option>
+                                        <option value="-6">-6</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>Nature</td>
+                                        <td>
+                                            <select class="stats extraOptions nature calc-trigger" size="1" data-size="5">
+                                                <option value="Adamant">Adamant (+Atk, -SpA)</option>
+                                                <option value="Bashful">Bashful</option>
+                                                <option value="Bold">Bold (+Def, -Atk)</option>
+                                                <option value="Brave">Brave (+Atk, -Spe)</option>
+                                                <option value="Calm">Calm (+SpD, -Atk)</option>
+                                                <option value="Careful">Careful (+SpD, -SpA)</option>
+                                                <option value="Docile">Docile</option>
+                                                <option value="Gentle">Gentle (+SpD, -Def)</option>
+                                                <option value="Hardy">Hardy</option>
+                                                <option value="Hasty">Hasty (+Spe, -Def)</option>
+                                                <option value="Impish">Impish (+Def, -SpA)</option>
+                                                <option value="Jolly">Jolly (+Spe, -SpA)</option>
+                                                <option value="Lax">Lax (+Def, -SpD)</option>
+                                                <option value="Lonely">Lonely (+Atk, -Def)</option>
+                                                <option value="Mild">Mild (+SpA, -Def)</option>
+                                                <option value="Modest">Modest (+SpA, -Atk)</option>
+                                                <option value="Naive">Naive (+Spe, -SpD)</option>
+                                                <option value="Naughty">Naughty (+Atk, -SpD)</option>
+                                                <option value="Quiet">Quiet (+SpA, -Spe)</option>
+                                                <option value="Quirky">Quirky</option>
+                                                <option value="Rash">Rash (+SpA, -SpD)</option>
+                                                <option value="Relaxed">Relaxed (+Def, -Spe)</option>
+                                                <option value="Sassy">Sassy (+SpD, -Spe)</option>
+                                                <option value="Serious" selected="selected">Serious</option>
+                                                <option value="Timid">Timid (+Spe, -Atk)</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td>
+                                            <select class="stats extraOptions status calc-trigger">
+                                                <option value="0">Healthy</option>
+                                                <option value="1">Burned</option>
+                                                <option value="0">Paralyzed</option>
+                                                <option value="0">Poisoned</option>
+                                                <option value="0">Toxic'ed</option>
+                                                <option value="0">Sleep</option>
+                                                <option value="0">Frozen</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>Ability</td>
+                                        <td>
+                                            <select class="stats extraOptions ability long calc-trigger">
+                                                <option>--</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item</td>
+                                        <td>
+                                            <!--<select class="stats extraOptions items calc-trigger">
+                                                <option value="0" selected="selected">--</option>
+                                            </select>-->
+                                            <input type="text" class="itemSelect calc-trigger" selectedItem="0"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="moves" valign="top">
+                    Moves: <br/>
+                    <input id="p2m1" class="moveSelect calc-trigger" type="text" />
+                    <input id="p2m1-crit" class="moves calc-trigger" type="checkbox" />Crit?
+                    <input class="moves calc-trigger" type="checkbox" />Z?
+                    <br/>
+                    <span id="p2m1-output" class="moveOutput">0% - 0%</span>
+                    <br/>
+
+                    <input id="p2m2" class="moveSelect calc-trigger" type="text" />
+                    <input id="p2m2-crit" class="moves calc-trigger" type="checkbox" />Crit?
+                    <input class="moves calc-trigger" type="checkbox" />Z?
+                    <br/>
+                    <span id="p2m2-output" class="moveOutput">0% - 0%</span>
+                    <br/>
+
+                    <input id="p2m3" class="moveSelect calc-trigger" type="text" />
+                    <input id="p2m3-crit" class="moves calc-trigger" type="checkbox" />Crit?
+                    <input class="moves calc-trigger" type="checkbox" />Z?
+                    <br/>
+                    <span id="p2m3-output" class="moveOutput">0% - 0%</span>
+                    <br/>
+
+                    <input id="p2m4" class="moveSelect calc-trigger" type="text" />
+                    <input id="p2m4-crit" class="moves calc-trigger" type="checkbox" />Crit?
+                    <input class="moves calc-trigger" type="checkbox" />Z?
+                    <br/>
+                    <span id="p2m4-output" class="moveOutput">0% - 0%</span>
+                    <br/>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <script src="calc.js"></script>
 </body>
