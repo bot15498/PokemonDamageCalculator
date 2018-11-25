@@ -1,3 +1,11 @@
+//firebase init
+var config = {
+    apiKey: "AIzaSyC5E3qN0KjtmJP_ZV3HnOSkSCmaxa662mk",
+    databaseURL: "https://pokemondamagetest.firebaseio.com/",
+    projectId: "pokemondamagetest"
+}
+firebase.initializeApp(config);
+
 //Add pokemon autocomplete
 $( ".pokemonSelect" ).autocomplete({
   source: $.map(pokemon,function(item,key) {
