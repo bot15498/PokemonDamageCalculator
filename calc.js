@@ -1,3 +1,12 @@
+//firebase init
+var config = {
+    apiKey: "AIzaSyC5E3qN0KjtmJP_ZV3HnOSkSCmaxa662mk",
+    databaseURL: "https://pokemondamagetest.firebaseio.com/",
+    projectId: "pokemondamagetest"
+}
+firebase.initializeApp(config);
+var db = firebase.database();
+
 //Add pokemon autocomplete
 $( ".pokemonSelect" ).autocomplete({
   source: $.map(pokemon,function(item,key) {
@@ -222,4 +231,57 @@ function refreshMoves(target,pokemon1,pokemon2,pokemon1Spread,pokemon2Spread) {
             $("#" + targetMoveOutID).text("0% - 0%");
         }
     });
+}
+
+//Validates whether pokemon has a valid full spread to save to firebase
+//Don't need all 4 moves
+function ValidateSpread(target) {
+    
+}
+
+//Pushes pokemon stat/move information to firebase.
+function PushToFirebase(target) {
+    if(target == null) {
+        return;
+    }
+    var data = {};
+    var pokemonID = $(target).find(".pokemonSelect").attr("selectedpokemon");
+    //Change base stats
+    var hp = target.find($(".stats.hp"))[0];
+    var atk = target.find($(".stats.atk"))[0];
+    var def = target.find($(".stats.def"))[0];
+    var spa = target.find($(".stats.spa"))[0];
+    var spd = target.find($(".stats.spd"))[0];
+    var spe = target.find($(".stats.spe"))[0];
+    data["Level"] = 50;
+    data["Nature"] = target.find($(".stats.extraOptions.nature")).val();
+    data["Item"] = target.find($(".itemSelect"))[0].getAttribute("selectedItem");
+    data["Ability"] = target.find($(".stats.extraOptions.ability"))[0].value;
+    data["HP"] = {};
+    data["HP"]["IV"] = $(hp).find($(".stats.ivs")).val();
+    data["HP"]["EV"] = $(hp).find($(".stats.evs")).val();
+    data["Atk"] = {};
+    data["Atk"]["IV"] = $(atk).find($(".stats.ivs")).val();
+    data["Atk"]["EV"] = $(atk).find($(".stats.evs")).val();
+    data["Def"] = {};
+    data["Def"]["IV"] = $(def).find($(".stats.ivs")).val();
+    data["Def"]["EV"] = $(def).find($(".stats.evs")).val();
+    data["SpA"] = {};
+    data["SpA"]["IV"] = $(spa).find($(".stats.ivs")).val();
+    data["SpA"]["EV"] = $(spa).find($(".stats.evs")).val();
+    data["SpD"] = {};
+    data["SpD"]["IV"] = $(spd).find($(".stats.ivs")).val();
+    data["SpD"]["EV"] = $(spd).find($(".stats.evs")).val();
+    data["Spe"] = {};
+    data["Spe"]["IV"] = $(spe).find($(".stats.ivs")).val();
+    data["Spe"]["EV"] = $(spe).find($(".stats.evs")).val();
+    //save moves. Order doesn't really matter
+    data["Moves"] = [];
+    $(target).find($(".moveSelect")).each(function(i,item) {
+        if($(item).attr("selectedMove") != null && $(item).attr("selectedMove") != "") {
+            data["Moves"].push($(item).attr("selectedmove"));
+        }
+    });
+
+    db.ref("pokemon-spreads").child(pokemonID).push().set(data);
 }

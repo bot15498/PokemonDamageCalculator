@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="resources/jquery-ui-1.12.1/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="calc.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
     <script src="resources/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
     <script src="resources/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="js/pokemonlist.js"></script>
@@ -14,7 +15,7 @@
     <script src="js/moves.js"></script>
     <script src="js/typechart.js"></script>
     <script src="js/calculator.js"></script>
-    <script src="calc.js"></script>
+    <!--<script src="calc.js"></script>-->
 </head>
 
 <body>
@@ -298,7 +299,7 @@
                         </tr>
                     </table>
                 </td>
-                <td class="moves" valign="top">
+                <td class="moves" valign="top" style="white-space: nowrap;">
                     Moves: <br/>
                     <input id="p1m1" class="moveSelect calc-trigger" type="text" />
                     <input id="p1m1-crit" class="moves calc-trigger" type="checkbox" />Crit?
@@ -611,7 +612,7 @@
                         </tr>
                     </table>
                 </td>
-                <td class="moves" valign="top">
+                <td class="moves" valign="top" style="white-space: nowrap;">
                     Moves: <br/>
                     <input id="p2m1" class="moveSelect calc-trigger" type="text" />
                     <input id="p2m1-crit" class="moves calc-trigger" type="checkbox" />Crit?
