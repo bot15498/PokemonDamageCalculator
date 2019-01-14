@@ -304,7 +304,10 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
     //Change type of judgement if needed
     attackInfo = applyPlateToJudgement(attackInfo,atkPokemonRawInfo,atkPokemonInfo);
 
-    //Apply type enhancing items and plates.
+    //Change type of Techno Blast if needed
+    attackInfo = applyDriveToBlast(attackInfo,atkPokemonInfo);
+
+    //Apply type enhancing items and plates and incenses.
     power = applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInfo);
 
     //calculate base damage
@@ -592,6 +595,34 @@ function applyPlateToJudgement(attackInfo,atkPokemonRawInfo,atkPokemonInfo) {
                 break;
             case "Zap-plate":
                 newAttackInfo["Type"] = "Electric";
+                break;
+        }
+    }
+    return newAttackInfo;
+}
+
+/**
+ * Changes the type of techno blast to the correct type.
+ * @param {JSON} attackInfo the attackInfo JSON of the 
+ * @param {JSON} atkPokemonInfo The JSON for the attack pokemon's spread
+ * @returns {JSON} the modified attackInfo if there is a type change to judgement
+ */
+function applyDriveToBlast(attackInfo,atkPokemonInfo) {
+    var newAttackInfo = attackInfo;
+    var atkItemName = items[atkPokemonInfo["Item"].toString()]["Name"];
+    if(attackInfo["Name"] == "Techno blast") {
+        switch(atkItemName) {
+            case "Douse-drive":
+                newAttackInfo["Type"] = "Water";
+                break;
+            case "Shock-drive":
+                newAttackInfo["Type"] = "Electric";
+                break;
+            case "Burn-drive":
+                newAttackInfo["Type"] = "Fire";
+                break;
+            case "Chill-drive":
+                newAttackInfo["Type"] = "Ice";
                 break;
         }
     }
