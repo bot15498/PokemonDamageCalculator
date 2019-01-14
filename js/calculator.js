@@ -388,58 +388,137 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInf
     var newPower = power;
     //Type enchancing items
     var atkItemName = items[atkPokemonInfo["Item"].toString()]["Name"];
-    if((atkItemName == "Black-belt" && attackInfo["Type"] == "Fighting")
-            || (atkItemName == "Black-glasses" && attackInfo["Type"] == "Dark")
-            || (atkItemName == "Charcoal" && attackInfo["Type"] == "Fire")
-            || (atkItemName == "Dragon-fang" && attackInfo["Type"] == "Dragon")
-            || (atkItemName == "Hard-stone" && attackInfo["Type"] == "Rock")
-            || (atkItemName == "Magnet" && attackInfo["Type"] == "Electric")
-            || (atkItemName == "Metal-coat" && attackInfo["Type"] == "Steel")
-            || (atkItemName == "Miracle-seed" && attackInfo["Type"] == "Grass")
-            || (atkItemName == "Mystic-water" && attackInfo["Type"] == "Water")
-            || (atkItemName == "Never-melt-ice" && attackInfo["Type"] == "Ice")
-            || (atkItemName == "Poison-barb" && attackInfo["Type"] == "Poison")
-            || (atkItemName == "Sharp-beak" && attackInfo["Type"] == "Flying")
-            || (atkItemName == "Silk-scarf" && attackInfo["Type"] == "Normal")
-            || (atkItemName == "Silver-powder" && attackInfo["Type"] == "Bug")
-            || (atkItemName == "Soft-sand" && attackInfo["Type"] == "Ground")
-            || (atkItemName == "Spell-tag" && attackInfo["Type"] == "Ghost")
-            || (atkItemName == "Twisted-spoon" && attackInfo["Type"] == "Psychic")
-            || (atkItemName == "Draco-plate" && attackInfo["Type"] == "Dragon")
-            || (atkItemName == "Dread-plate" && attackInfo["Type"] == "Dark")
-            || (atkItemName == "Earth-plate" && attackInfo["Type"] == "Ground")
-            || (atkItemName == "Fist-plate" && attackInfo["Type"] == "Fighting")
-            || (atkItemName == "Flame-plate" && attackInfo["Type"] == "Fire")
-            || (atkItemName == "Icicle-plate" && attackInfo["Type"] == "Ice")
-            || (atkItemName == "Insect-plate" && attackInfo["Type"] == "Bug")
-            || (atkItemName == "Iron-plate" && attackInfo["Type"] == "Steel")
-            || (atkItemName == "Meadow-plate" && attackInfo["Type"] == "Grass")
-            || (atkItemName == "Mind-plate" && attackInfo["Type"] == "Psychic")
-            || (atkItemName == "Pixie-plate" && attackInfo["Type"] == "Fairy")
-            || (atkItemName == "Sky-plate" && attackInfo["Type"] == "Flying")
-            || (atkItemName == "Splash-plate" && attackInfo["Type"] == "Water")
-            || (atkItemName == "Spooky-plate" && attackInfo["Type"] == "Ghost")
-            || (atkItemName == "Stone-plate" && attackInfo["Type"] == "Rock")
-            || (atkItemName == "Toxic-plate" && attackInfo["Type"] == "Poison")
-            || (atkItemName == "Zap-plate" && attackInfo["Type"] == "Electric")) {
-        newPower = Math.floor(newPower * 1.2);
-    } 
-    else if(atkItemName == "Soul-dew" && (atkPokemonRawInfo["Name"]=="Latias" || atkPokemonRawInfo["Name"]=="Latios")) {
-        if(attackInfo["Type"] == "Psychic" || attackInfo["Type"] == "Dragon") {
-            newPower = Math.floor(newPower * 1.2);
-        }
-    } else if(atkItemName == "Adamant-orb" && atkPokemonRawInfo["Name"] == "Dialga") {
-        if(attackInfo["Type"] == "Steel" || attackInfo["Type"] == "Dragon") {
-            newPower = Math.floor(newPower * 1.2);
-        }
-    } else if(atkItemName == "Lustrous-orb" && atkPokemonRawInfo["Name"] == "Palkia") {
-        if(attackInfo["Type"] == "Water" || attackInfo["Type"] == "Dragon") {
-            newPower = Math.floor(newPower * 1.2);
-        }
-    } else if(atkItemName == "Griseous-orb" && (atkPokemonRawInfo["Name"]=="Giratina-origin" || atkPokemonRawInfo["Name"]=="Giratina-altered")) {
-        if(attackInfo["Type"] == "Ghost" || attackInfo["Type"] == "Dragon") {
-            newPower = Math.floor(newPower * 1.2);
-        }
+    switch(atkItemName) {
+        case "Soul-dew":
+            if((atkPokemonRawInfo["Name"]=="Latias" || atkPokemonRawInfo["Name"]=="Latios")
+                    && (attackInfo["Type"] == "Psychic" || attackInfo["Type"] == "Dragon")) {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Adamant-orb":
+            if(atkPokemonRawInfo["Name"] == "Dialga"
+                    && (attackInfo["Type"] == "Steel" || attackInfo["Type"] == "Dragon")) {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Lustrous-orb":
+            if(atkPokemonRawInfo["Name"] == "Palkia"
+                    && (attackInfo["Type"] == "Water" || attackInfo["Type"] == "Dragon")) {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Griseous-orb":
+            if((atkPokemonRawInfo["Name"]=="Giratina-origin" || atkPokemonRawInfo["Name"]=="Giratina-altered")
+                    && (attackInfo["Type"] == "Ghost" || attackInfo["Type"] == "Dragon")) {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Fist-plate":
+        case "Black-belt":
+            if(attackInfo["Type"] == "Fighting") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Dread-plate":
+        case "Black-glasses":
+            if(attackInfo["Type"] == "Dark") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Flame-plate":
+        case "Charcoal":
+            if(attackInfo["Type"] == "Fire") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Draco-plate":
+        case "Dragon-fang":
+            if(attackInfo["Type"] == "Dragon") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Stone-plate":
+        case "Hard-stone":
+            if(attackInfo["Type"] == "Rock") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Zap-plate":
+        case "Magnet":
+            if(attackInfo["Type"] == "Electric") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Iron-plate":
+        case "Metal-coat":
+            if(attackInfo["Type"] == "Steel") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Meadow-plate":
+        case "Miracle-seed":
+            if(attackInfo["Type"] == "Grass") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Splash-plate":
+        case "Mystic-water":
+            if(attackInfo["Type"] == "Water") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Icicle-plate":
+        case "Never-melt-ice":
+            if(attackInfo["Type"] == "Ice") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Toxic-plate":
+        case "Poison-barb":
+            if(attackInfo["Type"] == "Poison") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Sky-plate":
+        case "Sharp-beak":
+            if(attackInfo["Type"] == "Flying") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Silk-scarf":
+            if(attackInfo["Type"] == "Normal") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Insect-plate":
+        case "Silver-powder":
+            if(attackInfo["Type"] == "Bug") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Earth-plate":
+        case "Soft-sand":
+            if(attackInfo["Type"] == "Ground") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Spooky-plate":
+        case "Spell-tag":
+            if(attackInfo["Type"] == "Ghost") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Mind-plate":
+        case "Twisted-spoon":
+            if(attackInfo["Type"] == "Psychic") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
+        case "Pixie-plate":
+            if(attackInfo["Type"] == "Fairy") {
+                newPower = Math.floor(newPower * 1.2);
+            }
+            break;
     }
     return newPower;
 }
@@ -454,9 +533,6 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInf
 function applyPlateToJudgement(attackInfo,atkPokemonRawInfo,atkPokemonInfo) {
     var newAttackInfo = attackInfo;
     var atkItemName = items[atkPokemonInfo["Item"].toString()]["Name"];
-    console.log("In judgement")
-    console.log(attackInfo);
-    console.log(atkPokemonRawInfo);
     if(attackInfo["Name"] == "Judgment" 
             && atkPokemonRawInfo["Name"] == "Arceus"
             && atkPokemonInfo["Ability"] == "Multitype") {
