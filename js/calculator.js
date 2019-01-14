@@ -60,7 +60,7 @@ function calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,at
     var spaBoost = statChangeDict[atkPokemonInfo["SpA"]["boost"]];
     var defBoost = statChangeDict[defPokemonInfo["Def"]["boost"]];
     var spdBoost = statChangeDict[defPokemonInfo["SpD"]["boost"]];
-    console.log(defPokemonInfo);
+    // console.log(defPokemonInfo);
     if(fieldInfo["isCrit"]) {
         if(atkBoost < 1) {
             atkBoost = 1;
@@ -299,12 +299,18 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
     // var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
     //calculate base damage
     var power = parseInt(attackInfo["Power"]);
+
+    //Apply type enhancing items
+    power = applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo);
+
     var levelCalc = 2 * parseFloat(atkPokemonInfo["Level"]) / 5 + 2;
     var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo,fieldInfo);
     var baseDamage = Math.floor(levelCalc * power * defenseRatio / 50) + 2
     //calculate modifier
     var modifier = 1;
     var actualDamage = baseDamage;
+
+    //ITEMS
 
     //Target
     if(attackInfo["Target"] == "Multi-Target") {
@@ -350,7 +356,7 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
 /**
  * Calculates the damage ratio percentage an attack does
  * @param {number} damage: the damage calculation
- * @param {Int32Array} the integer value for HP
+ * @param {Int32Array} hp: the integer value for HP
  * @return {string} Lower and Upper bound of damage
  */
 function damageRatioPercentage(damage, hp) {
@@ -362,4 +368,61 @@ function damageRatioPercentage(damage, hp) {
     var percentageLower = ratioLower * 100;
 
     return (Math.round(100*percentageLower)/100) + "% - " + (Math.round(100*percentageUpper)/100) + "%";
+}
+
+/**
+ * Applies power boost from certain items
+ * https://bulbapedia.bulbagarden.net/wiki/Type-enhancing_item
+ * 
+ * @param {JSON} attackInfo The attack JSON from the moves list
+ * @param {JSON} atkPokemonRawInfo The JSON base for the attacking pokemon
+ * @param {JSON} defPokemonRawInfo The JSON base for the defending pokemon
+ * @param {JSON} atkPokemonInfo The JSON for the attack pokemon's spread
+ * @param {JSON} defPokemonInfo The JSON for the defense pokemon's spread
+ * @returns {number} the new power of the attack.
+ */
+function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo) {
+    var newPower = power;
+    //Type enchancing items
+    var atkItemName = items[atkPokemonInfo["Item"].toString()]["Name"];
+    var defItemName = items[defPokemonInfo["Item"].toString()]["Name"];
+    console.log(attackInfo);
+    console.log(atkItemName);
+    if((atkItemName == "Black-belt" && attackInfo["Type"] == "Fighting")
+            || (atkItemName == "Black-glasses" && attackInfo["Type"] == "Dark")
+            || (atkItemName == "Charcoal" && attackInfo["Type"] == "Fire")
+            || (atkItemName == "Dragon-fang" && attackInfo["Type"] == "Dragon")
+            || (atkItemName == "Hard-stone" && attackInfo["Type"] == "Rock")
+            || (atkItemName == "Magnet" && attackInfo["Type"] == "Electric")
+            || (atkItemName == "Metal-coat" && attackInfo["Type"] == "Steel")
+            || (atkItemName == "Miracle-seed" && attackInfo["Type"] == "Grass")
+            || (atkItemName == "Mystic-water" && attackInfo["Type"] == "Water")
+            || (atkItemName == "Never-melt-ice" && attackInfo["Type"] == "Ice")
+            || (atkItemName == "Poison-barb" && attackInfo["Type"] == "Poison")
+            || (atkItemName == "Sharp-beak" && attackInfo["Type"] == "Flying")
+            || (atkItemName == "Silk-scarf" && attackInfo["Type"] == "Normal")
+            || (atkItemName == "Silver-powder" && attackInfo["Type"] == "Bug")
+            || (atkItemName == "Soft-sand" && attackInfo["Type"] == "Ground")
+            || (atkItemName == "Spell-tag" && attackInfo["Type"] == "Ghost")
+            || (atkItemName == "Twisted-spoon" && attackInfo["Type"] == "Psychic")) {
+        newPower = Math.floor(newPower * 1.2);
+    } 
+    else if(atkItemName == "Soul-dew" && (atkPokemonRawInfo["Name"]=="Latias" || atkPokemonRawInfo["Name"]=="Latios")) {
+        if(attackInfo["Type"] == "Psychic" || attackInfo["Type"] == "Dragon") {
+            newPower = Math.floor(newPower * 1.2);
+        }
+    } else if(atkItemName == "Adamant-orb" && atkPokemonRawInfo["Name"] == "Dialga") {
+        if(attackInfo["Type"] == "Steel" || attackInfo["Type"] == "Dragon") {
+            newPower = Math.floor(newPower * 1.2);
+        }
+    } else if(atkItemName == "Lustrous-orb" && atkPokemonRawInfo["Name"] == "Palkia") {
+        if(attackInfo["Type"] == "Water" || attackInfo["Type"] == "Dragon") {
+            newPower = Math.floor(newPower * 1.2);
+        }
+    } else if(atkItemName == "Griseous-orb" && atkPokemonRawInfo["Name"] == "Giratina") {
+        if(attackInfo["Type"] == "Ghost" || attackInfo["Type"] == "Dragon") {
+            newPower = Math.floor(newPower * 1.2);
+        }
+    }
+    return newPower;
 }

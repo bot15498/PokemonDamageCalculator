@@ -220,6 +220,17 @@ function refreshMoves(target,pokemon1,pokemon2,pokemon1Spread,pokemon2Spread) {
             var currMoveID = $(item).attr("selectedMove");
             //get field info
             var fieldInfo = {};
+            /*
+            fieldInfo = {
+                "isCrit" : true/false,
+                "weather" : "rain"/"sun"/"hail"/"sand",
+                "terrain" : "grass"/"electric"/"psychic"/"misty",
+                "reflect" : true/false, (applies both if aura veil)
+                "lightscreen" : true/false,
+                "friendGuard": true/false,
+                "gravity" : true/falses
+            }
+            */
             fieldInfo["isCrit"] = $("#" + item.id+"-crit").is(":checked");
             var damageArr = calculate(currMoveID,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonSpread,defPokemonSpread,fieldInfo);
             var lowPercent = parseFloat(parseFloat(damageArr[0] / opponentPokemonHP * 100).toFixed(2));
@@ -285,3 +296,19 @@ function PushToFirebase(target) {
 
     db.ref("pokemon-spreads").child(pokemonID).push().set(data);
 }
+
+$(".change-panel").click(function(e) {
+    if($(this).data("main-calc") == 1){
+        $(this).text("Main")
+        $(".environment-settings").css("display", "");
+        $(".main-calc").css("display", "none");
+        $(this).data("main-calc",0);
+    } else {
+        $(this).text("Field")
+        $(".main-calc").css("display", "");
+        $(".environment-settings").css("display", "none");
+        $(this).data("main-calc",1);
+    }
+    e.stopPropagation();
+    e.preventDefault();
+});
