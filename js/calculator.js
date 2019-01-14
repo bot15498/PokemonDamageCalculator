@@ -297,11 +297,12 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
     var attackInfo = moves[attackMove];
     // var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
     // var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
+
     //calculate base damage
     var power = parseInt(attackInfo["Power"]);
 
     //Apply type enhancing items
-    power = applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo);
+    power = applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInfo);
 
     var levelCalc = 2 * parseFloat(atkPokemonInfo["Level"]) / 5 + 2;
     var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo,fieldInfo);
@@ -375,19 +376,15 @@ function damageRatioPercentage(damage, hp) {
  * https://bulbapedia.bulbagarden.net/wiki/Type-enhancing_item
  * 
  * @param {JSON} attackInfo The attack JSON from the moves list
+ * @param {number} power The base attack power of the move used
  * @param {JSON} atkPokemonRawInfo The JSON base for the attacking pokemon
- * @param {JSON} defPokemonRawInfo The JSON base for the defending pokemon
  * @param {JSON} atkPokemonInfo The JSON for the attack pokemon's spread
- * @param {JSON} defPokemonInfo The JSON for the defense pokemon's spread
  * @returns {number} the new power of the attack.
  */
-function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo) {
+function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInfo) {
     var newPower = power;
     //Type enchancing items
     var atkItemName = items[atkPokemonInfo["Item"].toString()]["Name"];
-    var defItemName = items[defPokemonInfo["Item"].toString()]["Name"];
-    console.log(attackInfo);
-    console.log(atkItemName);
     if((atkItemName == "Black-belt" && attackInfo["Type"] == "Fighting")
             || (atkItemName == "Black-glasses" && attackInfo["Type"] == "Dark")
             || (atkItemName == "Charcoal" && attackInfo["Type"] == "Fire")
@@ -419,7 +416,7 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,defPokemonRaw
         if(attackInfo["Type"] == "Water" || attackInfo["Type"] == "Dragon") {
             newPower = Math.floor(newPower * 1.2);
         }
-    } else if(atkItemName == "Griseous-orb" && atkPokemonRawInfo["Name"] == "Giratina") {
+    } else if(atkItemName == "Griseous-orb" && (atkPokemonRawInfo["Name"]=="Giratina-origin" || atkPokemonRawInfo["Name"]=="Giratina-altered")) {
         if(attackInfo["Type"] == "Ghost" || attackInfo["Type"] == "Dragon") {
             newPower = Math.floor(newPower * 1.2);
         }
