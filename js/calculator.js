@@ -169,7 +169,11 @@ function calculateSpecialAttackStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for SpecialDefense
  */
 function calculateSpecialDefenseStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,4);
+    var modifier = 1;
+    if(items[pokemonInfo["Item"].toString()]["Name"] == "Assault-vest"){
+        modifier = 1.5;
+    }
+    return Math.floor(calculateOtherStat(pokemonRawInfo,pokemonInfo,4) * modifier);
 }
 
 /**
@@ -179,7 +183,11 @@ function calculateSpecialDefenseStat(pokemonRawInfo,pokemonInfo) {
  * @returns {Int32Array} the integer value for Speed
  */
 function calculateSpeedStat(pokemonRawInfo,pokemonInfo) {
-    return calculateOtherStat(pokemonRawInfo,pokemonInfo,5);
+    var modifier = 1;
+    if(items[pokemonInfo["Item"].toString()]["Name"] == "Choice-scarf"){
+        modifier = 1.5;
+    }
+    return Math.floor(calculateOtherStat(pokemonRawInfo,pokemonInfo,5)*modifier);
 }
 
 /**
@@ -378,8 +386,9 @@ function damageRatioPercentage(damage, hp) {
 
 /**
  * Applies power boost from certain items.
+ * Also includes boost from plates and relevant incenses and gems
  * https://bulbapedia.bulbagarden.net/wiki/Type-enhancing_item
- * Also includes boost from plates and relevant incenses
+ * https://bulbapedia.bulbagarden.net/wiki/Gem
  * 
  * @param {JSON} attackInfo The attack JSON from the moves list
  * @param {number} power The base attack power of the move used
