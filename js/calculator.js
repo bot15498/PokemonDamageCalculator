@@ -438,6 +438,7 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInf
             }
             break;
         case "Stone-plate":
+        case "Rock-incense":
         case "Hard-stone":
             if(attackInfo["Type"] == "Rock") {
                 newPower = Math.floor(newPower * 1.2);
@@ -456,12 +457,15 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInf
             }
             break;
         case "Meadow-plate":
+        case "Rose-incense":
         case "Miracle-seed":
             if(attackInfo["Type"] == "Grass") {
                 newPower = Math.floor(newPower * 1.2);
             }
             break;
         case "Splash-plate":
+        case "Sea-incense":
+        case "Wave-incense":
         case "Mystic-water":
             if(attackInfo["Type"] == "Water") {
                 newPower = Math.floor(newPower * 1.2);
@@ -509,6 +513,7 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInf
             }
             break;
         case "Mind-plate":
+        case "Odd-incense":
         case "Twisted-spoon":
             if(attackInfo["Type"] == "Psychic") {
                 newPower = Math.floor(newPower * 1.2);
