@@ -298,20 +298,22 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
     // var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
     // var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
 
-    //calculate base damage
+    //find base move power
     var power = parseInt(attackInfo["Power"]);
 
-    //Apply type enhancing items
+    //Change type of judgement if needed
+    attackInfo = applyPlateToJudgement(attackInfo,atkPokemonRawInfo,atkPokemonInfo);
+
+    //Apply type enhancing items and plates.
     power = applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInfo);
 
+    //calculate base damage
     var levelCalc = 2 * parseFloat(atkPokemonInfo["Level"]) / 5 + 2;
     var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo,fieldInfo);
     var baseDamage = Math.floor(levelCalc * power * defenseRatio / 50) + 2
     //calculate modifier
     var modifier = 1;
     var actualDamage = baseDamage;
-
-    //ITEMS
 
     //Target
     if(attackInfo["Target"] == "Multi-Target") {
@@ -372,8 +374,9 @@ function damageRatioPercentage(damage, hp) {
 }
 
 /**
- * Applies power boost from certain items
+ * Applies power boost from certain items.
  * https://bulbapedia.bulbagarden.net/wiki/Type-enhancing_item
+ * Also includes boost from plates
  * 
  * @param {JSON} attackInfo The attack JSON from the moves list
  * @param {number} power The base attack power of the move used
@@ -401,7 +404,24 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInf
             || (atkItemName == "Silver-powder" && attackInfo["Type"] == "Bug")
             || (atkItemName == "Soft-sand" && attackInfo["Type"] == "Ground")
             || (atkItemName == "Spell-tag" && attackInfo["Type"] == "Ghost")
-            || (atkItemName == "Twisted-spoon" && attackInfo["Type"] == "Psychic")) {
+            || (atkItemName == "Twisted-spoon" && attackInfo["Type"] == "Psychic")
+            || (atkItemName == "Draco-plate" && attackInfo["Type"] == "Dragon")
+            || (atkItemName == "Dread-plate" && attackInfo["Type"] == "Dark")
+            || (atkItemName == "Earth-plate" && attackInfo["Type"] == "Ground")
+            || (atkItemName == "Fist-plate" && attackInfo["Type"] == "Fighting")
+            || (atkItemName == "Flame-plate" && attackInfo["Type"] == "Fire")
+            || (atkItemName == "Icicle-plate" && attackInfo["Type"] == "Ice")
+            || (atkItemName == "Insect-plate" && attackInfo["Type"] == "Bug")
+            || (atkItemName == "Iron-plate" && attackInfo["Type"] == "Steel")
+            || (atkItemName == "Meadow-plate" && attackInfo["Type"] == "Grass")
+            || (atkItemName == "Mind-plate" && attackInfo["Type"] == "Psychic")
+            || (atkItemName == "Pixie-plate" && attackInfo["Type"] == "Fairy")
+            || (atkItemName == "Sky-plate" && attackInfo["Type"] == "Flying")
+            || (atkItemName == "Splash-plate" && attackInfo["Type"] == "Water")
+            || (atkItemName == "Spooky-plate" && attackInfo["Type"] == "Ghost")
+            || (atkItemName == "Stone-plate" && attackInfo["Type"] == "Rock")
+            || (atkItemName == "Toxic-plate" && attackInfo["Type"] == "Poison")
+            || (atkItemName == "Zap-plate" && attackInfo["Type"] == "Electric")) {
         newPower = Math.floor(newPower * 1.2);
     } 
     else if(atkItemName == "Soul-dew" && (atkPokemonRawInfo["Name"]=="Latias" || atkPokemonRawInfo["Name"]=="Latios")) {
@@ -422,4 +442,77 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInf
         }
     }
     return newPower;
+}
+
+/**
+ * Changes the type of judgement to the correct type.
+ * @param {JSON} attackInfo the attackInfo JSON of the 
+ * @param {JSON} atkPokemonRawInfo The JSON base for the attacking pokemon
+ * @param {JSON} atkPokemonInfo The JSON for the attack pokemon's spread
+ * @returns {JSON} the modified attackInfo if there is a type change to judgement
+ */
+function applyPlateToJudgement(attackInfo,atkPokemonRawInfo,atkPokemonInfo) {
+    var newAttackInfo = attackInfo;
+    var atkItemName = items[atkPokemonInfo["Item"].toString()]["Name"];
+    console.log("In judgement")
+    console.log(attackInfo);
+    console.log(atkPokemonRawInfo);
+    if(attackInfo["Name"] == "Judgment" 
+            && atkPokemonRawInfo["Name"] == "Arceus"
+            && atkPokemonInfo["Ability"] == "Multitype") {
+        switch(atkItemName) {
+            case "Draco-plate":
+                newAttackInfo["Type"] = "Dragon";
+                break;
+            case "Dread-plate":
+                newAttackInfo["Type"] = "Dark";
+                break;
+            case "Earth-plate":
+                newAttackInfo["Type"] = "Ground";
+                break;
+            case "Fist-plate":
+                newAttackInfo["Type"] = "Fighting";
+                break;
+            case "Flame-plate":
+                newAttackInfo["Type"] = "Fire";
+                break;
+            case "Icicle-plate":
+                newAttackInfo["Type"] = "Ice";
+                break;
+            case "Insect-plate":
+                newAttackInfo["Type"] = "Bug";
+                break;
+            case "Iron-plate":
+                newAttackInfo["Type"] = "Steel";
+                break;
+            case "Meadow-plate":
+                newAttackInfo["Type"] = "Grass";
+                break;
+            case "Mind-plate":
+                newAttackInfo["Type"] = "Psychic";
+                break;
+            case "Pixie-plate":
+                newAttackInfo["Type"] = "Fairy";
+                break;
+            case "Sky-plate":
+                newAttackInfo["Type"] = "Flying";
+                break;
+            case "Splash-plate":
+                newAttackInfo["Type"] = "Water";
+                break;
+            case "Spooky-plate":
+                newAttackInfo["Type"] = "Ghost";
+                break;
+            case "Stone-plate":
+                newAttackInfo["Type"] = "Rock";
+                break;
+            case "Toxic-plate":
+                newAttackInfo["Type"] = "Poison";
+                break;
+            case "Zap-plate":
+                newAttackInfo["Type"] = "Electric";
+                break;
+        }
+    }
+    return newAttackInfo;
 }
