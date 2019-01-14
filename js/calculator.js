@@ -387,6 +387,7 @@ function damageRatioPercentage(damage, hp) {
 /**
  * Applies power boost from certain items.
  * Also includes boost from plates and relevant incenses and gems
+ * and muscle band and wise glasses
  * https://bulbapedia.bulbagarden.net/wiki/Type-enhancing_item
  * https://bulbapedia.bulbagarden.net/wiki/Gem
  * 
@@ -624,6 +625,16 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInf
         case "Fairy-gem":
             if(attackInfo["Type"] == "Fairy") {
                 newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Wise-glasses":
+            if(attackInfo["Category"] == "Special") {
+                newPower = Math.floor(newPower * 1.1);
+            }
+            break;
+        case "Muscle-band":
+            if(attackInfo["Category"] == "Physical") {
+                newPower = Math.floor(newPower * 1.1);
             }
             break;
     }
