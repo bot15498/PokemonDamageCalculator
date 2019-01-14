@@ -116,10 +116,14 @@ $(".calc-trigger").change(function() {
     console.log("Hey Hey Hey Start Dash!");
     //update pokemon stats
     var currPokemon1ID = $("#pokemon1").find($(".pokemonSelect"))[0].getAttribute("selectedPokemon");
-    var currPokemon1 = pokemon[currPokemon1ID];
+    //var currPokemon1 = pokemon[currPokemon1ID];
+    if(currPokemon1ID == null) { return; }
+    var currPokemon1 = JSON.parse(JSON.stringify(pokemon[currPokemon1ID]));
     var currPokemon1Spread = refreshPokemon(currPokemon1,$("#pokemon1"));
     var currPokemon2ID = $("#pokemon2").find($(".pokemonSelect"))[0].getAttribute("selectedPokemon");
-    var currPokemon2 = pokemon[currPokemon2ID];
+    //var currPokemon2 = pokemon[currPokemon2ID];
+    if(currPokemon2ID == null) { return; }
+    var currPokemon2 = JSON.parse(JSON.stringify(pokemon[currPokemon2ID]));
     var currPokemon2Spread = refreshPokemon(currPokemon2,$("#pokemon2"));
     refreshMoves($("#pokemon1"),currPokemon1,currPokemon2,currPokemon1Spread,currPokemon2Spread);
     refreshMoves($("#pokemon2"),currPokemon1,currPokemon2,currPokemon1Spread,currPokemon2Spread);
