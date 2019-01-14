@@ -527,6 +527,96 @@ function applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInf
                 newPower = Math.floor(newPower * 1.2);
             }
             break;
+        case "Fire-gem":
+            if(attackInfo["Type"] == "Fire") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Water-gem":
+            if(attackInfo["Type"] == "Water") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Electric-gem":
+            if(attackInfo["Type"] == "Electric") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Grass-gem":
+            if(attackInfo["Type"] == "Grass") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Ice-gem":
+            if(attackInfo["Type"] == "Ice") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Fighting-gem":
+            if(attackInfo["Type"] == "Fighting") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Poison-gem":
+            if(attackInfo["Type"] == "Poison") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Ground-gem":
+            if(attackInfo["Type"] == "Ground") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Flying-gem":
+            if(attackInfo["Type"] == "Flying") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Psychic-gem":
+            if(attackInfo["Type"] == "Psychic") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Bug-gem":
+            if(attackInfo["Type"] == "Bug") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Rock-gem":
+            if(attackInfo["Type"] == "Rock") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Ghost-gem":
+            if(attackInfo["Type"] == "Ghost") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Dragon-gem":
+            if(attackInfo["Type"] == "Dragon") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Dark-gem":
+            if(attackInfo["Type"] == "Dark") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Steel-gem":
+            if(attackInfo["Type"] == "Steel") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Normal-gem":
+            if(attackInfo["Type"] == "Normal") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
+        case "Fairy-gem":
+            if(attackInfo["Type"] == "Fairy") {
+                newPower = Math.floor(newPower * 1.3);
+            }
+            break;
     }
     return newPower;
 }
