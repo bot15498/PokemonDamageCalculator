@@ -303,24 +303,30 @@ function calculateOtherStat(pokemonRawInfo,pokemonInfo,statType) {
  */
 function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo,fieldInfo) {
     var attackInfo = moves[attackMove];
+    var _atkPokemonRawInfo = atkPokemonRawInfo;
+    var _defPokemonRawInfo = defPokemonRawInfo;
     // var atkPokemonRawInfo = pokemon[atkPokemonInfo["ID"]];
     // var defPokemonRawInfo = pokemon[defPokemonInfo["ID"]];
 
     //find base move power
     var power = parseInt(attackInfo["Power"]);
 
-    //Change type of judgement if needed
-    attackInfo = applyPlateToJudgement(attackInfo,atkPokemonRawInfo,atkPokemonInfo);
+    //Change type of judgement if needed. Also change type of pokemon.
+    attackInfo = applyPlateToJudgement(attackInfo,_atkPokemonRawInfo,atkPokemonInfo);
+    _atkPokemonRawInfo = applyTypeChange(_atkPokemonRawInfo,atkPokemonInfo);
+    _defPokemonRawInfo = applyTypeChange(_defPokemonRawInfo,defPokemonInfo);
+    console.log(_atkPokemonRawInfo);
+    console.log(atkPokemonInfo);
 
     //Change type of Techno Blast if needed
     attackInfo = applyDriveToBlast(attackInfo,atkPokemonInfo);
 
     //Apply type enhancing items and plates and incenses.
-    power = applyTypeEnhancingItem(attackInfo,power,atkPokemonRawInfo,atkPokemonInfo);
+    power = applyTypeEnhancingItem(attackInfo,power,_atkPokemonRawInfo,atkPokemonInfo);
 
     //calculate base damage
     var levelCalc = 2 * parseFloat(atkPokemonInfo["Level"]) / 5 + 2;
-    var defenseRatio = calculateDefenseRatio(attackInfo,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo,defPokemonInfo,fieldInfo);
+    var defenseRatio = calculateDefenseRatio(attackInfo,_atkPokemonRawInfo,_defPokemonRawInfo,atkPokemonInfo,defPokemonInfo,fieldInfo);
     var baseDamage = Math.floor(levelCalc * power * defenseRatio / 50) + 2
     //calculate modifier
     var modifier = 1;
@@ -338,8 +344,8 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
     var actualMaxDamage = actualDamage;
     var actualMinDamage = Math.floor(actualMaxDamage * 0.85);
     //STAB
-    for(var typeID in atkPokemonRawInfo["Type"]) {
-        var actualTypeID = atkPokemonRawInfo["Type"][typeID];
+    for(var typeID in _atkPokemonRawInfo["Type"]) {
+        var actualTypeID = _atkPokemonRawInfo["Type"][typeID];
         if(typeDict[actualTypeID] == attackInfo["Type"] && atkPokemonInfo["Ability"] == "Adaptability") {
             modifier = 2;
         } else if(typeDict[actualTypeID] == attackInfo["Type"]) {
@@ -350,7 +356,7 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
     actualMinDamage = Math.floor(actualMinDamage * modifier);
     modifier = 1;
     //type checking
-    modifier = typeCheck(attackInfo,defPokemonRawInfo); 
+    modifier = typeCheck(attackInfo,_defPokemonRawInfo); 
     actualMaxDamage = Math.floor(actualMaxDamage * modifier);
     actualMinDamage = Math.floor(actualMinDamage * modifier);
     modifier = 1;
@@ -713,7 +719,7 @@ function applyPlateToJudgement(attackInfo,atkPokemonRawInfo,atkPokemonInfo) {
 
 /**
  * Changes the type of techno blast to the correct type.
- * @param {JSON} attackInfo the attackInfo JSON of the 
+ * @param {JSON} attackInfo the attackInfo JSON of the move 
  * @param {JSON} atkPokemonInfo The JSON for the attack pokemon's spread
  * @returns {JSON} the modified attackInfo if there is a type change to judgement
  */
@@ -737,4 +743,191 @@ function applyDriveToBlast(attackInfo,atkPokemonInfo) {
         }
     }
     return newAttackInfo;
+}
+
+/**
+ * Applies type change based on held item.
+ * Only applies to Silvally and Arceus
+ * @param {*JSON} pokemonRawInfo The base JSON for the pokemon
+ * @param {JSON} pokemonInfo The JSON for the pokemon's spread
+ * @returns {JSON} The new pokemonRawInfo with the changed type
+ */
+function applyTypeChange(pokemonRawInfo,pokemonInfo) {
+    var atkItemName = items[pokemonInfo["Item"].toString()]["Name"];
+    var newPokemonRawInfo = pokemonRawInfo;
+    if(pokemonInfo["Ability"] == "Multitype" || pokemonInfo["Ability"] == "Rks-system") {
+        switch(atkItemName) {
+            case "Draco-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [16];
+                }
+                break;
+            case "Dread-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [17];
+                }
+                break;
+            case "Earth-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [5];
+                }
+                break;
+            case "Fist-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [2];
+                }
+                break;
+            case "Flame-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [10];
+                }
+                break;
+            case "Icicle-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [15];
+                }
+                break;
+            case "Insect-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [7];
+                }
+                break;
+            case "Iron-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [9];
+                }
+                break;
+            case "Meadow-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [12];
+                }
+                break;
+            case "Mind-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [14];
+                }
+                break;
+            case "Pixie-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [18];
+                }
+                break;
+            case "Sky-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [3];
+                }
+                break;
+            case "Splash-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [11];
+                }
+                break;
+            case "Spooky-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [8];
+                }
+                break;
+            case "Stone-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [6];
+                }
+                break;
+            case "Toxic-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [4];
+                }
+                break;
+            case "Zap-plate":
+                if(pokemonInfo["Ability"] == "Multitype") {
+                    newPokemonRawInfo["Type"] = [13];
+                }
+                break;
+            case "Bug-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [7];
+                }
+                break;
+            case "Dark-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [17];
+                }
+                break;
+            case "Dragon-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [16];
+                }
+                break;
+            case "Electric-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [13];
+                }
+                break;
+            case "Fairy-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [18];
+                }
+                break;
+            case "Fighting-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [2];
+                }
+                break;
+            case "Fire-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [10];
+                }
+                break;
+            case "Flying-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [3];
+                }
+                break;
+            case "Ghost-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [8];
+                }
+                break;
+            case "Grass-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [12];
+                }
+                break;
+            case "Ground-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [5];
+                }
+                break;
+            case "Ice-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [15];
+                }
+                break;
+            case "Poison-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [4];
+                }
+                break;
+            case "Psychic-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [14];
+                }
+                break;
+            case "Rock-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [6];
+                }
+                break;
+            case "Steel-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [9];
+                }
+                break;
+            case "Water-memory":
+                if(pokemonInfo["Ability"] == "Rks-system") {
+                    newPokemonRawInfo["Type"] = [11];
+                }
+                break;
+        }
+    }
+    return newPokemonRawInfo;
 }
