@@ -313,6 +313,7 @@ function calculate(attackMove,atkPokemonRawInfo,defPokemonRawInfo,atkPokemonInfo
 
     //Change type of judgement if needed. Also change type of pokemon.
     attackInfo = applyPlateToJudgement(attackInfo,_atkPokemonRawInfo,atkPokemonInfo);
+    attackInfo = applyMemoryToMultiattack(attackInfo,_atkPokemonRawInfo,atkPokemonInfo);
     _atkPokemonRawInfo = applyTypeChange(_atkPokemonRawInfo,atkPokemonInfo);
     _defPokemonRawInfo = applyTypeChange(_defPokemonRawInfo,defPokemonInfo);
     console.log(_atkPokemonRawInfo);
@@ -710,6 +711,76 @@ function applyPlateToJudgement(attackInfo,atkPokemonRawInfo,atkPokemonInfo) {
                 newAttackInfo["Type"] = "Poison";
                 break;
             case "Zap-plate":
+                newAttackInfo["Type"] = "Electric";
+                break;
+        }
+    }
+    return newAttackInfo;
+}
+
+/**
+ * Changes the type of Multi-attack to the correct type.
+ * @param {JSON} attackInfo the attackInfo JSON of the 
+ * @param {JSON} atkPokemonRawInfo The JSON base for the attacking pokemon
+ * @param {JSON} atkPokemonInfo The JSON for the attack pokemon's spread
+ * @returns {JSON} the modified attackInfo if there is a type change to judgement
+ */
+function applyMemoryToMultiattack(attackInfo,atkPokemonRawInfo,atkPokemonInfo) {
+    var newAttackInfo = attackInfo;
+    var atkItemName = items[atkPokemonInfo["Item"].toString()]["Name"];
+    if(attackInfo["Name"] == "Multi attack" 
+            && atkPokemonRawInfo["Name"] == "Silvally"
+            && atkPokemonInfo["Ability"] == "Rks-system") {
+        switch(atkItemName) {
+            case "Dragon-memory":
+                newAttackInfo["Type"] = "Dragon";
+                break;
+            case "Dark-memory":
+                newAttackInfo["Type"] = "Dark";
+                break;
+            case "Ground-memory":
+                newAttackInfo["Type"] = "Ground";
+                break;
+            case "Fighting-memory":
+                newAttackInfo["Type"] = "Fighting";
+                break;
+            case "Fire-memory":
+                newAttackInfo["Type"] = "Fire";
+                break;
+            case "Ice-memory":
+                newAttackInfo["Type"] = "Ice";
+                break;
+            case "Bug-memory":
+                newAttackInfo["Type"] = "Bug";
+                break;
+            case "Steel-memory":
+                newAttackInfo["Type"] = "Steel";
+                break;
+            case "Grass-memory":
+                newAttackInfo["Type"] = "Grass";
+                break;
+            case "Psychic-memory":
+                newAttackInfo["Type"] = "Psychic";
+                break;
+            case "Fairy-memory":
+                newAttackInfo["Type"] = "Fairy";
+                break;
+            case "Flying-memory":
+                newAttackInfo["Type"] = "Flying";
+                break;
+            case "Water-memory":
+                newAttackInfo["Type"] = "Water";
+                break;
+            case "Ghost-memory":
+                newAttackInfo["Type"] = "Ghost";
+                break;
+            case "Rock-memory":
+                newAttackInfo["Type"] = "Rock";
+                break;
+            case "Poison-memory":
+                newAttackInfo["Type"] = "Poison";
+                break;
+            case "Electric-memory":
                 newAttackInfo["Type"] = "Electric";
                 break;
         }
