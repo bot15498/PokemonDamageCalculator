@@ -376,7 +376,7 @@ function damageRatioPercentage(damage, hp) {
 /**
  * Applies power boost from certain items.
  * https://bulbapedia.bulbagarden.net/wiki/Type-enhancing_item
- * Also includes boost from plates
+ * Also includes boost from plates and relevant incenses
  * 
  * @param {JSON} attackInfo The attack JSON from the moves list
  * @param {number} power The base attack power of the move used
